@@ -1,0 +1,22 @@
+<%= form_tag '/sessions' do %>
+<table>
+  <col width="100">
+  <col width="100">
+  <thead>
+    <Login:>
+  </thead>
+  <tbody>
+    <tr>
+      <td><label>Username: </label></td>
+      <td><input name=username></td>
+    </tr>
+    <tr>
+      <td><label>Password: </label></td>
+      <td><%= password_field_tag %></td>
+    </tr>
+    <tr>
+      <td><input type=submit value='login'></td>
+    </tr>
+  </tbody>
+</table>
+<% end %>
