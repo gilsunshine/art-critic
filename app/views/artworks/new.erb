@@ -36,6 +36,23 @@
     <%= f.file_field :image %>
   </div>
 
+  <div class="field">
+    <%= f.label :year %><br>
+    <%= f.text_field :year %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Style %><br>
+    <%= f.collection_check_boxes :tag_ids, Tag.where(category: "style"), :id, :name %> <br>
+    Other: <%= f.text_field :style %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Medium %><br>
+    <%= f.collection_check_boxes :tag_ids, Tag.where(category: "medium"), :id, :name %> <br>
+    Other: <%= f.text_field :medium %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

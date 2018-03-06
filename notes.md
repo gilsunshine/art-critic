@@ -57,3 +57,15 @@ reference
 https://stackoverflow.com/questions/29377651/rails-error-imagemagick-graphicsmagick-is-not-installed
 https://stackoverflow.com/questions/32624251/what-is-actual-difference-between-graphicsmagick-and-imagemagick-source-needed
 https://code.tutsplus.com/tutorials/rails-image-upload-using-carrierwave-in-a-rails-app--cms-25183
+
+
+
+ {"name"=>"kljfslkfjkldjf",
+ "year"=>"123123",
+ "image"=>#<ActionDispatch::Http::UploadedFile:0x007f86899d0aa0 @tempfile=#<Tempfile:/var/folders/pk/3q70_b5d18xg6nrt5mdpr0740000gn/T/RackMultipart20180306-25407-2xpi8t.jpg>,
+  @original_filename="42.jpg",
+  @content_type="image/jpeg",
+  @headers="Content-Disposition: form-data; name=\"artwork[image]\"; filename=\"42.jpg\"\r\nContent-Type: image/jpeg\r\n">,
+  "tag_ids"=>["", "12", "14", "", "8", "11"],
+  "style"=>"new style",
+  "medium"=>"new medium"}
