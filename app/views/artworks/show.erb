@@ -1,3 +1,11 @@
 <%= @artwork.name %>
-<%= @artwork.artist.name %>
+<%= @artwork.user.name %>
 <%= @artwork.tags.find_by(category: :year)%>
+
+<p>
+  <strong>Image:</strong>
+  <%= image_tag @artwork.image.thumb.url %>
+</p>
+
+<%= link_to 'Edit', edit_artwork_path(@artwork) %> |
+<%= link_to 'Back', artworks_path %>

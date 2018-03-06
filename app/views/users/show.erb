@@ -1,3 +1,5 @@
 <%= @user.name %>
 <%= @user.username %>
+<% if @user.id == session[:user_id] %>
 <%= button_to "Logout", logout_path %>
+<% end %>

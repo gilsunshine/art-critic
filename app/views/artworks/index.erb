@@ -1,10 +1,11 @@
 <table>
   <thead>
     <tr>
-    <%= @artworks.each do |artwork|%>
-      <th> artwork.name </th>
-      <th> artwork.artist.name </th>
-    <%=end%>
+    <% @artworks.each do |artwork|%>
+      <th> <%= artwork.name %> </th>
+      <th> <%= artwork.user.name %> </th>
+      <th> <%= image_tag artwork.image.thumb.url %> </th>
+    <%end%>
     </tr>
   </thead>
 </table>
