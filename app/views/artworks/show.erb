@@ -1,6 +1,20 @@
-<%= @artwork.name %>
-<%= @artwork.user.name %>
-<%= @artwork.tags.find_by(category: :year)%>
+<p>
+<%= @artwork.name %> <br>
+<%= @artwork.user.name %> <br>
+year: <%= @artwork.year.name%> <br> <br>
+
+styles:
+<%= (@artwork.style+@artwork.c_style).map { |style|  style.name }.join(", ") %>
+<br> <br>
+
+media:
+<%= (@artwork.medium+@artwork.c_medium).map { |medium| medium.name}.join(", ") %>
+<br><br>
+
+tags:
+<%= @artwork.c_tag.map {|tag| ctag.name}.join(", ") %>
+</p>
+
 
 <p>
   <strong>Image:</strong>
