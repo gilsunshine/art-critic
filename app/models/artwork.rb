@@ -19,30 +19,40 @@ class Artwork < ApplicationRecord
   def style
     if self.tags.all.present?
       self.tags.all.select{|t| t.category == "style"}
+    else
+      []
     end
   end
 
   def medium
     if self.tags.all.present?
       self.tags.all.select{|t| t.category == "medium"}
+    else
+      []
     end
   end
 
   def c_style
     if self.tags.all.present?
       self.tags.all.select{|t| t.category == "custom style"}
+    else
+      []
     end
   end
 
   def c_medium
     if self.tags.all.present?
       self.tags.all.select{|t| t.category == "custom medium"}
+    else
+      []
     end
   end
 
   def c_tag
     if self.tags.all.present?
       self.tags.all.select{|t| t.category == "custom tag"}
+    else
+          []
     end
   end
 

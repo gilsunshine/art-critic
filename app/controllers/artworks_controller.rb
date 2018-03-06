@@ -9,8 +9,7 @@ class ArtworksController < ApplicationController
     @comments = Comment.all.where(artwork_id: params[:id])
     @comment = Comment.new
     @votes = Vote.all.where(artwork_id: params[:id])
-    @vote_num = @votes.inject(0){|sum,x| sum + x }
-
+    @vote_num = @votes.map{|vote| vote.value }.sum
   end
 
   def new
@@ -41,7 +40,7 @@ class ArtworksController < ApplicationController
     end
 
     def artwork_params
-      params.require(:artwork).permit(:name, :user_id, :image, :year).merge(user_id: current_user.id)
+      params.require(:artwork).permit(:name, :user_id, :image).merge(user_id: current_user.id)
     end
 
 

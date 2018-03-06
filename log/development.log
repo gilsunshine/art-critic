@@ -1,0 +1,1530 @@
+Started GET "/artworks/1" for 127.0.0.1 at 2018-03-06 17:23:41 -0500
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ArtworksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArtwork Load (0.6ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mVote Load (0.5ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."artwork_id" = ?[0m  [["artwork_id", 1]]
+  Rendering artworks/show.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (0.5ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 1]]
+  Rendered artworks/show.erb within layouts/application (68.9ms)
+Completed 500 Internal Server Error in 184ms (ActiveRecord: 5.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    1: <p>
+    2: <%= @artwork.name %> <br>
+    3: <%= @artwork.user.name %> <br>
+    4: year: <%= @artwork.year.name%> <br> <br>
+    5: 
+    6: styles:
+    7: <%= (@artwork.style+@artwork.c_style).map { |style|  style.name }.join(", ") %>
+  
+app/views/artworks/show.erb:4:in `_app_views_artworks_show_erb___270652166823557572_70140903234960'
+Started GET "/" for 127.0.0.1 at 2018-03-06 17:25:35 -0500
+Processing by ApplicationController#index as HTML
+  Rendering application/index.erb within layouts/application
+  Rendered application/index.erb within layouts/application (0.6ms)
+Completed 200 OK in 1736ms (Views: 1731.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/artworks" for 127.0.0.1 at 2018-03-06 17:25:41 -0500
+Processing by ArtworksController#index as HTML
+  Rendering artworks/index.erb within layouts/application
+  [1m[36mArtwork Load (0.4ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks"[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered artworks/index.erb within layouts/application (9.2ms)
+Completed 200 OK in 116ms (Views: 108.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/artworks/1" for 127.0.0.1 at 2018-03-06 17:25:47 -0500
+Processing by ArtworksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mVote Load (0.3ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."artwork_id" = ?[0m  [["artwork_id", 1]]
+  Rendering artworks/show.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 1]]
+  Rendered artworks/show.erb within layouts/application (17.0ms)
+Completed 500 Internal Server Error in 43ms (ActiveRecord: 0.9ms)
+
+
+  
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    1: <p>
+    2: <%= @artwork.name %> <br>
+    3: <%= @artwork.user.name %> <br>
+    4: year: <%= @artwork.year.name%> <br> <br>
+    5: 
+    6: styles:
+    7: <%= (@artwork.style+@artwork.c_style).map { |style|  style.name }.join(", ") %>
+  
+app/views/artworks/show.erb:4:in `_app_views_artworks_show_erb___270652166823557572_70140942171580'
+Started GET "/artworks/2" for 127.0.0.1 at 2018-03-06 17:25:53 -0500
+Processing by ArtworksController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mVote Load (0.2ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."artwork_id" = ?[0m  [["artwork_id", 2]]
+  Rendering artworks/show.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 2]]
+  Rendered artworks/show.erb within layouts/application (20.9ms)
+Completed 500 Internal Server Error in 35ms (ActiveRecord: 0.7ms)
+
+
+  
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    1: <p>
+    2: <%= @artwork.name %> <br>
+    3: <%= @artwork.user.name %> <br>
+    4: year: <%= @artwork.year.name%> <br> <br>
+    5: 
+    6: styles:
+    7: <%= (@artwork.style+@artwork.c_style).map { |style|  style.name }.join(", ") %>
+  
+app/views/artworks/show.erb:4:in `_app_views_artworks_show_erb___270652166823557572_70140947621460'
+Started GET "/" for 127.0.0.1 at 2018-03-06 17:26:07 -0500
+Processing by ApplicationController#index as HTML
+  Rendering application/index.erb within layouts/application
+  Rendered application/index.erb within layouts/application (0.7ms)
+Completed 200 OK in 59ms (Views: 55.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/artworks/new" for 127.0.0.1 at 2018-03-06 17:26:10 -0500
+Processing by ArtworksController#new as HTML
+  Rendering artworks/new.erb within layouts/application
+  [1m[36mTag Load (0.7ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."category" = ?[0m  [["category", "style"]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."category" = ?[0m  [["category", "medium"]]
+  Rendered artworks/new.erb within layouts/application (45.3ms)
+Completed 200 OK in 108ms (Views: 100.8ms | ActiveRecord: 0.9ms)
+
+
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (6.1ms)[0m  [1m[32mINSERT INTO "tags" ("name", "category", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "oil"], ["category", "medium"], ["created_at", "2018-03-06 22:26:37.995588"], ["updated_at", "2018-03-06 22:26:37.995588"]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tags" ("name", "category", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "mixed-media"], ["category", "medium"], ["created_at", "2018-03-06 22:26:38.007159"], ["updated_at", "2018-03-06 22:26:38.007159"]]
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tags" ("name", "category", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "acrylic"], ["category", "medium"], ["created_at", "2018-03-06 22:26:38.016143"], ["updated_at", "2018-03-06 22:26:38.016143"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tags" ("name", "category", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "charcoal"], ["category", "medium"], ["created_at", "2018-03-06 22:26:38.032274"], ["updated_at", "2018-03-06 22:26:38.032274"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tags" ("name", "category", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "digital"], ["category", "medium"], ["created_at", "2018-03-06 22:26:38.035371"], ["updated_at", "2018-03-06 22:26:38.035371"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "tags" ("name", "category", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "impressionism"], ["category", "style"], ["created_at", "2018-03-06 22:26:38.038375"], ["updated_at", "2018-03-06 22:26:38.038375"]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tags" ("name", "category", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "cubism"], ["category", "style"], ["created_at", "2018-03-06 22:26:38.043652"], ["updated_at", "2018-03-06 22:26:38.043652"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tags" ("name", "category", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "surrealism"], ["category", "style"], ["created_at", "2018-03-06 22:26:38.046463"], ["updated_at", "2018-03-06 22:26:38.046463"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tags" ("name", "category", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "realism"], ["category", "style"], ["created_at", "2018-03-06 22:26:38.049025"], ["updated_at", "2018-03-06 22:26:38.049025"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/artworks/new" for 127.0.0.1 at 2018-03-06 17:30:39 -0500
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ArtworksController#new as HTML
+  Rendering artworks/new.erb within layouts/application
+  [1m[36mTag Load (0.6ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."category" = ?[0m  [["category", "style"]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."category" = ?[0m  [["category", "medium"]]
+  Rendered artworks/new.erb within layouts/application (269.3ms)
+Completed 200 OK in 894ms (Views: 849.5ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/artworks/new" for 127.0.0.1 at 2018-03-06 17:31:54 -0500
+Processing by ArtworksController#new as HTML
+  Rendering artworks/new.erb within layouts/application
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."category" = ?[0m  [["category", "style"]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."category" = ?[0m  [["category", "medium"]]
+  Rendered artworks/new.erb within layouts/application (17.2ms)
+Completed 200 OK in 156ms (Views: 150.5ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/artworks" for 127.0.0.1 at 2018-03-06 17:32:19 -0500
+Processing by ArtworksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ROroEeup3BzYU4Ps+s555PEMLeZsnGRJf/vkAxkz0DFpo30kixR8WjY0F56bc4W7/T96+guT3UwCMfRgIQ61iA==", "artwork"=>{"name"=>"Sharky", "year"=>"1980", "image"=>#<ActionDispatch::Http::UploadedFile:0x007fb7eaf1fd48 @tempfile=#<Tempfile:/var/folders/54/ym1x48nn7cq4k5g5r9q_sbhw0000gn/T/RackMultipart20180306-33546-18nnp0j.png>, @original_filename="Stereogram_Tut_Random_Dot_Shark.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"artwork[image]\"; filename=\"Stereogram_Tut_Random_Dot_Shark.png\"\r\nContent-Type: image/png\r\n">, "tag_ids"=>["", "7", "9", "", "6"], "style"=>"", "medium"=>""}, "commit"=>"Create Artwork"}
+Unpermitted parameters: :tag_ids, :style, :medium
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 133ms (ActiveRecord: 0.7ms)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'year' for Artwork.):
+  
+app/controllers/artworks_controller.rb:21:in `create'
+Started POST "/artworks" for 127.0.0.1 at 2018-03-06 17:33:17 -0500
+Processing by ArtworksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ROroEeup3BzYU4Ps+s555PEMLeZsnGRJf/vkAxkz0DFpo30kixR8WjY0F56bc4W7/T96+guT3UwCMfRgIQ61iA==", "artwork"=>{"name"=>"Sharky", "year"=>"1980", "image"=>#<ActionDispatch::Http::UploadedFile:0x007fb7ee9a0468 @tempfile=#<Tempfile:/var/folders/54/ym1x48nn7cq4k5g5r9q_sbhw0000gn/T/RackMultipart20180306-33546-1ax2vdi.png>, @original_filename="Stereogram_Tut_Random_Dot_Shark.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"artwork[image]\"; filename=\"Stereogram_Tut_Random_Dot_Shark.png\"\r\nContent-Type: image/png\r\n">, "tag_ids"=>["", "7", "9", "", "6"], "style"=>"", "medium"=>""}, "commit"=>"Create Artwork"}
+Unpermitted parameters: :year, :tag_ids, :style, :medium
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "artworks" ("name", "user_id", "created_at", "updated_at", "image") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Sharky"], ["user_id", 1], ["created_at", "2018-03-06 22:33:18.109211"], ["updated_at", "2018-03-06 22:33:18.109211"], ["image", "Stereogram_Tut_Random_Dot_Shark.png"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."category" = ? AND "tags"."name" = ? LIMIT ?[0m  [["category", "year"], ["name", "1980"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tags" ("name", "category", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "1980"], ["category", "year"], ["created_at", "2018-03-06 22:33:18.166976"], ["updated_at", "2018-03-06 22:33:18.166976"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.3ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 3], ["tag_id", 11], ["created_at", "2018-03-06 22:33:18.204411"], ["updated_at", "2018-03-06 22:33:18.204411"]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 3], ["tag_id", 7], ["created_at", "2018-03-06 22:33:18.213308"], ["updated_at", "2018-03-06 22:33:18.213308"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 3], ["tag_id", 9], ["created_at", "2018-03-06 22:33:18.220311"], ["updated_at", "2018-03-06 22:33:18.220311"]]
+  [1m[35m (26.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 3], ["tag_id", 6], ["created_at", "2018-03-06 22:33:18.300903"], ["updated_at", "2018-03-06 22:33:18.300903"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."category" = ? AND "tags"."name" = ? LIMIT ?[0m  [["category", "custom style"], ["name", ""], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tags" ("name", "category", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", ""], ["category", "custom style"], ["created_at", "2018-03-06 22:33:18.306522"], ["updated_at", "2018-03-06 22:33:18.306522"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 3], ["tag_id", 12], ["created_at", "2018-03-06 22:33:18.313664"], ["updated_at", "2018-03-06 22:33:18.313664"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."category" = ? AND "tags"."name" = ? LIMIT ?[0m  [["category", "custom medium"], ["name", ""], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tags" ("name", "category", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", ""], ["category", "custom medium"], ["created_at", "2018-03-06 22:33:18.317523"], ["updated_at", "2018-03-06 22:33:18.317523"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.3ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 3], ["tag_id", 13], ["created_at", "2018-03-06 22:33:18.328351"], ["updated_at", "2018-03-06 22:33:18.328351"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/artworks/3
+Completed 302 Found in 476ms (ActiveRecord: 51.4ms)
+
+
+Started GET "/artworks/3" for 127.0.0.1 at 2018-03-06 17:33:18 -0500
+Processing by ArtworksController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mVote Load (0.2ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendering artworks/show.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendered artworks/show.erb within layouts/application (58.0ms)
+Completed 200 OK in 187ms (Views: 162.4ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/artworks/3" for 127.0.0.1 at 2018-03-06 17:34:08 -0500
+Processing by ArtworksController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mVote Load (0.2ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendering artworks/show.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendered artworks/show.erb within layouts/application (17.5ms)
+Completed 200 OK in 96ms (Views: 89.8ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/artworks/3" for 127.0.0.1 at 2018-03-06 17:34:21 -0500
+Processing by ArtworksController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mVote Load (0.2ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendering artworks/show.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendered artworks/show.erb within layouts/application (18.2ms)
+Completed 200 OK in 85ms (Views: 79.5ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/artworks/3" for 127.0.0.1 at 2018-03-06 17:34:52 -0500
+Processing by ArtworksController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mVote Load (0.2ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendering artworks/show.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendered artworks/show.erb within layouts/application (20.9ms)
+Completed 200 OK in 96ms (Views: 90.8ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/artworks/3" for 127.0.0.1 at 2018-03-06 17:35:06 -0500
+Processing by ArtworksController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mVote Load (0.2ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendering artworks/show.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendered artworks/show.erb within layouts/application (18.6ms)
+Completed 200 OK in 90ms (Views: 83.6ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/artworks/3" for 127.0.0.1 at 2018-03-06 17:35:30 -0500
+Processing by ArtworksController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mVote Load (0.2ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendering artworks/show.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendered artworks/show.erb within layouts/application (22.6ms)
+Completed 200 OK in 82ms (Views: 75.6ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/artworks/3" for 127.0.0.1 at 2018-03-06 17:38:07 -0500
+Processing by ArtworksController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mVote Load (0.3ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendering artworks/show.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendered artworks/show.erb within layouts/application (86.6ms)
+Completed 200 OK in 301ms (Views: 221.9ms | ActiveRecord: 6.1ms)
+
+
+Started GET "/artworks/1" for 127.0.0.1 at 2018-03-06 17:38:15 -0500
+Processing by ArtworksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArtwork Load (0.3ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mVote Load (0.2ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."artwork_id" = ?[0m  [["artwork_id", 1]]
+  Rendering artworks/show.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 1]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 1]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 1]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 1]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 1]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 1]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."artwork_id" = ?[0m  [["artwork_id", 1]]
+  Rendered artworks/show.erb within layouts/application (16.3ms)
+Completed 200 OK in 97ms (Views: 88.0ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/artworks/1" for 127.0.0.1 at 2018-03-06 17:39:37 -0500
+Processing by ArtworksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mVote Load (0.3ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."artwork_id" = ?[0m  [["artwork_id", 1]]
+  Rendering artworks/show.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 1]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 1]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 1]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 1]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 1]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 1]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."artwork_id" = ?[0m  [["artwork_id", 1]]
+  Rendered artworks/show.erb within layouts/application (12.9ms)
+Completed 200 OK in 100ms (Views: 94.1ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/artworks/2" for 127.0.0.1 at 2018-03-06 17:39:41 -0500
+Processing by ArtworksController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mVote Load (0.2ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."artwork_id" = ?[0m  [["artwork_id", 2]]
+  Rendering artworks/show.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 2]]
+  [1m[36mCACHE Tag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 2]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 2]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 2]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 2]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 2]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."artwork_id" = ?[0m  [["artwork_id", 2]]
+  Rendered artworks/show.erb within layouts/application (15.4ms)
+Completed 200 OK in 109ms (Views: 101.3ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/artworks/3" for 127.0.0.1 at 2018-03-06 17:39:43 -0500
+Processing by ArtworksController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mArtwork Load (0.9ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mVote Load (0.3ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendering artworks/show.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendered artworks/show.erb within layouts/application (27.3ms)
+Completed 200 OK in 125ms (Views: 115.9ms | ActiveRecord: 2.1ms)
+
+
+Started POST "/like?artwork_id=3&method=post" for 127.0.0.1 at 2018-03-06 17:40:02 -0500
+Processing by VotesController#like as HTML
+  Parameters: {"authenticity_token"=>"SVt/TaA5KhY6NxQT7FN4nca0JfJia4z7LiH1allVu8NkEup4wISKUNRQgGGN7oTCyody7gVkNf5T6+UJYWjeeg==", "artwork_id"=>"3", "method"=>"post"}
+  [1m[36mVote Load (0.2ms)[0m  [1m[34mSELECT  "votes".* FROM "votes" WHERE "votes"."user_id" = ? AND "votes"."artwork_id" = ? LIMIT ?[0m  [["user_id", 1], ["artwork_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+Redirected to http://localhost:3000/artworks/3
+Completed 302 Found in 22ms (ActiveRecord: 1.7ms)
+
+
+Started GET "/artworks/3" for 127.0.0.1 at 2018-03-06 17:40:02 -0500
+Processing by ArtworksController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mVote Load (0.2ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendering artworks/show.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendered artworks/show.erb within layouts/application (20.6ms)
+Completed 200 OK in 70ms (Views: 64.4ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/dislike?artwork_id=3&method=post" for 127.0.0.1 at 2018-03-06 17:40:05 -0500
+Processing by VotesController#dislike as HTML
+  Parameters: {"authenticity_token"=>"ajKbvf/Y+0/9NOPGURgLcsI9nOUxlxQ4LKnRMJY91hZHew6In2VbCRNTd7Qwpfctzg7L+VaYrT1RY8FTrgCzrw==", "artwork_id"=>"3", "method"=>"post"}
+  [1m[36mVote Load (0.3ms)[0m  [1m[34mSELECT  "votes".* FROM "votes" WHERE "votes"."user_id" = ? AND "votes"."artwork_id" = ? LIMIT ?[0m  [["user_id", 1], ["artwork_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Redirected to http://localhost:3000/artworks/3
+Completed 302 Found in 9ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/artworks/3" for 127.0.0.1 at 2018-03-06 17:40:05 -0500
+Processing by ArtworksController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mVote Load (0.2ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendering artworks/show.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendered artworks/show.erb within layouts/application (21.7ms)
+Completed 200 OK in 70ms (Views: 63.6ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/artworks/3" for 127.0.0.1 at 2018-03-06 17:41:44 -0500
+Processing by ArtworksController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mVote Load (0.2ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendering artworks/show.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendered artworks/show.erb within layouts/application (69.3ms)
+Completed 200 OK in 185ms (Views: 145.7ms | ActiveRecord: 4.3ms)
+
+
+Started POST "/like?artwork_id=3&method=post" for 127.0.0.1 at 2018-03-06 17:41:47 -0500
+Processing by VotesController#like as HTML
+  Parameters: {"authenticity_token"=>"NZRXSItySP0CGYeiS4onsV/wrorN4tYsEJ2ld6RONYkY3cJ968/ou+x+E9AqN9vuU8P5lqrtbyltV7UUnHNQMA==", "artwork_id"=>"3", "method"=>"post"}
+  [1m[36mVote Load (0.2ms)[0m  [1m[34mSELECT  "votes".* FROM "votes" WHERE "votes"."user_id" = ? AND "votes"."artwork_id" = ? LIMIT ?[0m  [["user_id", 1], ["artwork_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Redirected to http://localhost:3000/artworks/3
+Completed 302 Found in 19ms (ActiveRecord: 0.9ms)
+
+
+Started GET "/artworks/3" for 127.0.0.1 at 2018-03-06 17:41:47 -0500
+Processing by ArtworksController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mVote Load (0.2ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendering artworks/show.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendered artworks/show.erb within layouts/application (18.7ms)
+Completed 200 OK in 67ms (Views: 60.1ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/like?artwork_id=3&method=post" for 127.0.0.1 at 2018-03-06 17:42:58 -0500
+Processing by VotesController#like as HTML
+  Parameters: {"authenticity_token"=>"Io6zp8rjDdc1Tc06z44Wmvbseput/xxGCpynvpMeML8PxyaSql6tkdsqWUiuM+rF+t8th8rwpUN3VrfdqyNVBg==", "artwork_id"=>"3", "method"=>"post"}
+  [1m[36mVote Load (0.2ms)[0m  [1m[34mSELECT  "votes".* FROM "votes" WHERE "votes"."user_id" = ? AND "votes"."artwork_id" = ? LIMIT ?[0m  [["user_id", 1], ["artwork_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.3ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Redirected to http://localhost:3000/artworks/3
+Completed 302 Found in 7ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/artworks/3" for 127.0.0.1 at 2018-03-06 17:42:58 -0500
+Processing by ArtworksController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mVote Load (0.2ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendering artworks/show.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendered artworks/show.erb within layouts/application (22.6ms)
+Completed 200 OK in 103ms (Views: 97.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/artworks/3" for 127.0.0.1 at 2018-03-06 17:44:39 -0500
+Processing by ArtworksController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mVote Load (0.1ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mVote Load (0.3ms)[0m  [1m[34mSELECT  "votes".* FROM "votes" WHERE "votes"."artwork_id" = ? LIMIT ?[0m  [["artwork_id", 3], ["LIMIT", 11]]
+  [1m[36mCACHE Vote Load (0.1ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."artwork_id" = ? LIMIT ?[0m  [["artwork_id", 3], ["LIMIT", 11]]
+  [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."artwork_id" = ? LIMIT ?[0m  [["artwork_id", 3], ["LIMIT", 11]]
+  [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."artwork_id" = ? LIMIT ?[0m  [["artwork_id", 3], ["LIMIT", 11]]
+  [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."artwork_id" = ? LIMIT ?[0m  [["artwork_id", 3], ["LIMIT", 11]]
+  Rendering artworks/show.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (0.7ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendered artworks/show.erb within layouts/application (108.2ms)
+Completed 200 OK in 69908ms (Views: 234.8ms | ActiveRecord: 6.9ms)
+
+
+Started GET "/artworks/3" for 127.0.0.1 at 2018-03-06 17:45:52 -0500
+Processing by ArtworksController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mVote Load (0.2ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendering artworks/show.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendered artworks/show.erb within layouts/application (76.9ms)
+Completed 200 OK in 237ms (Views: 190.0ms | ActiveRecord: 4.9ms)
+
+
+Started POST "/like?artwork_id=3&method=post" for 127.0.0.1 at 2018-03-06 17:45:54 -0500
+Processing by VotesController#like as HTML
+  Parameters: {"authenticity_token"=>"R1CrLvIpBvezaPOVwp7crMM5Q81TSc8Y0U9lELKgSn9qGT4bkpSmsV0PZ+ejIyDzzwoU0TRGdh2shXVzip0vxg==", "artwork_id"=>"3", "method"=>"post"}
+  [1m[36mVote Load (0.2ms)[0m  [1m[34mSELECT  "votes".* FROM "votes" WHERE "votes"."user_id" = ? AND "votes"."artwork_id" = ? LIMIT ?[0m  [["user_id", 1], ["artwork_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Redirected to http://localhost:3000/artworks/3
+Completed 302 Found in 118398ms (ActiveRecord: 0.9ms)
+
+
+Started GET "/artworks/3" for 127.0.0.1 at 2018-03-06 17:47:53 -0500
+Processing by ArtworksController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mArtwork Load (0.3ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mVote Load (0.5ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendering artworks/show.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendered artworks/show.erb within layouts/application (37.4ms)
+Completed 200 OK in 186ms (Views: 170.2ms | ActiveRecord: 2.0ms)
+
+
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to RemoveCommentIdFromVotes (88888888888888)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TEMPORARY TABLE "avotes" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer DEFAULT NULL, "comment_id" integer DEFAULT NULL, "artwork_id" integer DEFAULT NULL, "value" integer DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "avotes" ("id","user_id","comment_id","artwork_id","value","created_at","updated_at")
+                     SELECT "id","user_id","comment_id","artwork_id","value","created_at","updated_at" FROM "votes"[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE "votes"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "votes" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer DEFAULT NULL, "artwork_id" integer DEFAULT NULL, "value" integer DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "votes" ("id","user_id","artwork_id","value","created_at","updated_at")
+                     SELECT "id","user_id","artwork_id","value","created_at","updated_at" FROM "avotes"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "avotes"[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "88888888888888"]]
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/artworks/3" for 127.0.0.1 at 2018-03-06 18:05:33 -0500
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ArtworksController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mArtwork Load (0.3ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mVote Load (0.7ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendering artworks/show.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (1.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendered artworks/show.erb within layouts/application (188.0ms)
+Completed 200 OK in 429ms (Views: 319.9ms | ActiveRecord: 9.1ms)
+
+
+Started POST "/like?artwork_id=3&method=post" for 127.0.0.1 at 2018-03-06 18:05:36 -0500
+Processing by VotesController#like as HTML
+  Parameters: {"authenticity_token"=>"Xcope5MFzvex+3PTsjvazQxW9naNW0Pp8EobTUYycvtwg7xO87husV+c56HThiaSAGWhaupU+uyNgAsufg8XQg==", "artwork_id"=>"3", "method"=>"post"}
+  [1m[36mVote Load (0.2ms)[0m  [1m[34mSELECT  "votes".* FROM "votes" WHERE "votes"."user_id" = ? AND "votes"."artwork_id" = ? LIMIT ?[0m  [["user_id", 1], ["artwork_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "votes" ("user_id", "artwork_id", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", 1], ["artwork_id", 3], ["value", 1], ["created_at", "2018-03-06 23:05:36.644695"], ["updated_at", "2018-03-06 23:05:36.644695"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/artworks/3
+Completed 302 Found in 6724ms (ActiveRecord: 3.0ms)
+
+
+Started GET "/artworks/3" for 127.0.0.1 at 2018-03-06 18:05:43 -0500
+Processing by ArtworksController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mVote Load (0.4ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."artwork_id" = ?[0m  [["artwork_id", 3]]
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.6ms)
+
+
+  
+TypeError (Vote can't be coerced into Fixnum):
+  
+app/controllers/artworks_controller.rb:12:in `+'
+app/controllers/artworks_controller.rb:12:in `block in show'
+app/controllers/artworks_controller.rb:12:in `inject'
+app/controllers/artworks_controller.rb:12:in `show'
+Started PUT "/__web_console/repl_sessions/64145dc1ff772dbcfd75fa8a23e941f5" for 127.0.0.1 at 2018-03-06 18:06:30 -0500
+Started PUT "/__web_console/repl_sessions/64145dc1ff772dbcfd75fa8a23e941f5" for 127.0.0.1 at 2018-03-06 18:06:31 -0500
+Started PUT "/__web_console/repl_sessions/64145dc1ff772dbcfd75fa8a23e941f5" for 127.0.0.1 at 2018-03-06 18:06:42 -0500
+Started PUT "/__web_console/repl_sessions/64145dc1ff772dbcfd75fa8a23e941f5" for 127.0.0.1 at 2018-03-06 18:07:24 -0500
+Started PUT "/__web_console/repl_sessions/64145dc1ff772dbcfd75fa8a23e941f5" for 127.0.0.1 at 2018-03-06 18:07:30 -0500
+Started PUT "/__web_console/repl_sessions/64145dc1ff772dbcfd75fa8a23e941f5" for 127.0.0.1 at 2018-03-06 18:07:31 -0500
+Started GET "/artworks/3" for 127.0.0.1 at 2018-03-06 18:08:34 -0500
+Processing by ArtworksController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mVote Load (0.2ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendering artworks/show.erb within layouts/application
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendered artworks/show.erb within layouts/application (101.2ms)
+Completed 200 OK in 275ms (Views: 185.9ms | ActiveRecord: 7.2ms)
+
+
+Started POST "/like?artwork_id=3&method=post" for 127.0.0.1 at 2018-03-06 18:08:37 -0500
+Processing by VotesController#like as HTML
+  Parameters: {"authenticity_token"=>"h7qDcFCEM4rV4zbVHawKp+UthTVsWz91U2fJlzs4Ktuq8xZFMDmTzDuEoqd8Efb46R7SKQtUhnAurdn0AwVPYg==", "artwork_id"=>"3", "method"=>"post"}
+  [1m[36mVote Load (0.3ms)[0m  [1m[34mSELECT  "votes".* FROM "votes" WHERE "votes"."user_id" = ? AND "votes"."artwork_id" = ? LIMIT ?[0m  [["user_id", 1], ["artwork_id", 3], ["LIMIT", 1]]
+No template found for VotesController#like, rendering head :no_content
+Completed 204 No Content in 202ms (ActiveRecord: 0.3ms)
+
+
+Started POST "/dislike?artwork_id=3&method=post" for 127.0.0.1 at 2018-03-06 18:08:39 -0500
+Processing by VotesController#dislike as HTML
+  Parameters: {"authenticity_token"=>"h7qDcFCEM4rV4zbVHawKp+UthTVsWz91U2fJlzs4Ktuq8xZFMDmTzDuEoqd8Efb46R7SKQtUhnAurdn0AwVPYg==", "artwork_id"=>"3", "method"=>"post"}
+  [1m[36mVote Load (0.1ms)[0m  [1m[34mSELECT  "votes".* FROM "votes" WHERE "votes"."user_id" = ? AND "votes"."artwork_id" = ? LIMIT ?[0m  [["user_id", 1], ["artwork_id", 3], ["LIMIT", 1]]
+No template found for VotesController#dislike, rendering head :no_content
+Completed 204 No Content in 205ms (ActiveRecord: 0.1ms)
+
+
+Started POST "/dislike?artwork_id=3&method=post" for 127.0.0.1 at 2018-03-06 18:08:51 -0500
+Processing by VotesController#dislike as HTML
+  Parameters: {"authenticity_token"=>"h7qDcFCEM4rV4zbVHawKp+UthTVsWz91U2fJlzs4Ktuq8xZFMDmTzDuEoqd8Efb46R7SKQtUhnAurdn0AwVPYg==", "artwork_id"=>"3", "method"=>"post"}
+  [1m[36mVote Load (0.2ms)[0m  [1m[34mSELECT  "votes".* FROM "votes" WHERE "votes"."user_id" = ? AND "votes"."artwork_id" = ? LIMIT ?[0m  [["user_id", 1], ["artwork_id", 3], ["LIMIT", 1]]
+No template found for VotesController#dislike, rendering head :no_content
+Completed 204 No Content in 210ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/artworks/3" for 127.0.0.1 at 2018-03-06 18:12:46 -0500
+Processing by ArtworksController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mVote Load (0.4ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendering artworks/show.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendered artworks/show.erb within layouts/application (87.9ms)
+Completed 200 OK in 14595ms (Views: 160.5ms | ActiveRecord: 6.1ms)
+
+
+Started POST "/dislike?artwork_id=3&method=post" for 127.0.0.1 at 2018-03-06 18:13:06 -0500
+Processing by VotesController#dislike as HTML
+  Parameters: {"authenticity_token"=>"KHdK2Ib+dhFChrf4GG1V04cscTLhrxy26lhQxo2hyokFPt/t5kPWV6zhI4p50KmMix8mLoagpbOXkkCltZyvMA==", "artwork_id"=>"3", "method"=>"post"}
+  [1m[36mVote Load (0.2ms)[0m  [1m[34mSELECT  "votes".* FROM "votes" WHERE "votes"."user_id" = ? AND "votes"."artwork_id" = ? LIMIT ?[0m  [["user_id", 1], ["artwork_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE "votes" SET "value" = ?, "updated_at" = ? WHERE "votes"."id" = ?[0m  [["value", -1], ["updated_at", "2018-03-06 23:13:06.164603"], ["id", 1]]
+  [1m[35m (2.3ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/artworks/3
+Completed 302 Found in 17ms (ActiveRecord: 3.3ms)
+
+
+Started GET "/artworks/3" for 127.0.0.1 at 2018-03-06 18:13:06 -0500
+Processing by ArtworksController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mVote Load (0.4ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendering artworks/show.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (0.9ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendered artworks/show.erb within layouts/application (32.2ms)
+Completed 200 OK in 4204ms (Views: 106.8ms | ActiveRecord: 2.3ms)
+
+
+Started POST "/dislike?artwork_id=3&method=post" for 127.0.0.1 at 2018-03-06 18:13:33 -0500
+Processing by VotesController#dislike as HTML
+  Parameters: {"authenticity_token"=>"7hTG+cgkI7YIevhSYHUbeJLjhpXwLS/Omgk1kKROAfjDXVPMqJmD8OYdbCAByOcnntDRiZcilsvnwyXznHNkQQ==", "artwork_id"=>"3", "method"=>"post"}
+  [1m[36mVote Load (0.3ms)[0m  [1m[34mSELECT  "votes".* FROM "votes" WHERE "votes"."user_id" = ? AND "votes"."artwork_id" = ? LIMIT ?[0m  [["user_id", 1], ["artwork_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.3ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "votes" SET "value" = ?, "updated_at" = ? WHERE "votes"."id" = ?[0m  [["value", 0], ["updated_at", "2018-03-06 23:13:33.198986"], ["id", 1]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+No template found for VotesController#dislike, rendering head :no_content
+Completed 204 No Content in 310ms (ActiveRecord: 7.2ms)
+
+
+Started POST "/dislike?artwork_id=3&method=post" for 127.0.0.1 at 2018-03-06 18:13:35 -0500
+Processing by VotesController#dislike as HTML
+  Parameters: {"authenticity_token"=>"7hTG+cgkI7YIevhSYHUbeJLjhpXwLS/Omgk1kKROAfjDXVPMqJmD8OYdbCAByOcnntDRiZcilsvnwyXznHNkQQ==", "artwork_id"=>"3", "method"=>"post"}
+  [1m[36mVote Load (0.4ms)[0m  [1m[34mSELECT  "votes".* FROM "votes" WHERE "votes"."user_id" = ? AND "votes"."artwork_id" = ? LIMIT ?[0m  [["user_id", 1], ["artwork_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[33mUPDATE "votes" SET "value" = ?, "updated_at" = ? WHERE "votes"."id" = ?[0m  [["value", -1], ["updated_at", "2018-03-06 23:13:35.805707"], ["id", 1]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/artworks/3
+Completed 302 Found in 11ms (ActiveRecord: 3.2ms)
+
+
+Started GET "/artworks/3" for 127.0.0.1 at 2018-03-06 18:13:35 -0500
+Processing by ArtworksController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mVote Load (0.3ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendering artworks/show.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (0.6ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendered artworks/show.erb within layouts/application (57.0ms)
+Completed 200 OK in 133ms (Views: 112.5ms | ActiveRecord: 3.9ms)
+
+
+Started POST "/like?artwork_id=3&method=post" for 127.0.0.1 at 2018-03-06 18:13:37 -0500
+Processing by VotesController#like as HTML
+  Parameters: {"authenticity_token"=>"z3SRmBO1rj1i5eR02OfWYEon/LhF+7FoH/Q/8H/qpdDiPQStcwgOe4yCcAa5Wio/RhSrpCL0CG1iPi+TR9fAaQ==", "artwork_id"=>"3", "method"=>"post"}
+  [1m[36mVote Load (0.2ms)[0m  [1m[34mSELECT  "votes".* FROM "votes" WHERE "votes"."user_id" = ? AND "votes"."artwork_id" = ? LIMIT ?[0m  [["user_id", 1], ["artwork_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "votes" SET "value" = ?, "updated_at" = ? WHERE "votes"."id" = ?[0m  [["value", 1], ["updated_at", "2018-03-06 23:13:37.810318"], ["id", 1]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/artworks/3
+Completed 302 Found in 12ms (ActiveRecord: 3.0ms)
+
+
+Started GET "/artworks/3" for 127.0.0.1 at 2018-03-06 18:13:37 -0500
+Processing by ArtworksController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mArtwork Load (0.5ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mVote Load (0.3ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendering artworks/show.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (2.8ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendered artworks/show.erb within layouts/application (38.0ms)
+Completed 200 OK in 132ms (Views: 120.5ms | ActiveRecord: 4.4ms)
+
+
+Started POST "/dislike?artwork_id=3&method=post" for 127.0.0.1 at 2018-03-06 18:13:39 -0500
+Processing by VotesController#dislike as HTML
+  Parameters: {"authenticity_token"=>"ZaHXMbj3bmidqbrLFCRjEsuIYKNpLyvcH1MpsZ0zstBI6EIE2ErOLnPOLrl1mZ9Nx7s3vw4gktlimTnSpQ7XaQ==", "artwork_id"=>"3", "method"=>"post"}
+  [1m[36mVote Load (0.5ms)[0m  [1m[34mSELECT  "votes".* FROM "votes" WHERE "votes"."user_id" = ? AND "votes"."artwork_id" = ? LIMIT ?[0m  [["user_id", 1], ["artwork_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "votes" SET "value" = ?, "updated_at" = ? WHERE "votes"."id" = ?[0m  [["value", -1], ["updated_at", "2018-03-06 23:13:39.252237"], ["id", 1]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/artworks/3
+Completed 302 Found in 10ms (ActiveRecord: 2.3ms)
+
+
+Started GET "/artworks/3" for 127.0.0.1 at 2018-03-06 18:13:39 -0500
+Processing by ArtworksController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mVote Load (0.2ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendering artworks/show.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.8ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendered artworks/show.erb within layouts/application (50.5ms)
+Completed 200 OK in 167ms (Views: 159.3ms | ActiveRecord: 2.5ms)
+
+
+Started POST "/like?artwork_id=3&method=post" for 127.0.0.1 at 2018-03-06 18:13:40 -0500
+Processing by VotesController#like as HTML
+  Parameters: {"authenticity_token"=>"oDcy1ObccfBVjUSkWGmC1Ej8tuEv0oiLR5IYImKPCOmNfqfhhmHRtrvq0NY51H6LRM/h/UjdMY46WAhBWrJtUA==", "artwork_id"=>"3", "method"=>"post"}
+  [1m[36mVote Load (0.3ms)[0m  [1m[34mSELECT  "votes".* FROM "votes" WHERE "votes"."user_id" = ? AND "votes"."artwork_id" = ? LIMIT ?[0m  [["user_id", 1], ["artwork_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "votes" SET "value" = ?, "updated_at" = ? WHERE "votes"."id" = ?[0m  [["value", 1], ["updated_at", "2018-03-06 23:13:40.987947"], ["id", 1]]
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/artworks/3
+Completed 302 Found in 11ms (ActiveRecord: 2.9ms)
+
+
+Started GET "/artworks/3" for 127.0.0.1 at 2018-03-06 18:13:40 -0500
+Processing by ArtworksController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mVote Load (0.2ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendering artworks/show.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendered artworks/show.erb within layouts/application (33.8ms)
+Completed 200 OK in 118ms (Views: 111.8ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/like?artwork_id=3&method=post" for 127.0.0.1 at 2018-03-06 18:13:42 -0500
+Processing by VotesController#like as HTML
+  Parameters: {"authenticity_token"=>"qwPBo4MW5U00DK5sh1muiCrm1zG6wWwX6PwBwnFsEXqGSlSW46tFC9prOh7m5FLXJtWALd3O1RKVNhGhSVF0ww==", "artwork_id"=>"3", "method"=>"post"}
+  [1m[36mVote Load (0.4ms)[0m  [1m[34mSELECT  "votes".* FROM "votes" WHERE "votes"."user_id" = ? AND "votes"."artwork_id" = ? LIMIT ?[0m  [["user_id", 1], ["artwork_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "votes" SET "value" = ?, "updated_at" = ? WHERE "votes"."id" = ?[0m  [["value", 0], ["updated_at", "2018-03-06 23:13:42.244779"], ["id", 1]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+No template found for VotesController#like, rendering head :no_content
+Completed 204 No Content in 296ms (ActiveRecord: 2.1ms)
+
+
+Started POST "/dislike?artwork_id=3&method=post" for 127.0.0.1 at 2018-03-06 18:13:44 -0500
+Processing by VotesController#dislike as HTML
+  Parameters: {"authenticity_token"=>"qwPBo4MW5U00DK5sh1muiCrm1zG6wWwX6PwBwnFsEXqGSlSW46tFC9prOh7m5FLXJtWALd3O1RKVNhGhSVF0ww==", "artwork_id"=>"3", "method"=>"post"}
+  [1m[36mVote Load (0.3ms)[0m  [1m[34mSELECT  "votes".* FROM "votes" WHERE "votes"."user_id" = ? AND "votes"."artwork_id" = ? LIMIT ?[0m  [["user_id", 1], ["artwork_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "votes" SET "value" = ?, "updated_at" = ? WHERE "votes"."id" = ?[0m  [["value", -1], ["updated_at", "2018-03-06 23:13:44.702095"], ["id", 1]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/artworks/3
+Completed 302 Found in 10ms (ActiveRecord: 2.4ms)
+
+
+Started GET "/artworks/3" for 127.0.0.1 at 2018-03-06 18:13:44 -0500
+Processing by ArtworksController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mVote Load (0.2ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendering artworks/show.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (0.7ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendered artworks/show.erb within layouts/application (46.3ms)
+Completed 200 OK in 120ms (Views: 112.7ms | ActiveRecord: 2.2ms)
+
+
+Started POST "/like?artwork_id=3&method=post" for 127.0.0.1 at 2018-03-06 18:14:02 -0500
+Processing by VotesController#like as HTML
+  Parameters: {"authenticity_token"=>"TiwytkfdBsgSvXvfWISrYK0dGMWGCxPkSJLYYCRjNIJjZaeDJ2Cmjvza7605OVc/oS5P2eEEquE1WMgDHF5ROw==", "artwork_id"=>"3", "method"=>"post"}
+  [1m[36mVote Load (0.4ms)[0m  [1m[34mSELECT  "votes".* FROM "votes" WHERE "votes"."user_id" = ? AND "votes"."artwork_id" = ? LIMIT ?[0m  [["user_id", 1], ["artwork_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.3ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (1.3ms)[0m  [1m[33mUPDATE "votes" SET "value" = ?, "updated_at" = ? WHERE "votes"."id" = ?[0m  [["value", 1], ["updated_at", "2018-03-06 23:14:02.270230"], ["id", 1]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/artworks/3
+Completed 302 Found in 15ms (ActiveRecord: 3.6ms)
+
+
+Started GET "/artworks/3" for 127.0.0.1 at 2018-03-06 18:14:02 -0500
+Processing by ArtworksController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mVote Load (0.3ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendering artworks/show.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendered artworks/show.erb within layouts/application (31.9ms)
+Completed 200 OK in 115ms (Views: 108.4ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/like?artwork_id=3&method=post" for 127.0.0.1 at 2018-03-06 18:14:03 -0500
+Processing by VotesController#like as HTML
+  Parameters: {"authenticity_token"=>"rVQ72JPMWIRVGTxDomjflCBeH4yns8MqjOPVSp/VRdGAHa7t83H4wrt+qDHD1SPLLG1IkMC8ei/xKcUpp+ggaA==", "artwork_id"=>"3", "method"=>"post"}
+  [1m[36mVote Load (0.3ms)[0m  [1m[34mSELECT  "votes".* FROM "votes" WHERE "votes"."user_id" = ? AND "votes"."artwork_id" = ? LIMIT ?[0m  [["user_id", 1], ["artwork_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "votes" SET "value" = ?, "updated_at" = ? WHERE "votes"."id" = ?[0m  [["value", 0], ["updated_at", "2018-03-06 23:14:03.599701"], ["id", 1]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+No template found for VotesController#like, rendering head :no_content
+Completed 204 No Content in 259ms (ActiveRecord: 2.5ms)
+
+
+Started POST "/like?artwork_id=3&method=post" for 127.0.0.1 at 2018-03-06 18:14:04 -0500
+Processing by VotesController#like as HTML
+  Parameters: {"authenticity_token"=>"rVQ72JPMWIRVGTxDomjflCBeH4yns8MqjOPVSp/VRdGAHa7t83H4wrt+qDHD1SPLLG1IkMC8ei/xKcUpp+ggaA==", "artwork_id"=>"3", "method"=>"post"}
+  [1m[36mVote Load (0.4ms)[0m  [1m[34mSELECT  "votes".* FROM "votes" WHERE "votes"."user_id" = ? AND "votes"."artwork_id" = ? LIMIT ?[0m  [["user_id", 1], ["artwork_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "votes" SET "value" = ?, "updated_at" = ? WHERE "votes"."id" = ?[0m  [["value", 1], ["updated_at", "2018-03-06 23:14:04.263957"], ["id", 1]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/artworks/3
+Completed 302 Found in 15ms (ActiveRecord: 2.3ms)
+
+
+Started GET "/artworks/3" for 127.0.0.1 at 2018-03-06 18:14:04 -0500
+Processing by ArtworksController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mVote Load (0.3ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendering artworks/show.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendered artworks/show.erb within layouts/application (36.3ms)
+Completed 200 OK in 102ms (Views: 95.9ms | ActiveRecord: 1.7ms)
+
+
+Started POST "/like?artwork_id=3&method=post" for 127.0.0.1 at 2018-03-06 18:14:05 -0500
+Processing by VotesController#like as HTML
+  Parameters: {"authenticity_token"=>"lnn/3MY0zM4nYl04QOLaKA4zp3A0Z8kC17WvABZ1RUO7MGrppolsiMkFyUohXyZ3AgDwbFNocAeqf79jLkgg+g==", "artwork_id"=>"3", "method"=>"post"}
+  [1m[36mVote Load (0.3ms)[0m  [1m[34mSELECT  "votes".* FROM "votes" WHERE "votes"."user_id" = ? AND "votes"."artwork_id" = ? LIMIT ?[0m  [["user_id", 1], ["artwork_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "votes" SET "value" = ?, "updated_at" = ? WHERE "votes"."id" = ?[0m  [["value", 0], ["updated_at", "2018-03-06 23:14:05.561216"], ["id", 1]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+No template found for VotesController#like, rendering head :no_content
+Completed 204 No Content in 231ms (ActiveRecord: 1.9ms)
+
+
+Started GET "/artworks/3" for 127.0.0.1 at 2018-03-06 18:14:53 -0500
+Processing by ArtworksController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mVote Load (0.1ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendering artworks/show.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendered artworks/show.erb within layouts/application (64.6ms)
+Completed 200 OK in 200ms (Views: 135.5ms | ActiveRecord: 11.1ms)
+
+
+Started POST "/like?artwork_id=3&method=post" for 127.0.0.1 at 2018-03-06 18:14:56 -0500
+Processing by VotesController#like as HTML
+  Parameters: {"authenticity_token"=>"T3rDcDsRulalY2wy4MiCJfN/jtZLfUh8yxt6wjzLgyxiM1ZFW6waEEsE+ECBdX56/0zZyixy8Xm20WqhBPbmlQ==", "artwork_id"=>"3", "method"=>"post"}
+  [1m[36mVote Load (0.3ms)[0m  [1m[34mSELECT  "votes".* FROM "votes" WHERE "votes"."user_id" = ? AND "votes"."artwork_id" = ? LIMIT ?[0m  [["user_id", 1], ["artwork_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "votes" SET "value" = ?, "updated_at" = ? WHERE "votes"."id" = ?[0m  [["value", 1], ["updated_at", "2018-03-06 23:14:56.075826"], ["id", 1]]
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 5.2ms)
+
+
+  
+ActionView::MissingTemplate (Missing template artworks/3 with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/Users/gilsunshine/dev/labs/art-critic/app/views"
+  * "/Users/gilsunshine/.rvm/gems/ruby-2.3.3/gems/commontator-5.1.0/app/views"
+):
+  
+app/controllers/votes_controller.rb:7:in `like'
+Started POST "/like?artwork_id=3&method=post" for 127.0.0.1 at 2018-03-06 18:16:21 -0500
+Processing by VotesController#like as HTML
+  Parameters: {"authenticity_token"=>"T3rDcDsRulalY2wy4MiCJfN/jtZLfUh8yxt6wjzLgyxiM1ZFW6waEEsE+ECBdX56/0zZyixy8Xm20WqhBPbmlQ==", "artwork_id"=>"3", "method"=>"post"}
+  [1m[36mVote Load (0.3ms)[0m  [1m[34mSELECT  "votes".* FROM "votes" WHERE "votes"."user_id" = ? AND "votes"."artwork_id" = ? LIMIT ?[0m  [["user_id", 1], ["artwork_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "votes" SET "value" = ?, "updated_at" = ? WHERE "votes"."id" = ?[0m  [["value", 0], ["updated_at", "2018-03-06 23:16:21.612012"], ["id", 1]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+No template found for VotesController#like, rendering head :no_content
+Completed 204 No Content in 312ms (ActiveRecord: 4.6ms)
+
+
+Started POST "/like?artwork_id=3&method=post" for 127.0.0.1 at 2018-03-06 18:16:23 -0500
+Processing by VotesController#like as HTML
+  Parameters: {"authenticity_token"=>"T3rDcDsRulalY2wy4MiCJfN/jtZLfUh8yxt6wjzLgyxiM1ZFW6waEEsE+ECBdX56/0zZyixy8Xm20WqhBPbmlQ==", "artwork_id"=>"3", "method"=>"post"}
+  [1m[36mVote Load (0.2ms)[0m  [1m[34mSELECT  "votes".* FROM "votes" WHERE "votes"."user_id" = ? AND "votes"."artwork_id" = ? LIMIT ?[0m  [["user_id", 1], ["artwork_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "votes" SET "value" = ?, "updated_at" = ? WHERE "votes"."id" = ?[0m  [["value", 1], ["updated_at", "2018-03-06 23:16:23.911352"], ["id", 1]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 2.4ms)
+
+
+  
+ActionView::MissingTemplate (Missing template artwork/:id with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/Users/gilsunshine/dev/labs/art-critic/app/views"
+  * "/Users/gilsunshine/.rvm/gems/ruby-2.3.3/gems/commontator-5.1.0/app/views"
+):
+  
+app/controllers/votes_controller.rb:7:in `like'
+Started POST "/like?artwork_id=3&method=post" for 127.0.0.1 at 2018-03-06 18:17:13 -0500
+Processing by VotesController#like as HTML
+  Parameters: {"authenticity_token"=>"T3rDcDsRulalY2wy4MiCJfN/jtZLfUh8yxt6wjzLgyxiM1ZFW6waEEsE+ECBdX56/0zZyixy8Xm20WqhBPbmlQ==", "artwork_id"=>"3", "method"=>"post"}
+  [1m[36mVote Load (0.3ms)[0m  [1m[34mSELECT  "votes".* FROM "votes" WHERE "votes"."user_id" = ? AND "votes"."artwork_id" = ? LIMIT ?[0m  [["user_id", 1], ["artwork_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.5ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "votes" SET "value" = ?, "updated_at" = ? WHERE "votes"."id" = ?[0m  [["value", 0], ["updated_at", "2018-03-06 23:17:13.674185"], ["id", 1]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+No template found for VotesController#like, rendering head :no_content
+Completed 204 No Content in 502ms (ActiveRecord: 6.6ms)
+
+
+Started POST "/dislike?artwork_id=3&method=post" for 127.0.0.1 at 2018-03-06 18:17:15 -0500
+Processing by VotesController#dislike as HTML
+  Parameters: {"authenticity_token"=>"T3rDcDsRulalY2wy4MiCJfN/jtZLfUh8yxt6wjzLgyxiM1ZFW6waEEsE+ECBdX56/0zZyixy8Xm20WqhBPbmlQ==", "artwork_id"=>"3", "method"=>"post"}
+  [1m[36mVote Load (0.3ms)[0m  [1m[34mSELECT  "votes".* FROM "votes" WHERE "votes"."user_id" = ? AND "votes"."artwork_id" = ? LIMIT ?[0m  [["user_id", 1], ["artwork_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "votes" SET "value" = ?, "updated_at" = ? WHERE "votes"."id" = ?[0m  [["value", -1], ["updated_at", "2018-03-06 23:17:15.711251"], ["id", 1]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 2.6ms)
+
+
+  
+ActionView::MissingTemplate (Missing template artwork/3 with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/Users/gilsunshine/dev/labs/art-critic/app/views"
+  * "/Users/gilsunshine/.rvm/gems/ruby-2.3.3/gems/commontator-5.1.0/app/views"
+):
+  
+app/controllers/votes_controller.rb:17:in `dislike'
+Started POST "/like?artwork_id=3&method=post" for 127.0.0.1 at 2018-03-06 18:17:50 -0500
+Processing by VotesController#like as HTML
+  Parameters: {"authenticity_token"=>"T3rDcDsRulalY2wy4MiCJfN/jtZLfUh8yxt6wjzLgyxiM1ZFW6waEEsE+ECBdX56/0zZyixy8Xm20WqhBPbmlQ==", "artwork_id"=>"3", "method"=>"post"}
+  [1m[36mVote Load (0.2ms)[0m  [1m[34mSELECT  "votes".* FROM "votes" WHERE "votes"."user_id" = ? AND "votes"."artwork_id" = ? LIMIT ?[0m  [["user_id", 1], ["artwork_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "votes" SET "value" = ?, "updated_at" = ? WHERE "votes"."id" = ?[0m  [["value", 1], ["updated_at", "2018-03-06 23:17:50.894463"], ["id", 1]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/artworks/3
+Completed 302 Found in 71ms (ActiveRecord: 4.3ms)
+
+
+Started GET "/artworks/3" for 127.0.0.1 at 2018-03-06 18:17:50 -0500
+Processing by ArtworksController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mVote Load (0.2ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendering artworks/show.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (1.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendered artworks/show.erb within layouts/application (85.8ms)
+Completed 200 OK in 262ms (Views: 235.5ms | ActiveRecord: 4.6ms)
+
+
+Started POST "/like?artwork_id=3&method=post" for 127.0.0.1 at 2018-03-06 18:17:53 -0500
+Processing by VotesController#like as HTML
+  Parameters: {"authenticity_token"=>"h1hSdzESsvWoGiUN/9/S4FGoPFnvouafpCJfUgYBeQWqEcdCUa8Ss0Z9sX+eYi6/XZtrRYitX5rZ6E8xPjwcvA==", "artwork_id"=>"3", "method"=>"post"}
+  [1m[36mVote Load (0.3ms)[0m  [1m[34mSELECT  "votes".* FROM "votes" WHERE "votes"."user_id" = ? AND "votes"."artwork_id" = ? LIMIT ?[0m  [["user_id", 1], ["artwork_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "votes" SET "value" = ?, "updated_at" = ? WHERE "votes"."id" = ?[0m  [["value", 0], ["updated_at", "2018-03-06 23:17:53.023349"], ["id", 1]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/artworks/3
+Completed 302 Found in 11ms (ActiveRecord: 2.6ms)
+
+
+Started GET "/artworks/3" for 127.0.0.1 at 2018-03-06 18:17:53 -0500
+Processing by ArtworksController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mVote Load (0.4ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendering artworks/show.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendered artworks/show.erb within layouts/application (37.0ms)
+Completed 200 OK in 100ms (Views: 90.8ms | ActiveRecord: 2.2ms)
+
+
+Started POST "/dislike?artwork_id=3&method=post" for 127.0.0.1 at 2018-03-06 18:17:54 -0500
+Processing by VotesController#dislike as HTML
+  Parameters: {"authenticity_token"=>"3Tqr6/qM8fJ62eTW9wzhmwIxJnyJJ3NWqqllZn1J9kjwcz7emjFRtJS+cKSWsR3EDgJxYO4oylPXY3UFRXST8Q==", "artwork_id"=>"3", "method"=>"post"}
+  [1m[36mVote Load (0.7ms)[0m  [1m[34mSELECT  "votes".* FROM "votes" WHERE "votes"."user_id" = ? AND "votes"."artwork_id" = ? LIMIT ?[0m  [["user_id", 1], ["artwork_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "votes" SET "value" = ?, "updated_at" = ? WHERE "votes"."id" = ?[0m  [["value", -1], ["updated_at", "2018-03-06 23:17:54.977428"], ["id", 1]]
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/artworks/3
+Completed 302 Found in 10ms (ActiveRecord: 2.9ms)
+
+
+Started GET "/artworks/3" for 127.0.0.1 at 2018-03-06 18:17:54 -0500
+Processing by ArtworksController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mVote Load (0.3ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendering artworks/show.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendered artworks/show.erb within layouts/application (25.6ms)
+Completed 200 OK in 96ms (Views: 88.7ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/dislike?artwork_id=3&method=post" for 127.0.0.1 at 2018-03-06 18:17:56 -0500
+Processing by VotesController#dislike as HTML
+  Parameters: {"authenticity_token"=>"mem3I69JW2Zm+NxAZGEzHf9D25t1FxZh8WDCTJPhAJO0oCIWz/T7IIifSDIF3M9C83CMhxIYr2SMqtIvq9xlKg==", "artwork_id"=>"3", "method"=>"post"}
+  [1m[36mVote Load (0.3ms)[0m  [1m[34mSELECT  "votes".* FROM "votes" WHERE "votes"."user_id" = ? AND "votes"."artwork_id" = ? LIMIT ?[0m  [["user_id", 1], ["artwork_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "votes" SET "value" = ?, "updated_at" = ? WHERE "votes"."id" = ?[0m  [["value", 0], ["updated_at", "2018-03-06 23:17:56.147937"], ["id", 1]]
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/artworks/3
+Completed 302 Found in 10ms (ActiveRecord: 2.5ms)
+
+
+Started GET "/artworks/3" for 127.0.0.1 at 2018-03-06 18:17:56 -0500
+Processing by ArtworksController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mVote Load (0.2ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendering artworks/show.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  Rendered artworks/show.erb within layouts/application (34.3ms)
+Completed 200 OK in 135ms (Views: 122.8ms | ActiveRecord: 1.7ms)
+
+

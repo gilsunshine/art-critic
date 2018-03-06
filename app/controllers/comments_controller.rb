@@ -16,7 +16,6 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    byebug
     @comment = Comment.find(params[:comment_id])
     @comment.destroy
     redirect_to "/artworks/#{session[:user_id]}"
