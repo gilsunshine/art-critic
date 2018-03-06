@@ -4,7 +4,7 @@
     <% @artworks.each do |artwork|%>
       <th> <%= artwork.name %> </th>
       <th> <%= artwork.user.name %> </th>
-      <th> <%= image_tag artwork.image.thumb.url %> </th>
+      <th> <%= image_tag artwork.image.url %> </th>
     <%end%>
     </tr>
   </thead>

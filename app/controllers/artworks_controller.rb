@@ -6,6 +6,11 @@ class ArtworksController < ApplicationController
   end
 
   def show
+    @comments = Comment.all.where(artwork_id: params[:id])
+    @comment = Comment.new
+    @votes = Vote.all.where(artwork_id: params[:id])
+    @vote_num = @votes.inject(0){|sum,x| sum + x }
+
   end
 
   def new
@@ -13,7 +18,6 @@ class ArtworksController < ApplicationController
   end
 
   def create
-    byebug
     @artwork = Artwork.new(artwork_params)
     @artwork.user_id = session[:user_id]
     if @artwork.save
@@ -30,7 +34,7 @@ class ArtworksController < ApplicationController
     end
 
     def artwork_params
-      params.require(:artwork).permit(:name, :user_id, :image)
+      params.require(:artwork).permit(:name, :user_id, :image, :year).merge(user_id: current_user.id)
     end
 
 

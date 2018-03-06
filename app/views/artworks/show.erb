@@ -1,11 +1,42 @@
-<%= @artwork.name %>
-<%= @artwork.user.name %>
-<%= @artwork.tags.find_by(category: :year)%>
+<p> <strong><%= @artwork.name %></strong> by <%= @artwork.user.name %><br>
+Year: <%= @artwork.tags.find_by(category: :year)%><br></p>
 
-<p>
-  <strong>Image:</strong>
-  <%= image_tag @artwork.image.thumb.url %>
-</p>
+<div class="">
+  <p>
+    <strong>Image:</strong>
+    <%= image_tag @artwork.image.thumb.url %>
+  </p>
+  <p>
+    <%= image_tag @artwork.image.url %>
+  </p>
+</div>
+<div>
+  Likes: <%= @vote_num %>
+</div>
+<%= button_to "Like", controller: :votes, method: :post, action: :like, artwork_id: @artwork.id %>
+<%= button_to "Dislike", controller: :votes, method: :post, action: :dislike, artwork_id: @artwork.id %>
+
+<div class="">
+  <%= form_for @comment do |f|%>
+    <%= f.hidden_field :artwork_id, value: @artwork.id %>
+    <%= f.hidden_field :user_id, value: session[:user_id] %>
+    <%= f.label :comment %><br>
+    <%= f.text_area :content %><br>
+    <%= f.submit %>
+  <% end %>
+</div><br><br>
+
+<div class="">
+  <% if @comments %>
+    <% @comments.each do |comment| %>
+      <%= comment.user.username %><br>
+      <%= comment.content %><br><br>
+      <%= button_to "Delete Comment", controller: :comments, method: :post, action: :destroy, comment_id: comment.id %>
+    <% end %>
+  <% end %>
+</div>
+
+
 
 <%= link_to 'Edit', edit_artwork_path(@artwork) %> |
 <%= link_to 'Back', artworks_path %>
