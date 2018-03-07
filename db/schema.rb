@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 88888888888888) do
+ActiveRecord::Schema.define(version: 88888888888889) do
 
   create_table "artwork_tags", force: :cascade do |t|
     t.integer "artwork_id"
@@ -31,6 +31,18 @@ ActiveRecord::Schema.define(version: 88888888888888) do
     t.string "content"
     t.integer "user_id"
     t.integer "artwork_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "searches", force: :cascade do |t|
+    t.string "name"
+    t.string "artist_name"
+    t.integer "after_year"
+    t.integer "before_year"
+    t.string "style"
+    t.string "medium"
+    t.string "tags"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

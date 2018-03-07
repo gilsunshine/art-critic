@@ -1,0 +1,16 @@
+<h1>Search Results</h1>
+
+<% if @search.search_artworks.empty? %>
+  <p>No Artworks Found</p>
+<% else %>
+
+  <div class="div">
+  <% @search.search_artworks.each do |artwork|%>
+    <div class="row">
+    <div class="col-*-*"><%= artwork.name %></div>
+    <div class="col-*-*"><%= artwork.user.name %></div>
+    <div class="col-*-*"><%= image_tag artwork.image.url %></div>
+    </div>
+  <%end%>
+<% end %>
+  </div>

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :artworks
   resources :users
   resources :sessions
+  resources :searches
   root 'application#index'
   post '/comments/:id', to: 'comments#destroy'
   get '/login', to: 'sessions#new', as: 'login'

@@ -2,7 +2,7 @@ class ArtworksController < ApplicationController
 
   before_action :get_artwork, only: [:show]
   def index
-    @artworks = Artwork.all
+    @artworks = Artwork.search(params[:search])
   end
 
   def show

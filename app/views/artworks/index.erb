@@ -1,11 +1,7 @@
-<table>
-  <thead>
-    <tr>
-    <% @artworks.each do |artwork|%>
-      <th> <%= artwork.name %> </th>
-      <th> <%= artwork.user.name %> </th>
-      <th> <%= image_tag artwork.image.url %> </th>
-    <%end%>
-    </tr>
-  </thead>
-</table>
+<% @artworks.each do |artwork|%>
+<div class="row">
+<div class="col-*-*"><%= artwork.name %></div>
+<div class="col-*-*"><%= artwork.user.name %></div>
+<div class="col-*-*"><%= image_tag artwork.image.url %></div>
+</div>
+<%end%>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  after_year: 1
+  before_year: 1
+  style: MyString
+  medium: MyString
+
+two:
+  name: MyString
+  after_year: 1
+  before_year: 1
+  style: MyString
+  medium: MyString

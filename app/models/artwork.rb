@@ -10,6 +10,14 @@ class Artwork < ApplicationRecord
   validates_processing_of :image
   validate :image_size_validation
 
+  def self.search(search)
+    if search
+      where(["name LIKE ?", "%#{search}%"])
+    else
+      all
+    end
+  end
+
   def year
     if self.tags.all.present?
       self.tags.all.find{|t| t.category == "year"}
@@ -54,6 +62,10 @@ class Artwork < ApplicationRecord
     else
           []
     end
+  end
+
+  def artist_name
+    self.artist.name
   end
 
   private
