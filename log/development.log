@@ -1,0 +1,768 @@
+Started GET "/users" for 127.0.0.1 at 2018-03-07 16:27:37 -0500
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+):
+  
+activerecord (5.1.5) lib/active_record/migration.rb:576:in `check_pending!'
+activerecord (5.1.5) lib/active_record/migration.rb:553:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.5) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.5) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.5) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.5) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.5) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.5) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.5) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.4) lib/rack/method_override.rb:22:in `call'
+rack (2.0.4) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.4) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.5) lib/rails/engine.rb:522:in `call'
+puma (3.11.3) lib/puma/configuration.rb:225:in `call'
+puma (3.11.3) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.3) lib/puma/server.rb:438:in `process_client'
+puma (3.11.3) lib/puma/server.rb:302:in `block in run'
+puma (3.11.3) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20180305191736)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "username" varchar, "password_digest" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180305191736"]]
+  [1m[35m (3.4ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateArtworks (20180305192000)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "artworks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180305192000"]]
+  [1m[35m (2.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateComments (20180305192621)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "content" varchar, "user_id" integer, "artwork_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180305192621"]]
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateVotes (20180305192931)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "comment_id" integer DEFAULT NULL, "artwork_id" integer DEFAULT NULL, "value" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180305192931"]]
+  [1m[35m (4.4ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateTags (20180305193151)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "tags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "category" varchar, "description" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180305193151"]]
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateArtworkTags (20180305194605)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "artwork_tags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "artwork_id" integer, "tag_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180305194605"]]
+  [1m[35m (3.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddImageToArtwork (20180306043839)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.4ms)[0m  [1m[35mALTER TABLE "artworks" ADD "image" varchar[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180306043839"]]
+  [1m[35m (9.3ms)[0m  [1m[36mcommit transaction[0m
+Migrating to RemoveCommentIdFromVotes (88888888888888)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "avotes" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer DEFAULT NULL, "comment_id" integer DEFAULT NULL, "artwork_id" integer DEFAULT NULL, "value" integer DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "avotes" ("id","user_id","comment_id","artwork_id","value","created_at","updated_at")
+                     SELECT "id","user_id","comment_id","artwork_id","value","created_at","updated_at" FROM "votes"[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE "votes"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "votes" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer DEFAULT NULL, "artwork_id" integer DEFAULT NULL, "value" integer DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "votes" ("id","user_id","artwork_id","value","created_at","updated_at")
+                     SELECT "id","user_id","artwork_id","value","created_at","updated_at" FROM "avotes"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "avotes"[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "88888888888888"]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateSearches (88888888888889)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "searches" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "artist_name" varchar, "after_year" integer, "before_year" integer, "style" varchar, "medium" varchar, "tags" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "88888888888889"]]
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (5.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-03-07 21:27:50.228572"], ["updated_at", "2018-03-07 21:27:50.228572"]]
+  [1m[35m (4.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/users" for 127.0.0.1 at 2018-03-07 16:27:59 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as HTML
+  Rendering application/index.erb within layouts/application
+  Rendered application/index.erb within layouts/application (2.0ms)
+Completed 200 OK in 983ms (Views: 969.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-03-07 16:28:02 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (70.5ms)
+Completed 200 OK in 173ms (Views: 142.7ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-03-07 16:28:03 -0500
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"reP+cJVHjqUQzz6jYhCjkTii2TP84qB9JdDceMHVuqPg4olVkWmlMne52Xq9um60j92axqSPbBATYkrFdXorFQ==", "user"=>{"name"=>"", "username"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create Account"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", ""], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (16.0ms)
+Completed 200 OK in 136ms (Views: 118.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-03-07 16:43:37 -0500
+Processing by UsersController#index as HTML
+  Rendering application/index.erb within layouts/application
+  Rendered application/index.erb within layouts/application (0.6ms)
+Completed 200 OK in 97ms (Views: 90.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-03-07 16:43:41 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (6.0ms)
+Completed 200 OK in 57ms (Views: 53.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-03-07 16:43:46 -0500
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"FbTmyZ33EJUW6wisr6xWz7n1MhmFX6JxKzpjmXAENgRYtZHsmdk7AnGd73VwBpvqDopx7N0ybhwdiPUkxKunsg==", "user"=>{"name"=>"", "username"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create Account"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", ""], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (7.5ms)
+Completed 200 OK in 77ms (Views: 71.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-03-07 16:48:55 -0500
+Processing by UsersController#index as HTML
+  Rendering application/index.erb within layouts/application
+  Rendered application/index.erb within layouts/application (0.6ms)
+Completed 200 OK in 83ms (Views: 75.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-03-07 16:48:57 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (5.0ms)
+Completed 200 OK in 60ms (Views: 57.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-03-07 16:48:58 -0500
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"4K2g+GmBZ92HTW9u9Z0G+ZbyZYFmJprzUsLFJJrvnk6trNfdba9MSuA7iLcqN8vcIY0mdD5LVp5kcFOZLkAP+A==", "user"=>{"name"=>"", "username"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create Account"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", ""], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (8.8ms)
+Completed 200 OK in 149ms (Views: 143.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-03-07 16:49:13 -0500
+Processing by UsersController#index as HTML
+  Rendering application/index.erb within layouts/application
+  Rendered application/index.erb within layouts/application (0.5ms)
+Completed 200 OK in 61ms (Views: 54.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-03-07 16:49:15 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (5.8ms)
+Completed 200 OK in 69ms (Views: 63.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-03-07 16:49:16 -0500
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"P1pnrbX0JNEzzzgMjrQwlNdhvoSWkM820DF32WkARQtyWxCIsdoPRlS539VRHv2xYB79cc79A1vmg+Fk3a/UvQ==", "user"=>{"name"=>"", "username"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create Account"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", ""], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (9.6ms)
+Completed 200 OK in 92ms (Views: 87.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-03-07 16:50:48 -0500
+Processing by UsersController#index as HTML
+  Rendering application/index.erb within layouts/application
+  Rendered application/index.erb within layouts/application (0.5ms)
+Completed 200 OK in 121ms (Views: 115.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-03-07 16:50:50 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (5.2ms)
+Completed 200 OK in 63ms (Views: 59.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-03-07 16:50:51 -0500
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DKZmGhsLj6fC6gXSlvtMHFee2iSceU8sxjlYpaYVKhNBpxE/HyWkMKWc4gtJUYE54OGZ0cQUg0Hwi84YErq7pQ==", "user"=>{"name"=>"", "username"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create Account"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", ""], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (11.9ms)
+Completed 200 OK in 99ms (Views: 94.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-03-07 16:51:30 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as HTML
+  Rendering application/index.erb within layouts/application
+  Rendered application/index.erb within layouts/application (3.3ms)
+Completed 200 OK in 696ms (Views: 680.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-03-07 16:51:31 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (68.3ms)
+Completed 200 OK in 185ms (Views: 140.6ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-03-07 16:51:33 -0500
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"T0nHGTQM9D1zuTXVi0m4dxONwMXt+yhCX167FeKkVIoCSLA8MCLfqhTP0gxU43VSpPKDMLWW5C9p7C2oVgvFPA==", "user"=>{"name"=>"", "username"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create Account"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", ""], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (13.6ms)
+Completed 200 OK in 148ms (Views: 131.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-03-07 16:52:01 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as HTML
+  Rendering application/index.erb within layouts/application
+  Rendered application/index.erb within layouts/application (1.5ms)
+Completed 200 OK in 500ms (Views: 486.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-03-07 16:52:03 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (24.3ms)
+Completed 200 OK in 149ms (Views: 103.3ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-03-07 16:52:04 -0500
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"O0n480ki5jK4h19lNhYgxuoZyunsvmcvimumhSwuF6h2SI/WTQzNpd/xuLzpvO3jXWaJHLTTq0K82TA4mIGGHg==", "user"=>{"name"=>"", "username"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create Account"}
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", ""], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (15.2ms)
+Completed 200 OK in 127ms (Views: 113.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-03-07 16:56:06 -0500
+Processing by UsersController#index as HTML
+  Rendering application/index.erb within layouts/application
+  Rendered application/index.erb within layouts/application (0.5ms)
+Completed 200 OK in 91ms (Views: 83.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-03-07 16:56:07 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (1.2ms)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/danlee/Development/flatiron-mod-2-week-3/art-critic/app/views/users/new.erb:52: syntax error, unexpected tSTRING_BEG, expecting ')'
+...r.append=( f.text_field :name "name");@output_buffer.safe_ap...
+...                               ^):
+  
+app/views/users/new.erb:52: syntax error, unexpected tSTRING_BEG, expecting ')'
+Started GET "/users/new" for 127.0.0.1 at 2018-03-07 16:56:19 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (1.1ms)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/danlee/Development/flatiron-mod-2-week-3/art-critic/app/views/users/new.erb:52: syntax error, unexpected ':', expecting ')'
+....append=( f.text_field "Name" :name );@output_buffer.safe_ap...
+...                               ^):
+  
+app/views/users/new.erb:52: syntax error, unexpected ':', expecting ')'
+Started GET "/users" for 127.0.0.1 at 2018-03-07 16:57:50 -0500
+Processing by UsersController#index as HTML
+  Rendering application/index.erb within layouts/application
+  Rendered application/index.erb within layouts/application (0.5ms)
+Completed 200 OK in 72ms (Views: 65.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-03-07 16:57:52 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (5.8ms)
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `merge' for "Name":String):
+    49:         <div class="field">
+    50:           <div class="ui left icon input">
+    51:             <i class="user icon"></i>
+    52:             <%= f.text_field :name, "Name" %>
+    53:           </div>
+    54:         </div>
+    55: 
+  
+app/views/users/new.erb:52:in `block in _app_views_users_new_erb___4391761569786805955_70114703087440'
+app/views/users/new.erb:46:in `_app_views_users_new_erb___4391761569786805955_70114703087440'
+Started GET "/users" for 127.0.0.1 at 2018-03-07 16:57:54 -0500
+Processing by UsersController#index as HTML
+  Rendering application/index.erb within layouts/application
+  Rendered application/index.erb within layouts/application (0.9ms)
+Completed 200 OK in 52ms (Views: 44.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-03-07 16:58:53 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (5.6ms)
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `merge' for "Name":String):
+    49:         <div class="field">
+    50:           <div class="ui left icon input">
+    51:             <i class="user icon"></i>
+    52:             <%= f.text_field :name, "Name" %>
+    53:           </div>
+    54:         </div>
+    55: 
+  
+app/views/users/new.erb:52:in `block in _app_views_users_new_erb___4391761569786805955_70114701430460'
+app/views/users/new.erb:46:in `_app_views_users_new_erb___4391761569786805955_70114701430460'
+Started GET "/users/new" for 127.0.0.1 at 2018-03-07 17:00:47 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (4.8ms)
+Completed 200 OK in 38ms (Views: 35.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-03-07 17:00:57 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (4.4ms)
+Completed 200 OK in 56ms (Views: 51.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-03-07 17:01:41 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (3.9ms)
+Completed 200 OK in 44ms (Views: 42.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-03-07 17:01:53 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (3.5ms)
+Completed 200 OK in 43ms (Views: 40.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-03-07 17:02:01 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (6.6ms)
+Completed 200 OK in 47ms (Views: 44.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-07 17:02:19 -0500
+Processing by ApplicationController#index as HTML
+  Rendering application/index.erb within layouts/application
+  Rendered application/index.erb within layouts/application (0.5ms)
+Completed 200 OK in 41ms (Views: 38.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-03-07 17:02:20 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (4.6ms)
+Completed 200 OK in 50ms (Views: 44.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-03-07 17:02:42 -0500
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YmeuwBr+SI86gbzhZX77NYnJ9LcNlGiVTAhK6lQUOvEvZtnlHtBjGF33Wzi61DYQPra3QlX5pPh6utxX4LurRw==", "user"=>{"name"=>"", "username"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create Account"}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", ""], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (8.4ms)
+Completed 200 OK in 61ms (Views: 55.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-03-07 17:03:02 -0500
+Processing by UsersController#index as HTML
+  Rendering application/index.erb within layouts/application
+  Rendered application/index.erb within layouts/application (0.5ms)
+Completed 200 OK in 42ms (Views: 36.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-03-07 17:03:04 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (3.3ms)
+Completed 200 OK in 47ms (Views: 43.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-03-07 17:03:30 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (4.9ms)
+Completed 200 OK in 49ms (Views: 46.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-03-07 17:03:38 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (3.3ms)
+Completed 200 OK in 46ms (Views: 41.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-03-07 17:03:41 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (2.9ms)
+Completed 200 OK in 32ms (Views: 30.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-03-07 17:03:49 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (3.3ms)
+Completed 200 OK in 38ms (Views: 32.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-03-07 17:03:49 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (2.9ms)
+Completed 200 OK in 32ms (Views: 30.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-03-07 17:03:55 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (3.5ms)
+Completed 200 OK in 30ms (Views: 28.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-03-07 17:05:32 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (4.5ms)
+Completed 200 OK in 35ms (Views: 32.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-03-07 17:05:41 -0500
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"E742+f/VMNl+w+ZbZ6/aVOKRueUUZdch9lTav6fBaG9ev0Hc+/sbThm1AYK4BRdxVe76EEwIG0zA5kwCE2752Q==", "user"=>{"name"=>"", "username"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create Account"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", ""], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (7.8ms)
+Completed 200 OK in 58ms (Views: 53.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-03-07 17:05:50 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (7.1ms)
+Completed 200 OK in 66ms (Views: 62.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-03-07 17:05:55 -0500
+Processing by UsersController#index as HTML
+  Rendering application/index.erb within layouts/application
+  Rendered application/index.erb within layouts/application (0.5ms)
+Completed 200 OK in 48ms (Views: 42.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-07 17:05:57 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.8ms)
+Completed 200 OK in 43ms (Views: 37.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-07 17:06:04 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"s5RJOLwJrWpbKzeCvk7lS0OGnPNdJV1/OlgHkKpdiy4+hCWlpH0o6A6yz3Ne4o2RbrguG6ggGRxB4iwWkpUC/A==", "username"=>"dlee", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "dlee"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.2ms)
+
+
+  
+NoMethodError (undefined method `authenticate' for nil:NilClass):
+  
+app/controllers/sessions_controller.rb:9:in `create'
+Started GET "/users" for 127.0.0.1 at 2018-03-07 17:06:06 -0500
+Processing by UsersController#index as HTML
+  Rendering application/index.erb within layouts/application
+  Rendered application/index.erb within layouts/application (0.6ms)
+Completed 200 OK in 62ms (Views: 50.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-03-07 17:06:08 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (6.1ms)
+Completed 200 OK in 51ms (Views: 45.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-03-07 17:06:18 -0500
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Z8daMEa+uMKBmAeAuYeaIPI1dw7hod1RSSClGze2/E4qxi0VQpCTVebu4FlmLVcFRUo0+7nMETx/kjOmgxlt+A==", "user"=>{"name"=>"moo", "username"=>"poo", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create Account"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "poo"], ["LIMIT", 1]]
+  [1m[35mSQL (2.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "moo"], ["username", "poo"], ["password_digest", "$2a$10$8BbqAxfjArwE66vRNu6wTODoCH5c6kLt74Q7tpvkc5bUnpU9iIilO"], ["created_at", "2018-03-07 22:06:19.069071"], ["updated_at", "2018-03-07 22:06:19.069071"]]
+  [1m[35m (3.7ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 81ms (ActiveRecord: 6.1ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2018-03-07 17:06:19 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.erb within layouts/application
+  Rendered users/show.erb within layouts/application (6.5ms)
+Completed 200 OK in 64ms (Views: 55.5ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-03-07 17:06:38 -0500
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Z8daMEa+uMKBmAeAuYeaIPI1dw7hod1RSSClGze2/E4qxi0VQpCTVebu4FlmLVcFRUo0+7nMETx/kjOmgxlt+A==", "user"=>{"name"=>"moo", "username"=>"poo", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create Account"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "poo"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (9.6ms)
+Completed 200 OK in 125ms (Views: 51.5ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-03-07 17:06:42 -0500
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Lxyk7Q4hIVPiQEUTKu1GP0CoaWTolKXzr8XaNAVwD3ViHdPICg8KxIU2osr1R4sa99cqkbD5aZ6Zd0yJsd+eww==", "user"=>{"name"=>"moo1", "username"=>"poo", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create Account"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "poo"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (8.1ms)
+Completed 200 OK in 126ms (Views: 49.9ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-03-07 17:06:58 -0500
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"78ulOOG8GAH1VdddA+wOY6G14kGc35QeXZl4htrtSb+iytId5ZIzlpIjMITcRsNGFsqhtMSyWHNrK+47bkLYCQ==", "user"=>{"name"=>"Daniel Lee", "username"=>"daniellee1", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create Account"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "daniellee1"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Daniel Lee"], ["username", "daniellee1"], ["password_digest", "$2a$10$hhCLk3fu3YiG..9/CPbljuVLzeRpsMXSUROYiSn9.PBXIjodmVRM6"], ["created_at", "2018-03-07 22:06:58.265872"], ["updated_at", "2018-03-07 22:06:58.265872"]]
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 75ms (ActiveRecord: 2.4ms)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2018-03-07 17:06:58 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering users/show.erb within layouts/application
+  Rendered users/show.erb within layouts/application (9.0ms)
+Completed 200 OK in 66ms (Views: 58.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2018-03-07 17:14:03 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering users/show.erb within layouts/application
+  Rendered users/show.erb within layouts/application (2.7ms)
+Completed 200 OK in 39ms (Views: 36.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2018-03-07 17:14:15 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering users/show.erb within layouts/application
+  Rendered users/show.erb within layouts/application (3.8ms)
+Completed 200 OK in 47ms (Views: 42.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-03-07 17:14:55 -0500
+Processing by UsersController#index as HTML
+  Rendering application/index.erb within layouts/application
+  Rendered application/index.erb within layouts/application (0.6ms)
+Completed 200 OK in 48ms (Views: 40.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2018-03-07 17:14:59 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering users/show.erb within layouts/application
+  Rendered users/show.erb within layouts/application (2.4ms)
+Completed 200 OK in 35ms (Views: 28.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2018-03-07 17:21:06 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering users/show.erb within layouts/application
+  Rendered users/show.erb within layouts/application (2.4ms)
+Completed 200 OK in 96ms (Views: 93.1ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/logout" for 127.0.0.1 at 2018-03-07 17:21:07 -0500
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"CQ5BCNaj8RoL6Zoxt4PqllN2Bm70zJfEyfoX9K41SqERZMU0IMl1MWYxtVzWq1i7KsnlUqYaM4Lvh4vA1jrnOQ=="}
+Redirected to http://localhost:3000/login
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-07 17:21:07 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.9ms)
+Completed 200 OK in 50ms (Views: 47.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-07 17:21:15 -0500
+Processing by ApplicationController#index as HTML
+  Rendering application/index.erb within layouts/application
+  Rendered application/index.erb within layouts/application (0.9ms)
+Completed 200 OK in 48ms (Views: 45.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-03-07 17:21:16 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (14.6ms)
+Completed 200 OK in 70ms (Views: 64.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-03-07 17:21:31 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (5.6ms)
+Completed 200 OK in 92ms (Views: 88.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-03-07 17:21:32 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (4.6ms)
+Completed 200 OK in 70ms (Views: 65.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-03-07 17:22:49 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#new as HTML
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (57.2ms)
+Completed 200 OK in 792ms (Views: 754.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-07 17:22:54 -0500
+Processing by ApplicationController#index as HTML
+  Rendering application/index.erb within layouts/application
+  Rendered application/index.erb within layouts/application (0.6ms)
+Completed 200 OK in 54ms (Views: 50.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-03-07 17:22:55 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (4.4ms)
+Completed 200 OK in 72ms (Views: 64.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-03-07 17:24:06 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (10.9ms)
+Completed 200 OK in 147ms (Views: 143.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-03-07 17:24:18 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (7.1ms)
+Completed 200 OK in 113ms (Views: 108.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-03-07 17:24:23 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (6.7ms)
+Completed 200 OK in 91ms (Views: 86.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-03-07 17:24:25 -0500
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rI1RDtG03JwHycpCfpU20nXL5XpJBIco6ZAjigDoPMDhjCYr1Zr3C2C/LZuhP/v3wrSmjxFpS0XfIrU3tEetdg==", "user"=>{"name"=>"", "username"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create Account"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", ""], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (9.9ms)
+Completed 200 OK in 90ms (Views: 75.8ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-03-07 17:24:58 -0500
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"l7B1pKKvDga1/PL0G7/6me01KRNFj8Gt8C2twcI6fIXasQKBpoElkdKKFS3EFTe8Wkpq5h3iDcDGnzt8dpXtMw==", "user"=>{"name"=>"flower", "username"=>"flower1", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create Account"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "flower1"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "flower"], ["username", "flower1"], ["password_digest", "$2a$10$gykvgBCSbfV2RuQ86uVNz.R6JTW.S.pcmKtHycIwdH1G4AcRTLxbO"], ["created_at", "2018-03-07 22:24:58.708238"], ["updated_at", "2018-03-07 22:24:58.708238"]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/users/3
+Completed 302 Found in 77ms (ActiveRecord: 2.4ms)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2018-03-07 17:24:58 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering users/show.erb within layouts/application
+  Rendered users/show.erb within layouts/application (6.4ms)
+Completed 200 OK in 67ms (Views: 57.6ms | ActiveRecord: 0.4ms)
+
+
