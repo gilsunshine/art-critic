@@ -3,22 +3,23 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     if @comment.save
-      redirect_to "/artworks/#{session[:user_id]}"
+      # byebug
+      redirect_to "/artworks/#{@comment.artwork_id}"
     else
-      render "/artworks/#{session[:user_id]}"
+      render "/artworks/#{@comment.artwork_id}"
     end
   end
 
-  def updated
+  def update
     @comment = Comment.find(params[:id])
     @comment.update(comment_params)
-    redirect_to "/artworks/#{session[:user_id]}"
+    redirect_to "/artworks/#{@comment.artwork_id}"
   end
 
   def destroy
     @comment = Comment.find(params[:comment_id])
     @comment.destroy
-    redirect_to "/artworks/#{session[:user_id]}"
+    redirect_to "/artworks/#{@comment.artwork_id}"
   end
 
   private

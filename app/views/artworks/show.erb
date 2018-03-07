@@ -41,6 +41,16 @@ tags:
       <%= comment.user.username %><br>
       <%= comment.content %><br><br>
       <%= button_to "Delete Comment", controller: :comments, method: :post, action: :destroy, comment_id: comment.id %>
+      <%= link_to "Edit Comment", "#", :id => 'showCommentEdit' %><br>
+      <div id="editComment">
+        <%= form_for comment do |f|%>
+          <%= f.hidden_field :artwork_id, value: @artwork.id %>
+          <%= f.hidden_field :user_id, value: session[:user_id] %>
+          <%= f.label :comment %><br>
+          <%= f.text_area :content %><br>
+          <%= button_to "Update Comment", controller: :comments, method: :get, action: :update, comment_id: comment.id %><br><br>
+        <% end %>
+      </div>
     <% end %>
   <% end %>
 </div>
