@@ -27,14 +27,15 @@
       <% end %>
     </ul>
   </div>
-  <%end%>
+  <% end %>
+
 
 <div class="ui middle aligned center aligned grid">
   <div class="column">
 
     <h2 class="ui black image header">
       <!-- <img src="assets/images/logo.png" class="image"> -->
-      <div class="content">
+      <div id="new_account_header">
         Create an account!
       </div>
     </h2>
@@ -43,37 +44,34 @@
       <div class="ui stacked segment">
         <%= form_for @user do |f| %>
 
-        <%= f.label :name %>
         <div class="field">
           <div class="ui left icon input">
             <i class="user icon"></i>
-            <%= f.text_field :name %>
+            <%= f.text_field :name, placeholder: "Name" %>
           </div>
         </div>
 
-        <%= f.label :username %>
         <div class="field">
           <div class="ui left icon input">
             <i class="user icon"></i>
-            <%= f.text_field :username %>
+            <%= f.text_field :username, placeholder: "Username" %>
           </div>
         </div>
 
-        <%= f.label "Password" %>
         <div class="field">
           <div class="ui left icon input">
             <i class="lock icon"></i>
-            <%= f.password_field :password %>
+            <%= f.password_field :password, placeholder: "Password" %>
           </div>
         </div>
 
-        <%= f.label "Password Confirmation" %>
         <div class="field">
           <div class="ui left icon input">
             <i class="lock icon"></i>
-            <%= f.password_field :password_confirmation %>
+            <%= f.password_field :password_confirmation, placeholder: "Confirm Password" %>
           </div>
         </div>
+<<<<<<< HEAD
         <div>
           <button type="submit" class="ui button">Create Account</button>
         </div>
@@ -81,13 +79,20 @@
 
     </div>
     <% end %>
+=======
+
+        <%= f.submit "Create Account", :class => "ui fluid large black submit button" %>
+
+        <% end %>
+      </div>
+
+    </div>
+>>>>>>> ab5c0a808dfcd1a2fa21a6d1ee9f2fb1baa3f1e6
     <div class="ui message">
       or have an account? <%= link_to "Sign In", '/login' %>
     </div>
   </div>
 </div>
-
-
 
 <!--
 <%= form_for @user do |f| %>
@@ -99,4 +104,5 @@
   <%= f.password_field :password %><br>
   <%= f.label "Password Confirmation" %>
   <%= f.password_field :password_confirmation %><br>
+  <%= f.submit %>
 <% end %> -->
