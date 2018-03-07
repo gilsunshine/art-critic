@@ -1,3 +1,18 @@
+<div id="error_explanation">
+<% if @user.errors.any? %>
+    <h4>
+      <%= pluralize(@user.errors.count, "error") %>
+      prohibited this user from being created:
+    </h4>
+
+    <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%=message%></li>
+    <% end %>
+    </ul>
+<% end %>
+</div>
+
 <%= form_for @user do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %><br>

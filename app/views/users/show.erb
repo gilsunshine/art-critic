@@ -1,12 +1,15 @@
-<%= @user.name %>
-<%= @user.username %>
+<div id='fontGreen'>
+  <%= @user.name %>
+  <%= @user.username %>
+</div>
+
 <% if @user.id == session[:user_id] %>
 <%= button_to "Logout", logout_path %>
 <% end %>
 
-<%= link_to "Edit User", "#", :id => 'showForm' %>
+<%= link_to 'Edit User', '#', :id => 'showForm' %>
 
-<div id="editUser">
+<div id='editUser'>
   <%= form_for @user do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name %><br>
