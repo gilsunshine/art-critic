@@ -1,6 +1,6 @@
 <style type="text/css">
   body {
-    background-color: #9999ff;
+    background-color: #ffffff;
   }
   body > .grid {
     height: 100%;
@@ -13,22 +13,21 @@
   }
 </style>
 
-<% if @user.errors.any? %>
-<div class="ui error message">
-  <div class="header">
-      <h4>
-        <%= pluralize(@user.errors.count, "error") %>
-        prohibited this user from being created:
-      </h4>
+  <% if @user.errors.any? %>
+  <div class="ui error message">
+    <div class="header">
+        <h4>
+          <%= pluralize(@user.errors.count, "error") %>
+          prohibited this user from being created:
+        </h4>
+    </div>
+    <ul class="list">
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%=message%></li>
+      <% end %>
+    </ul>
   </div>
-  <ul class="list">
-    <% @user.errors.full_messages.each do |message| %>
-      <li><%=message%></li>
-    <% end %>
-  </ul>
-</div>
-<%end%>
-
+  <%end%>
 
 <div class="ui middle aligned center aligned grid">
   <div class="column">
@@ -40,7 +39,7 @@
       </div>
     </h2>
 
-    <form class="ui large form">
+    <div class="ui large form">
       <div class="ui stacked segment">
         <%= form_for @user do |f| %>
 
@@ -75,11 +74,12 @@
             <%= f.password_field :password_confirmation %>
           </div>
         </div>
-
-        <div class="ui fluid large black submit button">  <%= f.submit %> </div>
+        <div>
+          <button type="submit" class="ui button">Create Account</button>
+        </div>
       </div>
 
-    </form>
+    </div>
     <% end %>
     <div class="ui message">
       or have an account? <%= link_to "Sign In", '/login' %>

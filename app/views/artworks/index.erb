@@ -1,7 +1,23 @@
-<% @artworks.each do |artwork|%>
-<div class="row">
-<div class="col-*-*"><%= artwork.name %></div>
-<div class="col-*-*"><%= artwork.user.name %></div>
-<div class="col-*-*"><%= image_tag artwork.image.url %></div>
+<h1>All Artworks</h1>
+<div class="ui very relaxed grid container">
+  <% @artworks.each do |artwork|%>
+  <div class="four wide column">
+    <div class="row">
+      <div class="column">
+        <strong><%= artwork.name %></strong><br>
+      </div>
+      <div class="column">
+        <%= artwork.user.name %><br>
+      </div>
+      <div class="column">
+        <i><%= artwork.year.name %></i>
+      </div>
+      <br>
+      <div class="column middle aligned">
+        <div class="ui fluid image"><%= link_to image_tag(artwork.image.url), artwork_path(artwork) %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%end%>
 </div>
-<%end%>

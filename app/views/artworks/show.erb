@@ -2,19 +2,19 @@
 By: <%= @artwork.user.name %> <br>
 Year: <%= @artwork.year ? @artwork.year.name : "year unknown" %><br><br>
 
-styles:
+Styles:
 <%= (@artwork.style+@artwork.c_style).map { |style|  style.name }.join(", ") %>
 <br> <br>
 
-media:
+Media:
 <%= (@artwork.medium+@artwork.c_medium).map { |medium| medium.name}.join(", ") %>
 <br><br>
 
-tags:
+Tags:
 <%= @artwork.c_tag.map {|tag| ctag.name}.join(", ") %>
 
 
-<div class="">
+<div class="ui large image">
   <p>
     <%= image_tag @artwork.image.url %>
   </p>
@@ -30,8 +30,12 @@ tags:
     <%= f.hidden_field :artwork_id, value: @artwork.id %>
     <%= f.hidden_field :user_id, value: session[:user_id] %>
     <%= f.label :comment %><br>
-    <%= f.text_area :content %><br>
-    <%= f.submit %>
+    <div class="field">
+      <%= f.text_area :content %><br>
+    </div>
+    <div class="ui blue labeled submit icon button">
+      <%= f.submit %>
+    </div>
   <% end %>
 </div><br><br>
 
