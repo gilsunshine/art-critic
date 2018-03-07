@@ -3,3 +3,20 @@
 <% if @user.id == session[:user_id] %>
 <%= button_to "Logout", logout_path %>
 <% end %>
+
+<%= link_to "Edit User", "#", :id => 'showForm' %>
+
+<div id="editUser">
+  <%= form_for @user do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %><br>
+    <%= f.label :username %>
+    <%= f.text_field :username %><br>
+    <%= f.label "Password" %>
+    <%= f.password_field :password %><br>
+    <%= f.label "Password Confirmation" %>
+    <%= f.password_field :password_confirmation %><br>
+    <%= f.submit %>
+    <%= link_to "Cancel", "#", :id => 'hideForm' %>
+  <% end %>
+</div>

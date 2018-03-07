@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :get_user, only: [:show]
+  before_action :get_user, only: [:show, :update]
 
   def new
     @user = User.new
@@ -15,6 +15,12 @@ class UsersController < ApplicationController
   end
 
   def show
+  end
+
+  def update
+    if @user.update(user_params)
+      redirect_to @user
+    end
   end
 
   private
