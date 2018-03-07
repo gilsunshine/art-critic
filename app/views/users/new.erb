@@ -13,6 +13,7 @@
   }
 </style>
 
+<div id="errors_box"
 <% if @user.errors.any? %>
 <div class="ui error message">
   <div class="header">
@@ -28,19 +29,19 @@
   </ul>
 </div>
 <%end%>
-
+</div>
 
 <div class="ui middle aligned center aligned grid">
   <div class="column">
 
     <h2 class="ui black image header">
       <!-- <img src="assets/images/logo.png" class="image"> -->
-      <div class="content">
+      <div id="new_account_header">
         Create an account!
       </div>
     </h2>
 
-    <form class="ui large form">
+    <div class="ui large form">
       <div class="ui stacked segment">
         <%= form_for @user do |f| %>
 
@@ -76,18 +77,17 @@
           </div>
         </div>
 
-        <div class="ui fluid large black submit button">  <%= f.submit %> </div>
+        <%= f.submit "Create Account", :class => "ui fluid large black submit button" %>
+
+        <% end %>
       </div>
 
-    </form>
-    <% end %>
+    </div>
     <div class="ui message">
       or have an account? <%= link_to "Sign In", '/login' %>
     </div>
   </div>
 </div>
-
-
 
 <!--
 <%= form_for @user do |f| %>
@@ -99,4 +99,5 @@
   <%= f.password_field :password %><br>
   <%= f.label "Password Confirmation" %>
   <%= f.password_field :password_confirmation %><br>
+  <%= f.submit %>
 <% end %> -->
