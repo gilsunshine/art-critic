@@ -70,6 +70,6 @@ class Artwork < ApplicationRecord
 
   private
     def image_size_validation
-      errors[:image] << "should be less than 500KB" if image.size > 0.5.megabytes
+      errors[:image] << "should be less than 600KB" if image.size > 0.6.megabytes
     end
 end
