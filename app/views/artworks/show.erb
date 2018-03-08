@@ -8,7 +8,7 @@
 <% else %>
   <strong>Media:</strong>
 <% end %>
-<%= (@artwork.style+@artwork.c_style).map { |style|  link_to style.name, style }.join(", ").capitalize.html_safe %>
+<%= (@artwork.style+@artwork.c_style).map { |style|  link_to style.name.capitalize, style }.join(", ").html_safe %>
 <br>
 
 <% if (@artwork.medium+@artwork.c_medium).empty? %>
@@ -17,7 +17,7 @@
 <% else  %>
   <strong>Media:</strong>
 <% end %>
-<%= (@artwork.medium+@artwork.c_medium).map { |medium| link_to medium.name, medium}.join(", ").capitalize.html_safe %>
+<%= (@artwork.medium+@artwork.c_medium).map { |medium| link_to medium.name.capitalize, medium}.join(", ").html_safe %>
 <br>
 
 <% if !@artwork.c_tag.empty? %>
