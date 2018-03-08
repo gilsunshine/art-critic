@@ -3,6 +3,9 @@ class ArtworksController < ApplicationController
   before_action :get_artwork, only: [:show]
   def index
     @artworks = Artwork.search(params[:search])
+    if params[:search]
+      @search = true
+    end
   end
 
   def show

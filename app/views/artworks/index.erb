@@ -1,8 +1,16 @@
-<h1>All Artworks</h1>
+<% if @search %>
+<h1 style="font-family: 'Quicksand', sans-serif;">Search Results</h1><hr><br>
+<% else %>
+<h1 style="font-family: 'Quicksand', sans-serif;">All Artworks</h1><hr><br>
+<% end %>
 <div class="ui very relaxed grid container">
   <% @artworks.each do |artwork|%>
   <div class="four wide column">
     <div class="row">
+      <div class="column middle aligned">
+        <div class="ui fluid image"><%= link_to image_tag(artwork.image.url), artwork_path(artwork) %>
+        </div>
+      </div><br>
       <div class="column">
         <strong><%= artwork.name %></strong><br>
       </div>
@@ -13,10 +21,6 @@
         <i><%= artwork.year.name %></i>
       </div>
       <br>
-      <div class="column middle aligned">
-        <div class="ui fluid image"><%= link_to image_tag(artwork.image.url), artwork_path(artwork) %>
-        </div>
-      </div>
     </div>
   </div>
   <%end%>
