@@ -22,7 +22,17 @@
     <style>
       body {
         font-family: 'Quicksand', sans-serif;
+        background: #f9f9f9
       }
+      h1 {
+        font-family: 'Quicksand', sans-serif;
+        color: #006aff;
+      }
+      h2 {
+        font-family: 'Quicksand', sans-serif;
+        color: #006aff;
+      }
+
     </style>
 
   </head>
@@ -33,16 +43,36 @@
   <div class="ui large top fixed hidden menu">
     <div class="ui container">
       <div class="left menu">
+
         <div class="item">
-          <a class="ui primary button" href="/artworks" style="font-family: 'Quicksand', sans-serif;">View Artwork</a>
+          <div class="ui image mini">
+              <%= image_tag 'logo.png' %>
+          </div>
+        </div>
+        <div class="item">
+          <a class="" href="/artworks" style="font-family: 'Quicksand', sans-serif;">All Artworks</a>
+        </div>
+        <div class="item">
+          <div class="ui icon input">
+            <%= form_tag artworks_path, method: "get" do %>
+              <%= text_field_tag :search, params[:search], placeholder: "Search by artwork name" %>
+              <button class="ui icon basic button">
+                <i class="search icon"></i>
+              </button>
+            <% end %>
+          </div>
+        </div>
+        <div class="item">
+          <a class="" href="<%=new_search_path %>" style="font-family: 'Quicksand', sans-serif;">Advanced Search</a>
         </div>
       </div>
+
       <div class="right menu">
         <div class="item">
-          <a class="ui button" href="/login" style="font-family: 'Quicksand', sans-serif;">Sign In</a>
+          <a class="" href="/login" style="font-family: 'Quicksand', sans-serif;">Sign In</a>
         </div>
         <div class="item">
-          <a class="ui primary button" href="/users/new" style="font-family: 'Quicksand', sans-serif;">Sign Up</a>
+          <a class="" href="/users/new" style="font-family: 'Quicksand', sans-serif;">Sign Up</a>
         </div>
       </div>
     </div>
@@ -52,18 +82,37 @@
     <div class="ui container">
       <div class="right menu">
         <div class="item">
-          <%= link_to "Sign Out", logout_path, method: "post", class: "ui button"%>
+          <%= link_to "Sign Out", logout_path, method: "post"%>
         </div>
       </div>
       <div class="left menu">
+
         <div class="item">
-          <a class="ui primary button" href="/users/<%=session[:user_id]%>" style="font-family: 'Quicksand', sans-serif;">Home</a>
+          <div class="ui image mini">
+              <%= image_tag 'logo.png' %>
+          </div>
         </div>
         <div class="item">
-          <a class="ui primary button" href="/artworks" style="font-family: 'Quicksand', sans-serif;">View Artwork</a>
+          <a class="" href="/users/<%=session[:user_id]%>" style="font-family: 'Quicksand', sans-serif;">Home</a>
         </div>
         <div class="item">
-          <a class="ui primary button" href="/artworks/new" style="font-family: 'Quicksand', sans-serif;">Add Artwork</a>
+          <a class="" href="/artworks" style="font-family: 'Quicksand', sans-serif;">All Artworks</a>
+        </div>
+        <div class="item">
+          <a class="" href="/artworks/new" style="font-family: 'Quicksand', sans-serif;">Add Artwork</a>
+        </div>
+        <div class="item">
+          <div class="ui icon input">
+            <%= form_tag artworks_path, method: "get" do %>
+              <%= text_field_tag :search, params[:search], placeholder: "Search by artwork name" %>
+              <button class="ui icon basic button">
+                <i class="search icon"></i>
+              </button>
+            <% end %>
+          </div>
+        </div>
+        <div class="item">
+          <a class="" href="<%=new_search_path %>" style="font-family: 'Quicksand', sans-serif;">Advanced Search</a>
         </div>
       </div>
     </div>

@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   resources :tags
-  resources :votes
   resources :comments
   resources :artworks
   resources :users
@@ -11,7 +10,7 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new', as: 'login'
   post '/logout', to: 'sessions#destroy', as: 'logout'
   post '/sessions', to: 'sessions#create', as: 'create_session'
-  post '/like', to: 'votes#like'
-  post '/dislike', to: 'votes#dislike'
+  post '/like/:id', to: 'votes#like', as: 'like'
+  post '/dislike', to: 'votes#dislike', as: 'dislike'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

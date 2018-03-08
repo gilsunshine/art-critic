@@ -1,16 +1,24 @@
+<h1><%= @user.name %></h1>
+<% if @user.bio %>
+  <p><strong>Bio: </strong> <%= @user.bio %> <br></p> 
+<% end %>
 
-  <%= @user.name %> <br>
-  <%= @user.username %>
+  <% if @user.image.url %>
+    <%= image_tag @user.image.url %> <br>
+  <% end %>
 
 <% if @user.id == session[:user_id] %>
-  <%= link_to 'Edit User', '#', :id => 'showForm' %>
-
+  <%= link_to 'Edit My Account', '#', :id => 'showForm', class: "ui basic button" %>
   <div id='editUser'>
     <%= form_for @user do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name %><br>
     <%= f.label :username %>
     <%= f.text_field :username %><br>
+    <%= f.label :bio %>
+    <%= f.text_area :bio %><br>
+    <%= f.label :image %>
+    <%= f.file_field :image %><br>
     <%= f.label "Password" %>
     <%= f.password_field :password %><br>
     <%= f.label "Password Confirmation" %>
@@ -19,11 +27,11 @@
     <%= link_to "Cancel", "#", :id => 'hideForm' %>
     <% end %>
   </div>
+  <br><br><br>
 <% end %>
 
-<br><br><br>
 <% if !@user.artworks.empty? %>
-Artist's Works:
+<h2 style="font-family: 'Quicksand', sans-serif;">Artworks:</h2><hr><br>
 <div class="ui very relaxed grid container">
   <% @user.artworks.each do |artwork| %>
   <div class="four wide column">
@@ -40,7 +48,7 @@ Artist's Works:
       <br>
       <div class="column middle aligned">
         <div class="ui fluid image"><%= link_to image_tag(artwork.image.url), artwork_path(artwork) %>
-        </div>
+        </div><br><br>
       </div>
     </div>
   </div>

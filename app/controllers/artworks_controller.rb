@@ -3,6 +3,9 @@ class ArtworksController < ApplicationController
   before_action :get_artwork, only: [:show]
   def index
     @artworks = Artwork.search(params[:search])
+    if params[:search]
+      @search = true
+    end
   end
 
   def show
@@ -30,6 +33,7 @@ class ArtworksController < ApplicationController
         @medium_tag = Tag.create(category: "custom medium", name: params[:artwork][:medium])
       end
       ArtworkTag.create(artwork_id: @artwork.id, tag_id: @medium_tag.id)
+      params[:mytext].reject { |c| c.empty? }.each {|tag_name| ArtworkTag.find_or_create_by(artwork_id: @artwork.id, tag_id: Tag.find_or_create_by(category: "custom tag", name: tag_name).id) }
       redirect_to @artwork
     else
       render :new
