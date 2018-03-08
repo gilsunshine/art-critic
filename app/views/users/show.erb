@@ -2,8 +2,10 @@
 <!-- ### -->
 
 <div id='fontGreen'>
+  <%= @user.username %> <br>
   <%= @user.name %> <br>
-  <%= @user.username %>
+  <%= @user.bio %> <br>
+  <%= image_tag @user.image.url %> <br>
 </div>
 
 <% if @user.id == session[:user_id] %>
@@ -15,6 +17,10 @@
     <%= f.text_field :name %><br>
     <%= f.label :username %>
     <%= f.text_field :username %><br>
+    <%= f.label :bio %>
+    <%= f.text_area :bio %><br>
+    <%= f.label :image %>
+    <%= f.file_field :image %><br>
     <%= f.label "Password" %>
     <%= f.password_field :password %><br>
     <%= f.label "Password Confirmation" %>
