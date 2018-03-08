@@ -3,16 +3,17 @@ By: <%= @artwork.user.name %> <br>
 Year: <%= @artwork.year ? @artwork.year.name : "year unknown" %><br><br>
 
 Styles:
-<%= (@artwork.style+@artwork.c_style).map { |style|  style.name }.join(", ") %>
+<%= (@artwork.style+@artwork.c_style).map { |style| link_to style.name, style }.join(", ").html_safe %>
 <br> <br>
 
 Media:
-<%= (@artwork.medium+@artwork.c_medium).map { |medium| medium.name}.join(", ") %>
+<%= (@artwork.medium+@artwork.c_medium).map { |medium|  link_to medium.name, medium}.join(", ").html_safe %>
 <br><br>
 
+<% if !@artwork.c_tag.empty? %>
 Tags:
-<%= @artwork.c_tag.map {|tag| ctag.name}.join(", ") %>
-
+<%= @artwork.c_tag.map {|tag| link_to tag.name, tag }.join(", ").html_safe %>
+<% end %>
 
 <div class="ui large image">
   <p>
@@ -59,5 +60,7 @@ Tags:
   <% end %>
 </div>
 
+<% if @artwork.user.id == session[:user_id] %>
 <%= link_to 'Edit', edit_artwork_path(@artwork) %> |
+<% end %>
 <%= link_to 'Back', artworks_path %>
