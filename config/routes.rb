@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   resources :tags
-  resources :votes
   resources :comments
   resources :artworks
   resources :users

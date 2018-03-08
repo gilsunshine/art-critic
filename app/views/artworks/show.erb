@@ -1,6 +1,8 @@
-<strong><%= @artwork.name %></strong>  <br>
-<%= link_to @artwork.user.name, @artwork.user %> <br>
-<i><%= @artwork.year ? @artwork.year.name : "year unknown" %></i><br><br>
+<div style="font-size: 130%">
+  <strong><%= @artwork.name %></strong>  <br>
+  <%= link_to @artwork.user.name, @artwork.user %> <br>
+  <i><%= @artwork.year ? @artwork.year.name : "year unknown" %></i><br><br>
+</div>
 
 <% if (@artwork.style+@artwork.c_style).empty? %>
 <% elsif (@artwork.style+@artwork.c_style).count == 1 %>
@@ -24,25 +26,68 @@
 Tags:
 <%= @artwork.c_tag.map {|tag| link_to tag.name.capitalize, tag}.join(", ").html_safe %><br><br>
 <% end %>
-<br>
+<br> <hr><br><br>
 
-<div class="two wide column">
-  <div class="row">
-    <div class="column">
+<div class="ui grid">
+
+    <div class="five wide column">
       <div class="ui large image">
         <%= image_tag @artwork.image.url %>
       </div>
+      <br><br>
+      <div class="ui medium basic button">
+        <%= link_to "Like", like_path, artwork_id: @artwork.id%>
+      </div>
+      <div class="ui medium basic button">
+          <%= link_to "Dislike", controller: :votes, method: :post, action: :dislike, artwork_id: @artwork.id%>
+      </div>
+      <br><br>
+      <div>
+        Likes: <%= @vote_num %>
+      </div>
+
+    </div>
+
+    <div class="six wide column">
+      <div class="ui reply form">
+        <%= form_for @comment do |f|%>
+          <%= f.hidden_field :artwork_id, value: @artwork.id %>
+          <%= f.hidden_field :user_id, value: session[:user_id] %>
+          <%= f.label :comment %><br>
+          <div class="field">
+            <%= f.text_area :content %><br>
+          </div>
+
+            <%= f.submit class: "ui basic button"%>
+
+        <% end %>
+      </div><br><br>
+      <div class="container">
+        <% if @comments %>
+          <% @comments.each do |comment| %>
+            <strong><%= comment.user.name %></strong> <br>
+            <%= comment.content %><br><br>
+            <%= button_to "Delete Comment", controller: :comments, method: :post, action: :destroy, comment_id: comment.id %>
+            <%= link_to "Edit Comment", "#", :id => 'showCommentEdit' %><br>
+            <div id="editComment">
+              <%= form_for comment do |f|%>
+                <%= f.hidden_field :artwork_id, value: @artwork.id %>
+                <%= f.hidden_field :user_id, value: session[:user_id] %>
+                <%= f.label :comment %><br>
+                <%= f.text_area :content %><br>
+                <%= button_to "Update Comment", controller: :comments, method: :get, action: :update, comment_id: comment.id %><br><br>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
-  <div class="column">
-    <div>
-      Likes: <%= @vote_num %>
-    </div>
 
 
-    <div class="ui icon input">
+    <!-- <div class="ui icon input">
       <%= form_tag like_path do %>
-      <% hidden_field_tag :artwork_id, @artwork.id %>
+        <% hidden_field_tag :artwork_id, @artwork.id %>
         <button class="ui icon basic button">
           <i class="thumbs up outline icon"></i>
         </button>
@@ -55,48 +100,4 @@ Tags:
           <i class="thumbs down outline icon"></i>
         </button>
       <% end %>
-    </div>
-
-    <!-- <div class="ui medium basic button">
-      <%= link_to "Like", controller: :votes, method: :post, action: :like, artwork_id: @artwork.id%>
     </div> -->
-    <!-- <div class="ui medium basic button">
-        <%= link_to "Dislike", controller: :votes, method: :post, action: :dislike, artwork_id: @artwork.id%>
-    </div> -->
-  </div>
-  <div class="column">
-    <div class="ui reply form">
-      <%= form_for @comment do |f|%>
-        <%= f.hidden_field :artwork_id, value: @artwork.id %>
-        <%= f.hidden_field :user_id, value: session[:user_id] %>
-        <%= f.label :comment %><br>
-        <div class="field">
-          <%= f.text_area :content %><br>
-        </div>
-        <div class="ui blue labeled submit icon button">
-          <%= f.submit %>
-        </div>
-      <% end %>
-    </div><br><br>
-
-    <div class="container">
-      <% if @comments %>
-        <% @comments.each do |comment| %>
-          <%= comment.user.username %><br>
-          <%= comment.content %><br><br>
-          <%= button_to "Delete Comment", controller: :comments, method: :post, action: :destroy, comment_id: comment.id %>
-          <%= link_to "Edit Comment", "#", :id => 'showCommentEdit' %><br>
-          <div id="editComment">
-            <%= form_for comment do |f|%>
-              <%= f.hidden_field :artwork_id, value: @artwork.id %>
-              <%= f.hidden_field :user_id, value: session[:user_id] %>
-              <%= f.label :comment %><br>
-              <%= f.text_area :content %><br>
-              <%= button_to "Update Comment", controller: :comments, method: :get, action: :update, comment_id: comment.id %><br><br>
-            <% end %>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
-</div>

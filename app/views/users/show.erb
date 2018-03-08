@@ -1,14 +1,14 @@
+<h1><%= @user.name %></h1>
+<% if @user.bio %>
+  <p><strong>Bio: </strong> <%= @user.bio %> <br></p> 
+<% end %>
 
-<%= @user.username %><br>
-  <%= @user.name %> <br>
-  <%= @user.bio %> <br>
   <% if @user.image.url %>
     <%= image_tag @user.image.url %> <br>
   <% end %>
 
 <% if @user.id == session[:user_id] %>
   <%= link_to 'Edit My Account', '#', :id => 'showForm', class: "ui basic button" %>
-
   <div id='editUser'>
     <%= form_for @user do |f| %>
     <%= f.label :name %>
@@ -31,7 +31,7 @@
 <% end %>
 
 <% if !@user.artworks.empty? %>
-<h1 style="font-family: 'Quicksand', sans-serif;"><%= @user.name %> &nbsp | &nbsp Artworks:</h1><hr><br>
+<h2 style="font-family: 'Quicksand', sans-serif;">Artworks:</h2><hr><br>
 <div class="ui very relaxed grid container">
   <% @user.artworks.each do |artwork| %>
   <div class="four wide column">
