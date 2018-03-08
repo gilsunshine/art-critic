@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 88888888888890) do
+ActiveRecord::Schema.define(version: 88888888888891) do
 
   create_table "artwork_tags", force: :cascade do |t|
     t.integer "artwork_id"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 88888888888890) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.string "content"
+    t.text "content"
     t.integer "user_id"
     t.integer "artwork_id"
     t.datetime "created_at", null: false
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 88888888888890) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image"
-    t.string "bio"
+    t.text "bio"
   end
 
   create_table "votes", force: :cascade do |t|

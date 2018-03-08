@@ -26,7 +26,7 @@ class Search < ApplicationRecord
     #   end
     # end
     artworks = artworks.select{|artwork| artwork.year.name.to_i > after_year } if after_year.present?
-    artworks = artworks.select{|artwork| artwork.year.name.to_i < before_action_year } if before_year.present?
+    artworks = artworks.select{|artwork| artwork.year.name.to_i < before_year } if before_year.present?
 
     return artworks
 

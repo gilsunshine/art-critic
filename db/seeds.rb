@@ -53,9 +53,9 @@ user5 = User.create(:name => "Matthew Day Jackson", :username => "mjackson", :pa
 
 user6 = User.create(:name => "Nick Van Woert", :username => "nwoert", :password => "nick", :password_confirmation => "nick")
 
-user7 = User.create(:name => "Michelle Branch", :username => "mbranch", :password => "michelle", :password_confirmation => "michelle")
+user7 = User.create(:name => "Michelle Branch", :username => "mbranch", :password => "michelle", :password_confirmation => "michelle", bio: "I worked in Intellectual Property Litigation for two years before deciding to completely change my trajectory in life and studying web development. I enjoy going to concerts, hiking, cooking, and traveling.")
 
-user8 = User.create(:name => "Matthew Lawford", :username => "mlawford", :password => "matthew", :password_confirmation => "matthew")
+user8 = User.create(:name => "Matthew Lawford", :username => "mlawford", :password => "matthew", :password_confirmation => "matthew", image: File.open(File.join(Rails.root, '/app/assets/images/matthew-lawford/profile-pic.png')), bio: "I graduated from the University of Michigan with a degree in Political Science but decided to pursue my passion for programming and creating through Flatiron. I love food, video games, board games, D&D, beer, music, dogs and people!")
 
 user9 = User.create(:name => "Laura Kim", :username => "lkim", :password => "laura", :password_confirmation => "laura")
 
