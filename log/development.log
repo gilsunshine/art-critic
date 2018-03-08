@@ -1,0 +1,899 @@
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20180305191736)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "username" varchar, "password_digest" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180305191736"]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateArtworks (20180305192000)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "artworks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (2.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180305192000"]]
+  [1m[35m (4.4ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateComments (20180305192621)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "content" varchar, "user_id" integer, "artwork_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180305192621"]]
+  [1m[35m (2.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateVotes (20180305192931)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "comment_id" integer DEFAULT NULL, "artwork_id" integer DEFAULT NULL, "value" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180305192931"]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateTags (20180305193151)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (11.6ms)[0m  [1m[35mCREATE TABLE "tags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "category" varchar, "description" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180305193151"]]
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateArtworkTags (20180305194605)
+  [1m[35m (4.4ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "artwork_tags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "artwork_id" integer, "tag_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (4.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180305194605"]]
+  [1m[35m (40.8ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddImageToArtwork (20180306043839)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (4.1ms)[0m  [1m[35mALTER TABLE "artworks" ADD "image" varchar[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180306043839"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to RemoveCommentIdFromVotes (88888888888888)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "avotes" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer DEFAULT NULL, "comment_id" integer DEFAULT NULL, "artwork_id" integer DEFAULT NULL, "value" integer DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "avotes" ("id","user_id","comment_id","artwork_id","value","created_at","updated_at")
+                     SELECT "id","user_id","comment_id","artwork_id","value","created_at","updated_at" FROM "votes"[0m
+  [1m[35m (36.3ms)[0m  [1m[35mDROP TABLE "votes"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "votes" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer DEFAULT NULL, "artwork_id" integer DEFAULT NULL, "value" integer DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "votes" ("id","user_id","artwork_id","value","created_at","updated_at")
+                     SELECT "id","user_id","artwork_id","value","created_at","updated_at" FROM "avotes"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "avotes"[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "88888888888888"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateSearches (88888888888889)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "searches" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "artist_name" varchar, "after_year" integer, "before_year" integer, "style" varchar, "medium" varchar, "tags" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "88888888888889"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-03-07 22:31:14.407107"], ["updated_at", "2018-03-07 22:31:14.407107"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."name" = ? AND "tags"."category" = ? LIMIT ?[0m  [["name", "Realism"], ["category", "style"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "tags" ("name", "category", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Realism"], ["category", "style"], ["created_at", "2018-03-07 22:31:20.417792"], ["updated_at", "2018-03-07 22:31:20.417792"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."name" = ? AND "tags"."category" = ? LIMIT ?[0m  [["name", "Impressionism"], ["category", "style"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tags" ("name", "category", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Impressionism"], ["category", "style"], ["created_at", "2018-03-07 22:31:20.423484"], ["updated_at", "2018-03-07 22:31:20.423484"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."name" = ? AND "tags"."category" = ? LIMIT ?[0m  [["name", "Cubism"], ["category", "style"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tags" ("name", "category", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Cubism"], ["category", "style"], ["created_at", "2018-03-07 22:31:20.427573"], ["updated_at", "2018-03-07 22:31:20.427573"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."name" = ? AND "tags"."category" = ? LIMIT ?[0m  [["name", "Surrealism"], ["category", "style"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "tags" ("name", "category", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Surrealism"], ["category", "style"], ["created_at", "2018-03-07 22:31:20.432279"], ["updated_at", "2018-03-07 22:31:20.432279"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."name" = ? AND "tags"."category" = ? LIMIT ?[0m  [["name", "Modern"], ["category", "style"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "tags" ("name", "category", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Modern"], ["category", "style"], ["created_at", "2018-03-07 22:31:20.437961"], ["updated_at", "2018-03-07 22:31:20.437961"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."name" = ? AND "tags"."category" = ? LIMIT ?[0m  [["name", "Contemporary"], ["category", "style"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "tags" ("name", "category", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Contemporary"], ["category", "style"], ["created_at", "2018-03-07 22:31:20.444415"], ["updated_at", "2018-03-07 22:31:20.444415"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."name" = ? AND "tags"."category" = ? LIMIT ?[0m  [["name", "Oil Paint"], ["category", "medium"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.7ms)[0m  [1m[32mINSERT INTO "tags" ("name", "category", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Oil Paint"], ["category", "medium"], ["created_at", "2018-03-07 22:31:20.450597"], ["updated_at", "2018-03-07 22:31:20.450597"]]
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."name" = ? AND "tags"."category" = ? LIMIT ?[0m  [["name", "Wood"], ["category", "medium"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "tags" ("name", "category", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Wood"], ["category", "medium"], ["created_at", "2018-03-07 22:31:20.458710"], ["updated_at", "2018-03-07 22:31:20.458710"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."name" = ? AND "tags"."category" = ? LIMIT ?[0m  [["name", "Metal"], ["category", "medium"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "tags" ("name", "category", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Metal"], ["category", "medium"], ["created_at", "2018-03-07 22:31:20.463008"], ["updated_at", "2018-03-07 22:31:20.463008"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."name" = ? AND "tags"."category" = ? LIMIT ?[0m  [["name", "Ceramic"], ["category", "medium"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "tags" ("name", "category", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Ceramic"], ["category", "medium"], ["created_at", "2018-03-07 22:31:20.469177"], ["updated_at", "2018-03-07 22:31:20.469177"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."name" = ? AND "tags"."category" = ? LIMIT ?[0m  [["name", "Plaster"], ["category", "medium"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "tags" ("name", "category", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Plaster"], ["category", "medium"], ["created_at", "2018-03-07 22:31:20.475074"], ["updated_at", "2018-03-07 22:31:20.475074"]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."name" = ? AND "tags"."category" = ? LIMIT ?[0m  [["name", "Acrylic Paint"], ["category", "medium"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "tags" ("name", "category", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Acrylic Paint"], ["category", "medium"], ["created_at", "2018-03-07 22:31:20.481347"], ["updated_at", "2018-03-07 22:31:20.481347"]]
+  [1m[35m (3.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."name" = ? AND "tags"."category" = ? LIMIT ?[0m  [["name", "Resin"], ["category", "medium"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (4.9ms)[0m  [1m[32mINSERT INTO "tags" ("name", "category", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Resin"], ["category", "medium"], ["created_at", "2018-03-07 22:31:20.489771"], ["updated_at", "2018-03-07 22:31:20.489771"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."name" = ? AND "tags"."category" = ? LIMIT ?[0m  [["name", "Digital"], ["category", "medium"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.0ms)[0m  [1m[32mINSERT INTO "tags" ("name", "category", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Digital"], ["category", "medium"], ["created_at", "2018-03-07 22:31:20.499516"], ["updated_at", "2018-03-07 22:31:20.499516"]]
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."name" = ? AND "tags"."category" = ? LIMIT ?[0m  [["name", "Mixed Media"], ["category", "medium"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.9ms)[0m  [1m[32mINSERT INTO "tags" ("name", "category", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Mixed Media"], ["category", "medium"], ["created_at", "2018-03-07 22:31:20.528772"], ["updated_at", "2018-03-07 22:31:20.528772"]]
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."name" = ? AND "tags"."category" = ? LIMIT ?[0m  [["name", "Digital Print"], ["category", "medium"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "tags" ("name", "category", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Digital Print"], ["category", "medium"], ["created_at", "2018-03-07 22:31:20.551527"], ["updated_at", "2018-03-07 22:31:20.551527"]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."name" = ? AND "tags"."category" = ? LIMIT ?[0m  [["name", "Enlargement"], ["category", "medium"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "tags" ("name", "category", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Enlargement"], ["category", "medium"], ["created_at", "2018-03-07 22:31:20.559024"], ["updated_at", "2018-03-07 22:31:20.559024"]]
+  [1m[35m (5.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."name" = ? AND "tags"."category" = ? LIMIT ?[0m  [["name", "Lithograph"], ["category", "medium"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tags" ("name", "category", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Lithograph"], ["category", "medium"], ["created_at", "2018-03-07 22:31:20.569209"], ["updated_at", "2018-03-07 22:31:20.569209"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."name" = ? AND "tags"."category" = ? LIMIT ?[0m  [["name", "Screen Print"], ["category", "medium"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tags" ("name", "category", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Screen Print"], ["category", "medium"], ["created_at", "2018-03-07 22:31:20.573892"], ["updated_at", "2018-03-07 22:31:20.573892"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."name" = ? AND "tags"."category" = ? LIMIT ?[0m  [["name", "Drawing"], ["category", "medium"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "tags" ("name", "category", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Drawing"], ["category", "medium"], ["created_at", "2018-03-07 22:31:20.578863"], ["updated_at", "2018-03-07 22:31:20.578863"]]
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."name" = ? AND "tags"."category" = ? LIMIT ?[0m  [["name", "Felt"], ["category", "medium"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "tags" ("name", "category", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Felt"], ["category", "medium"], ["created_at", "2018-03-07 22:31:20.593875"], ["updated_at", "2018-03-07 22:31:20.593875"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTag Load (0.9ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."name" = ? AND "tags"."category" = ? LIMIT ?[0m  [["name", "Tapestry"], ["category", "medium"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.4ms)[0m  [1m[32mINSERT INTO "tags" ("name", "category", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Tapestry"], ["category", "medium"], ["created_at", "2018-03-07 22:31:20.622193"], ["updated_at", "2018-03-07 22:31:20.622193"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTag Load (1.3ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."name" = ? AND "tags"."category" = ? LIMIT ?[0m  [["name", "Marker"], ["category", "medium"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "tags" ("name", "category", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Marker"], ["category", "medium"], ["created_at", "2018-03-07 22:31:20.655002"], ["updated_at", "2018-03-07 22:31:20.655002"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."name" = ? AND "tags"."category" = ? LIMIT ?[0m  [["name", "2016"], ["category", "year"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.2ms)[0m  [1m[32mINSERT INTO "tags" ("name", "category", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "2016"], ["category", "year"], ["created_at", "2018-03-07 22:31:20.660721"], ["updated_at", "2018-03-07 22:31:20.660721"]]
+  [1m[35m (2.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."name" = ? AND "tags"."category" = ? LIMIT ?[0m  [["name", "2017"], ["category", "year"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.3ms)[0m  [1m[32mINSERT INTO "tags" ("name", "category", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "2017"], ["category", "year"], ["created_at", "2018-03-07 22:31:20.673743"], ["updated_at", "2018-03-07 22:31:20.673743"]]
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."name" = ? AND "tags"."category" = ? LIMIT ?[0m  [["name", "2014"], ["category", "year"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "tags" ("name", "category", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "2014"], ["category", "year"], ["created_at", "2018-03-07 22:31:20.688893"], ["updated_at", "2018-03-07 22:31:20.688893"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."name" = ? AND "tags"."category" = ? LIMIT ?[0m  [["name", "2013"], ["category", "year"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "tags" ("name", "category", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "2013"], ["category", "year"], ["created_at", "2018-03-07 22:31:20.696935"], ["updated_at", "2018-03-07 22:31:20.696935"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."name" = ? AND "tags"."category" = ? LIMIT ?[0m  [["name", "2010"], ["category", "year"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "tags" ("name", "category", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "2010"], ["category", "year"], ["created_at", "2018-03-07 22:31:20.703482"], ["updated_at", "2018-03-07 22:31:20.703482"]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."name" = ? AND "tags"."category" = ? LIMIT ?[0m  [["name", "2003"], ["category", "year"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.7ms)[0m  [1m[32mINSERT INTO "tags" ("name", "category", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "2003"], ["category", "year"], ["created_at", "2018-03-07 22:31:20.710738"], ["updated_at", "2018-03-07 22:31:20.710738"]]
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."name" = ? AND "tags"."category" = ? LIMIT ?[0m  [["name", "2007"], ["category", "year"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "tags" ("name", "category", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "2007"], ["category", "year"], ["created_at", "2018-03-07 22:31:20.722948"], ["updated_at", "2018-03-07 22:31:20.722948"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."name" = ? AND "tags"."category" = ? LIMIT ?[0m  [["name", "2018"], ["category", "year"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "tags" ("name", "category", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "2018"], ["category", "year"], ["created_at", "2018-03-07 22:31:20.729335"], ["updated_at", "2018-03-07 22:31:20.729335"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."name" = ? AND "tags"."category" = ? LIMIT ?[0m  [["name", "2008"], ["category", "year"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.7ms)[0m  [1m[32mINSERT INTO "tags" ("name", "category", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "2008"], ["category", "year"], ["created_at", "2018-03-07 22:31:20.733908"], ["updated_at", "2018-03-07 22:31:20.733908"]]
+  [1m[35m (8.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."name" = ? AND "tags"."category" = ? LIMIT ?[0m  [["name", "2012"], ["category", "year"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "tags" ("name", "category", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "2012"], ["category", "year"], ["created_at", "2018-03-07 22:31:20.749568"], ["updated_at", "2018-03-07 22:31:20.749568"]]
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "achaves"], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Alex Chaves"], ["username", "achaves"], ["password_digest", "$2a$10$nML1y/O3ixSdgCWnjctsRucV1vLCT7yB33zFK1WsPxs7WRxzNNNRq"], ["created_at", "2018-03-07 22:31:20.859548"], ["updated_at", "2018-03-07 22:31:20.859548"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "twinters"], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Terry Winters"], ["username", "twinters"], ["password_digest", "$2a$10$t9T0B32Z4qIT6FYvBOGoXOqJDPIOa2RISBNxcMseUix5wxkUm1bX6"], ["created_at", "2018-03-07 22:31:20.951456"], ["updated_at", "2018-03-07 22:31:20.951456"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "smendelson"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Shari Mendelson"], ["username", "smendelson"], ["password_digest", "$2a$10$PuyKtu13yidE0nd12zXigeRtr8tZOeseg25K9rrHbeJZhTnYNWMYO"], ["created_at", "2018-03-07 22:31:21.040293"], ["updated_at", "2018-03-07 22:31:21.040293"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "amian"], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Asif Mian"], ["username", "amian"], ["password_digest", "$2a$10$UQ3sfTaOAYEjpWrficTmUuKCLIqLe1qfUWv/BNQOhp9qzi3sj2mpC"], ["created_at", "2018-03-07 22:31:21.125097"], ["updated_at", "2018-03-07 22:31:21.125097"]]
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "mjackson"], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Matthew Day Jackson"], ["username", "mjackson"], ["password_digest", "$2a$10$MYFTeCJUCSNbvt4tqnSBBukWic1/MfEl8s.uBFbSPlNXv0hzIQQaW"], ["created_at", "2018-03-07 22:31:21.225565"], ["updated_at", "2018-03-07 22:31:21.225565"]]
+  [1m[35m (2.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "nwoert"], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Nick Van Woert"], ["username", "nwoert"], ["password_digest", "$2a$10$ZLFBJj9ndLBobT6mWGmuLe.fBCtoGZWC//tymx6/6V.vPpVOTlqbe"], ["created_at", "2018-03-07 22:31:21.326288"], ["updated_at", "2018-03-07 22:31:21.326288"]]
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "mbranch"], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Michelle Branch"], ["username", "mbranch"], ["password_digest", "$2a$10$W6lTb6Ko3gfUKJtCT/vSne0NxNavJTetr7ihMfzVuOMK3wV92FUq6"], ["created_at", "2018-03-07 22:31:21.429075"], ["updated_at", "2018-03-07 22:31:21.429075"]]
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "mlawford"], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Matthew Lawford"], ["username", "mlawford"], ["password_digest", "$2a$10$N3/0PtogKtE2tjNaCfsqLu9rkFdbngmirvOlh5tUGlBXDMyCADFYC"], ["created_at", "2018-03-07 22:31:21.534529"], ["updated_at", "2018-03-07 22:31:21.534529"]]
+  [1m[35m (7.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "lkim"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Laura Kim"], ["username", "lkim"], ["password_digest", "$2a$10$rjVuiValoxCR2P2dj7mQO.A1YyFNtYum1/uF/tWQORiSV5Pu6jNma"], ["created_at", "2018-03-07 22:31:21.649912"], ["updated_at", "2018-03-07 22:31:21.649912"]]
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "clee"], ["LIMIT", 1]]
+  [1m[35mSQL (13.1ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Caroline Lee"], ["username", "clee"], ["password_digest", "$2a$10$sBUHkvCjaCX00uRHUQYeXemIw38HawgdFOajz/zTuUx8e6eWRv/rS"], ["created_at", "2018-03-07 22:31:21.738491"], ["updated_at", "2018-03-07 22:31:21.738491"]]
+  [1m[35m (2.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "gsunshine"], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Gil Sunshine"], ["username", "gsunshine"], ["password_digest", "$2a$10$evJy3ModwgJjaUSiF9Fi6e6AzEs/mRf4T21vDf5aVd4oqfTPNdG4y"], ["created_at", "2018-03-07 22:31:21.849083"], ["updated_at", "2018-03-07 22:31:21.849083"]]
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "dlee"], ["LIMIT", 1]]
+  [1m[35mSQL (6.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Daniel Lee"], ["username", "dlee"], ["password_digest", "$2a$10$bPAttNdATiGkLEkToU3CZekhxda32QoQ/lZcXOW7JR21Ti9T5tEC6"], ["created_at", "2018-03-07 22:31:21.939359"], ["updated_at", "2018-03-07 22:31:21.939359"]]
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "artworks" ("name", "user_id", "created_at", "updated_at", "image") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Flower Pot"], ["user_id", 1], ["created_at", "2018-03-07 22:31:22.221048"], ["updated_at", "2018-03-07 22:31:22.221048"], ["image", "flower_pot.jpeg"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "artworks" ("name", "user_id", "created_at", "updated_at", "image") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Flower Still Life"], ["user_id", 1], ["created_at", "2018-03-07 22:31:22.393144"], ["updated_at", "2018-03-07 22:31:22.393144"], ["image", "flower_still_life.jpeg"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "artworks" ("name", "user_id", "created_at", "updated_at", "image") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Hayden"], ["user_id", 1], ["created_at", "2018-03-07 22:31:22.578309"], ["updated_at", "2018-03-07 22:31:22.578309"], ["image", "hayden.jpeg"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "artworks" ("name", "user_id", "created_at", "updated_at", "image") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Red Sunflowers"], ["user_id", 1], ["created_at", "2018-03-07 22:31:22.726688"], ["updated_at", "2018-03-07 22:31:22.726688"], ["image", "red_sunflowers.jpeg"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "artworks" ("name", "user_id", "created_at", "updated_at", "image") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Clocks and Clouds/5"], ["user_id", 2], ["created_at", "2018-03-07 22:31:22.966550"], ["updated_at", "2018-03-07 22:31:22.966550"], ["image", "clocks_and_clouds_5.jpeg"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "artworks" ("name", "user_id", "created_at", "updated_at", "image") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Clocks and Clouds/4"], ["user_id", 2], ["created_at", "2018-03-07 22:31:23.181062"], ["updated_at", "2018-03-07 22:31:23.181062"], ["image", "clocks_and_clouds.jpeg"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "artworks" ("name", "user_id", "created_at", "updated_at", "image") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Illustrated Set"], ["user_id", 2], ["created_at", "2018-03-07 22:31:23.351030"], ["updated_at", "2018-03-07 22:31:23.351030"], ["image", "illustrated_set.jpeg"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "artworks" ("name", "user_id", "created_at", "updated_at", "image") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Patterns in a Chromatic Field"], ["user_id", 2], ["created_at", "2018-03-07 22:31:23.528226"], ["updated_at", "2018-03-07 22:31:23.528226"], ["image", "patterns_in_a_chromatic_field.jpeg"]]
+  [1m[35m (5.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "artworks" ("name", "user_id", "created_at", "updated_at", "image") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Untitled"], ["user_id", 2], ["created_at", "2018-03-07 22:31:23.760061"], ["updated_at", "2018-03-07 22:31:23.760061"], ["image", "untitled_2003.jpeg"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "artworks" ("name", "user_id", "created_at", "updated_at", "image") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Animal with Bowl and Handle"], ["user_id", 3], ["created_at", "2018-03-07 22:31:23.903363"], ["updated_at", "2018-03-07 22:31:23.903363"], ["image", "animal_with_bowl_and_handle.jpeg"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "artworks" ("name", "user_id", "created_at", "updated_at", "image") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Four Vessels with Exoskeleton (Pink and Gold)"], ["user_id", 3], ["created_at", "2018-03-07 22:31:24.080310"], ["updated_at", "2018-03-07 22:31:24.080310"], ["image", "four_vessels_with_exoskeleton_pink_and_gold.jpeg"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (5.7ms)[0m  [1m[32mINSERT INTO "artworks" ("name", "user_id", "created_at", "updated_at", "image") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Small Blue Animal"], ["user_id", 3], ["created_at", "2018-03-07 22:31:24.322560"], ["updated_at", "2018-03-07 22:31:24.322560"], ["image", "small_blue_animal.jpeg"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "artworks" ("name", "user_id", "created_at", "updated_at", "image") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Thee Vessels with Exoskeleton (Ochre)"], ["user_id", 3], ["created_at", "2018-03-07 22:31:24.525153"], ["updated_at", "2018-03-07 22:31:24.525153"], ["image", "three_vessels_with_exoskeleton_ochre.jpeg"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "artworks" ("name", "user_id", "created_at", "updated_at", "image") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Mahmoud Abdul Rauf"], ["user_id", 4], ["created_at", "2018-03-07 22:31:24.681044"], ["updated_at", "2018-03-07 22:31:24.681044"], ["image", "mahmoud_abdul_rauf_2018.jpeg"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "artworks" ("name", "user_id", "created_at", "updated_at", "image") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Porosity"], ["user_id", 4], ["created_at", "2018-03-07 22:31:24.896260"], ["updated_at", "2018-03-07 22:31:24.896260"], ["image", "porosity_2018.jpeg"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "artworks" ("name", "user_id", "created_at", "updated_at", "image") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Threat Value"], ["user_id", 4], ["created_at", "2018-03-07 22:31:25.123920"], ["updated_at", "2018-03-07 22:31:25.123920"], ["image", "threat_value_2018.jpeg"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (22.2ms)[0m  [1m[32mINSERT INTO "artworks" ("name", "user_id", "created_at", "updated_at", "image") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Bucky (ROYGBIV) from the Dymaxion Series"], ["user_id", 5], ["created_at", "2018-03-07 22:31:25.340266"], ["updated_at", "2018-03-07 22:31:25.340266"], ["image", "bucky_roygbiv_from_the_dnmaxion_series_2007.jpeg"]]
+  [1m[35m (9.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (26.8ms)[0m  [1m[32mINSERT INTO "artworks" ("name", "user_id", "created_at", "updated_at", "image") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Community Hall (Aerial View)"], ["user_id", 5], ["created_at", "2018-03-07 22:31:25.599280"], ["updated_at", "2018-03-07 22:31:25.599280"], ["image", "community_hall_aerial_view_2008.jpeg"]]
+  [1m[35m (3.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (11.4ms)[0m  [1m[32mINSERT INTO "artworks" ("name", "user_id", "created_at", "updated_at", "image") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Das Wochenendhaus from the Dymaxion Series"], ["user_id", 5], ["created_at", "2018-03-07 22:31:25.853359"], ["updated_at", "2018-03-07 22:31:25.853359"], ["image", "das_wochenendhaus_from_the_dymaxion_series_2007.jpeg"]]
+  [1m[35m (13.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "artworks" ("name", "user_id", "created_at", "updated_at", "image") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Destroyed by Fire (Painter on His Way to Work)"], ["user_id", 5], ["created_at", "2018-03-07 22:31:26.204993"], ["updated_at", "2018-03-07 22:31:26.204993"], ["image", "destroyed_by_fire_painter_on_his_way_to_work_2017.jpeg"]]
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "artworks" ("name", "user_id", "created_at", "updated_at", "image") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Life (June 5, 1944)"], ["user_id", 5], ["created_at", "2018-03-07 22:31:26.391317"], ["updated_at", "2018-03-07 22:31:26.391317"], ["image", "life_june_5_1944_2014.jpeg"]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "artworks" ("name", "user_id", "created_at", "updated_at", "image") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Horror Vacui (Animal)"], ["user_id", 6], ["created_at", "2018-03-07 22:31:26.655554"], ["updated_at", "2018-03-07 22:31:26.655554"], ["image", "horror_vacui_animal_2017.jpeg"]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.4ms)[0m  [1m[32mINSERT INTO "artworks" ("name", "user_id", "created_at", "updated_at", "image") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Untitled"], ["user_id", 6], ["created_at", "2018-03-07 22:31:26.846640"], ["updated_at", "2018-03-07 22:31:26.846640"], ["image", "untitled_2017.jpeg"]]
+  [1m[35m (3.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "artworks" ("name", "user_id", "created_at", "updated_at", "image") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Untitled"], ["user_id", 6], ["created_at", "2018-03-07 22:31:27.249475"], ["updated_at", "2018-03-07 22:31:27.249475"], ["image", "untitled_plastic_2017.jpeg"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "artworks" ("name", "user_id", "created_at", "updated_at", "image") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Untitled"], ["user_id", 6], ["created_at", "2018-03-07 22:31:27.421899"], ["updated_at", "2018-03-07 22:31:27.421899"], ["image", "untitled_resin_01_2012.jpeg"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.9ms)[0m  [1m[32mINSERT INTO "artworks" ("name", "user_id", "created_at", "updated_at", "image") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Untitled"], ["user_id", 6], ["created_at", "2018-03-07 22:31:27.664460"], ["updated_at", "2018-03-07 22:31:27.664460"], ["image", "untitled_resin_02_2017.jpeg"]]
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "artworks" ("name", "user_id", "created_at", "updated_at", "image") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Self Portrait"], ["user_id", 7], ["created_at", "2018-03-07 22:31:29.216553"], ["updated_at", "2018-03-07 22:31:29.216553"], ["image", "michelle_drawing.jpeg"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "artworks" ("name", "user_id", "created_at", "updated_at", "image") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Self Portrait"], ["user_id", 8], ["created_at", "2018-03-07 22:31:30.461502"], ["updated_at", "2018-03-07 22:31:30.461502"], ["image", "matt_drawing.jpeg"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "artworks" ("name", "user_id", "created_at", "updated_at", "image") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Self Portrait"], ["user_id", 9], ["created_at", "2018-03-07 22:31:31.501815"], ["updated_at", "2018-03-07 22:31:31.501815"], ["image", "laura_drawing.jpeg"]]
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.5ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 1], ["tag_id", 7], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.3ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 1], ["tag_id", 7], ["created_at", "2018-03-07 22:31:31.550473"], ["updated_at", "2018-03-07 22:31:31.550473"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.3ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 1], ["tag_id", 24], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 24], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 1], ["tag_id", 24], ["created_at", "2018-03-07 22:31:31.560024"], ["updated_at", "2018-03-07 22:31:31.560024"]]
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 1], ["tag_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 1], ["tag_id", 2], ["created_at", "2018-03-07 22:31:31.571496"], ["updated_at", "2018-03-07 22:31:31.571496"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.3ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 2], ["tag_id", 25], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 25], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 2], ["tag_id", 25], ["created_at", "2018-03-07 22:31:31.580360"], ["updated_at", "2018-03-07 22:31:31.580360"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 2], ["tag_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.3ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 2], ["tag_id", 2], ["created_at", "2018-03-07 22:31:31.589654"], ["updated_at", "2018-03-07 22:31:31.589654"]]
+  [1m[35m (13.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 2], ["tag_id", 12], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 2], ["tag_id", 12], ["created_at", "2018-03-07 22:31:31.613019"], ["updated_at", "2018-03-07 22:31:31.613019"]]
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.4ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 3], ["tag_id", 7], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 3], ["tag_id", 7], ["created_at", "2018-03-07 22:31:31.626161"], ["updated_at", "2018-03-07 22:31:31.626161"]]
+  [1m[35m (3.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 3], ["tag_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 3], ["tag_id", 2], ["created_at", "2018-03-07 22:31:31.637364"], ["updated_at", "2018-03-07 22:31:31.637364"]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 3], ["tag_id", 25], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 25], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 3], ["tag_id", 25], ["created_at", "2018-03-07 22:31:31.644957"], ["updated_at", "2018-03-07 22:31:31.644957"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 4], ["tag_id", 7], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.3ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 4], ["tag_id", 7], ["created_at", "2018-03-07 22:31:31.652985"], ["updated_at", "2018-03-07 22:31:31.652985"]]
+  [1m[35m (2.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 4], ["tag_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 4], ["tag_id", 2], ["created_at", "2018-03-07 22:31:31.662991"], ["updated_at", "2018-03-07 22:31:31.662991"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 4], ["tag_id", 25], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 25], ["LIMIT", 1]]
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 4], ["tag_id", 25], ["created_at", "2018-03-07 22:31:31.705627"], ["updated_at", "2018-03-07 22:31:31.705627"]]
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 5], ["tag_id", 18], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 5], ["tag_id", 18], ["created_at", "2018-03-07 22:31:31.728545"], ["updated_at", "2018-03-07 22:31:31.728545"]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 5], ["tag_id", 27], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 27], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 5], ["tag_id", 27], ["created_at", "2018-03-07 22:31:31.742784"], ["updated_at", "2018-03-07 22:31:31.742784"]]
+  [1m[35m (2.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 5], ["tag_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.4ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 5], ["tag_id", 6], ["created_at", "2018-03-07 22:31:31.758200"], ["updated_at", "2018-03-07 22:31:31.758200"]]
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 6], ["tag_id", 18], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 6], ["tag_id", 18], ["created_at", "2018-03-07 22:31:31.770833"], ["updated_at", "2018-03-07 22:31:31.770833"]]
+  [1m[35m (2.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 6], ["tag_id", 27], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 27], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 6], ["tag_id", 27], ["created_at", "2018-03-07 22:31:31.781123"], ["updated_at", "2018-03-07 22:31:31.781123"]]
+  [1m[35m (12.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 6], ["tag_id", 6], ["LIMIT", 1]]
+  [1m[35m (2.4ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (3.6ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35mSQL (6.4ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 6], ["tag_id", 6], ["created_at", "2018-03-07 22:31:31.814743"], ["updated_at", "2018-03-07 22:31:31.814743"]]
+  [1m[35m (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 7], ["tag_id", 19], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 7], ["tag_id", 19], ["created_at", "2018-03-07 22:31:31.834210"], ["updated_at", "2018-03-07 22:31:31.834210"]]
+  [1m[35m (9.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (15.4ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 7], ["tag_id", 29], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (15.8ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 29], ["LIMIT", 1]]
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 7], ["tag_id", 29], ["created_at", "2018-03-07 22:31:31.912352"], ["updated_at", "2018-03-07 22:31:31.912352"]]
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 7], ["tag_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35mSQL (2.8ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 7], ["tag_id", 6], ["created_at", "2018-03-07 22:31:31.927453"], ["updated_at", "2018-03-07 22:31:31.927453"]]
+  [1m[35m (6.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 8], ["tag_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 8], ["tag_id", 6], ["created_at", "2018-03-07 22:31:31.953828"], ["updated_at", "2018-03-07 22:31:31.953828"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 8], ["tag_id", 7], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 8], ["tag_id", 7], ["created_at", "2018-03-07 22:31:31.962189"], ["updated_at", "2018-03-07 22:31:31.962189"]]
+  [1m[35m (5.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 8], ["tag_id", 27], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 27], ["LIMIT", 1]]
+  [1m[35mSQL (3.1ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 8], ["tag_id", 27], ["created_at", "2018-03-07 22:31:31.974344"], ["updated_at", "2018-03-07 22:31:31.974344"]]
+  [1m[35m (2.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 9], ["tag_id", 29], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 29], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 9], ["tag_id", 29], ["created_at", "2018-03-07 22:31:31.996257"], ["updated_at", "2018-03-07 22:31:31.996257"]]
+  [1m[35m (7.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 9], ["tag_id", 18], ["LIMIT", 1]]
+  [1m[35m (1.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[35mSQL (1.7ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 9], ["tag_id", 18], ["created_at", "2018-03-07 22:31:32.088667"], ["updated_at", "2018-03-07 22:31:32.088667"]]
+  [1m[35m (3.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 9], ["tag_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.3ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 9], ["tag_id", 6], ["created_at", "2018-03-07 22:31:32.114073"], ["updated_at", "2018-03-07 22:31:32.114073"]]
+  [1m[35m (3.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 10], ["tag_id", 10], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 10], ["tag_id", 10], ["created_at", "2018-03-07 22:31:32.131894"], ["updated_at", "2018-03-07 22:31:32.131894"]]
+  [1m[35m (2.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 10], ["tag_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 10], ["tag_id", 6], ["created_at", "2018-03-07 22:31:32.141980"], ["updated_at", "2018-03-07 22:31:32.141980"]]
+  [1m[35m (2.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 10], ["tag_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 10], ["tag_id", 2], ["created_at", "2018-03-07 22:31:32.153682"], ["updated_at", "2018-03-07 22:31:32.153682"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 10], ["tag_id", 27], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 27], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 10], ["tag_id", 27], ["created_at", "2018-03-07 22:31:32.161566"], ["updated_at", "2018-03-07 22:31:32.161566"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.7ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 11], ["tag_id", 25], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 25], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 11], ["tag_id", 25], ["created_at", "2018-03-07 22:31:32.170161"], ["updated_at", "2018-03-07 22:31:32.170161"]]
+  [1m[35m (2.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (4.9ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 11], ["tag_id", 13], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mTag Load (1.4ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[35mSQL (9.7ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 11], ["tag_id", 13], ["created_at", "2018-03-07 22:31:32.187943"], ["updated_at", "2018-03-07 22:31:32.187943"]]
+  [1m[35m (18.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (1.6ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 11], ["tag_id", 15], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[35mSQL (4.0ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 11], ["tag_id", 15], ["created_at", "2018-03-07 22:31:32.252913"], ["updated_at", "2018-03-07 22:31:32.252913"]]
+  [1m[35m (8.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 11], ["tag_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mTag Load (11.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35mSQL (3.7ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 11], ["tag_id", 6], ["created_at", "2018-03-07 22:31:32.301967"], ["updated_at", "2018-03-07 22:31:32.301967"]]
+  [1m[35m (16.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 12], ["tag_id", 10], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 12], ["tag_id", 10], ["created_at", "2018-03-07 22:31:32.365339"], ["updated_at", "2018-03-07 22:31:32.365339"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.3ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 12], ["tag_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 12], ["tag_id", 6], ["created_at", "2018-03-07 22:31:32.374310"], ["updated_at", "2018-03-07 22:31:32.374310"]]
+  [1m[35m (3.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 12], ["tag_id", 26], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 26], ["LIMIT", 1]]
+  [1m[35mSQL (3.1ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 12], ["tag_id", 26], ["created_at", "2018-03-07 22:31:32.386868"], ["updated_at", "2018-03-07 22:31:32.386868"]]
+  [1m[35m (16.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 13], ["tag_id", 13], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 13], ["tag_id", 13], ["created_at", "2018-03-07 22:31:32.416621"], ["updated_at", "2018-03-07 22:31:32.416621"]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 13], ["tag_id", 15], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[35mSQL (2.9ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 13], ["tag_id", 15], ["created_at", "2018-03-07 22:31:32.427406"], ["updated_at", "2018-03-07 22:31:32.427406"]]
+  [1m[35m (16.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 13], ["tag_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 13], ["tag_id", 6], ["created_at", "2018-03-07 22:31:32.458634"], ["updated_at", "2018-03-07 22:31:32.458634"]]
+  [1m[35m (8.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 13], ["tag_id", 25], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 25], ["LIMIT", 1]]
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 13], ["tag_id", 25], ["created_at", "2018-03-07 22:31:32.492319"], ["updated_at", "2018-03-07 22:31:32.492319"]]
+  [1m[35m (6.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 14], ["tag_id", 31], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mTag Load (0.5ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 14], ["tag_id", 31], ["created_at", "2018-03-07 22:31:32.523239"], ["updated_at", "2018-03-07 22:31:32.523239"]]
+  [1m[35m (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (5.7ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 14], ["tag_id", 21], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  [1m[35mSQL (3.2ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 14], ["tag_id", 21], ["created_at", "2018-03-07 22:31:32.552178"], ["updated_at", "2018-03-07 22:31:32.552178"]]
+  [1m[35m (3.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 14], ["tag_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.3ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 14], ["tag_id", 6], ["created_at", "2018-03-07 22:31:32.573533"], ["updated_at", "2018-03-07 22:31:32.573533"]]
+  [1m[35m (1.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 15], ["tag_id", 31], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 15], ["tag_id", 31], ["created_at", "2018-03-07 22:31:32.581942"], ["updated_at", "2018-03-07 22:31:32.581942"]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 15], ["tag_id", 13], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[35mSQL (3.6ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 15], ["tag_id", 13], ["created_at", "2018-03-07 22:31:32.593040"], ["updated_at", "2018-03-07 22:31:32.593040"]]
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 15], ["tag_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 15], ["tag_id", 6], ["created_at", "2018-03-07 22:31:32.617847"], ["updated_at", "2018-03-07 22:31:32.617847"]]
+  [1m[35m (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 16], ["tag_id", 31], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 16], ["tag_id", 31], ["created_at", "2018-03-07 22:31:32.632794"], ["updated_at", "2018-03-07 22:31:32.632794"]]
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 16], ["tag_id", 22], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 16], ["tag_id", 22], ["created_at", "2018-03-07 22:31:32.656375"], ["updated_at", "2018-03-07 22:31:32.656375"]]
+  [1m[35m (2.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 16], ["tag_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 16], ["tag_id", 6], ["created_at", "2018-03-07 22:31:32.664965"], ["updated_at", "2018-03-07 22:31:32.664965"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 17], ["tag_id", 30], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (5.3ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  [1m[36mTag Load (1.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 30], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 17], ["tag_id", 30], ["created_at", "2018-03-07 22:31:32.683188"], ["updated_at", "2018-03-07 22:31:32.683188"]]
+  [1m[35m (22.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 17], ["tag_id", 20], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  [1m[35mSQL (9.3ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 17], ["tag_id", 20], ["created_at", "2018-03-07 22:31:32.744367"], ["updated_at", "2018-03-07 22:31:32.744367"]]
+  [1m[35m (2.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (2.7ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 17], ["tag_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (1.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 17], ["tag_id", 6], ["created_at", "2018-03-07 22:31:32.772123"], ["updated_at", "2018-03-07 22:31:32.772123"]]
+  [1m[35m (6.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 18], ["tag_id", 32], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.3ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 32], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 18], ["tag_id", 32], ["created_at", "2018-03-07 22:31:32.808572"], ["updated_at", "2018-03-07 22:31:32.808572"]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.4ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 18], ["tag_id", 12], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 18], ["tag_id", 12], ["created_at", "2018-03-07 22:31:32.821848"], ["updated_at", "2018-03-07 22:31:32.821848"]]
+  [1m[35m (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 18], ["tag_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 18], ["tag_id", 6], ["created_at", "2018-03-07 22:31:32.832037"], ["updated_at", "2018-03-07 22:31:32.832037"]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 19], ["tag_id", 30], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 30], ["LIMIT", 1]]
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 19], ["tag_id", 30], ["created_at", "2018-03-07 22:31:32.848316"], ["updated_at", "2018-03-07 22:31:32.848316"]]
+  [1m[35m (7.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 19], ["tag_id", 20], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 19], ["tag_id", 20], ["created_at", "2018-03-07 22:31:32.864823"], ["updated_at", "2018-03-07 22:31:32.864823"]]
+  [1m[35m (6.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 19], ["tag_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 19], ["tag_id", 6], ["created_at", "2018-03-07 22:31:32.881368"], ["updated_at", "2018-03-07 22:31:32.881368"]]
+  [1m[35m (12.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 20], ["tag_id", 25], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 25], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 20], ["tag_id", 25], ["created_at", "2018-03-07 22:31:32.902442"], ["updated_at", "2018-03-07 22:31:32.902442"]]
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 20], ["tag_id", 8], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 20], ["tag_id", 8], ["created_at", "2018-03-07 22:31:32.919598"], ["updated_at", "2018-03-07 22:31:32.919598"]]
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 20], ["tag_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 20], ["tag_id", 6], ["created_at", "2018-03-07 22:31:32.933258"], ["updated_at", "2018-03-07 22:31:32.933258"]]
+  [1m[35m (8.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 21], ["tag_id", 26], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (10.4ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 26], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 21], ["tag_id", 26], ["created_at", "2018-03-07 22:31:32.963064"], ["updated_at", "2018-03-07 22:31:32.963064"]]
+  [1m[35m (6.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 21], ["tag_id", 8], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (3.4ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35mSQL (3.5ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 21], ["tag_id", 8], ["created_at", "2018-03-07 22:31:32.983808"], ["updated_at", "2018-03-07 22:31:32.983808"]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 21], ["tag_id", 20], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 21], ["tag_id", 20], ["created_at", "2018-03-07 22:31:32.997865"], ["updated_at", "2018-03-07 22:31:32.997865"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 21], ["tag_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  [1m[36mTag Load (0.0ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35mSQL (1.7ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 21], ["tag_id", 6], ["created_at", "2018-03-07 22:31:33.005097"], ["updated_at", "2018-03-07 22:31:33.005097"]]
+  [1m[35m (3.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 22], ["tag_id", 25], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 25], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 22], ["tag_id", 25], ["created_at", "2018-03-07 22:31:33.021218"], ["updated_at", "2018-03-07 22:31:33.021218"]]
+  [1m[35m (2.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 22], ["tag_id", 13], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[35mSQL (2.2ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 22], ["tag_id", 13], ["created_at", "2018-03-07 22:31:33.031663"], ["updated_at", "2018-03-07 22:31:33.031663"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.1ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 22], ["tag_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 22], ["tag_id", 6], ["created_at", "2018-03-07 22:31:33.040130"], ["updated_at", "2018-03-07 22:31:33.040130"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.8ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 23], ["tag_id", 25], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 25], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 23], ["tag_id", 25], ["created_at", "2018-03-07 22:31:33.048491"], ["updated_at", "2018-03-07 22:31:33.048491"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.4ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 23], ["tag_id", 11], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 23], ["tag_id", 11], ["created_at", "2018-03-07 22:31:33.055901"], ["updated_at", "2018-03-07 22:31:33.055901"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 23], ["tag_id", 9], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 23], ["tag_id", 9], ["created_at", "2018-03-07 22:31:33.064991"], ["updated_at", "2018-03-07 22:31:33.064991"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 23], ["tag_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35mSQL (2.1ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 23], ["tag_id", 6], ["created_at", "2018-03-07 22:31:33.074492"], ["updated_at", "2018-03-07 22:31:33.074492"]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 24], ["tag_id", 25], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.4ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 24], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 25], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 24], ["tag_id", 25], ["created_at", "2018-03-07 22:31:33.085150"], ["updated_at", "2018-03-07 22:31:33.085150"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 24], ["tag_id", 13], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.4ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 24], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[35mSQL (4.6ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 24], ["tag_id", 13], ["created_at", "2018-03-07 22:31:33.118927"], ["updated_at", "2018-03-07 22:31:33.118927"]]
+  [1m[35m (3.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 24], ["tag_id", 11], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 24], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[35mSQL (1.9ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 24], ["tag_id", 11], ["created_at", "2018-03-07 22:31:33.151311"], ["updated_at", "2018-03-07 22:31:33.151311"]]
+  [1m[35m (8.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 24], ["tag_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 24], ["LIMIT", 1]]
+  [1m[36mTag Load (14.6ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35mSQL (1.8ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 24], ["tag_id", 6], ["created_at", "2018-03-07 22:31:33.224427"], ["updated_at", "2018-03-07 22:31:33.224427"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 25], ["tag_id", 33], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 25], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 33], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 25], ["tag_id", 33], ["created_at", "2018-03-07 22:31:33.247644"], ["updated_at", "2018-03-07 22:31:33.247644"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 25], ["tag_id", 13], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 25], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[35mSQL (3.1ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 25], ["tag_id", 13], ["created_at", "2018-03-07 22:31:33.257781"], ["updated_at", "2018-03-07 22:31:33.257781"]]
+  [1m[35m (5.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.4ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 25], ["tag_id", 11], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 25], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[35mSQL (6.0ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 25], ["tag_id", 11], ["created_at", "2018-03-07 22:31:33.278947"], ["updated_at", "2018-03-07 22:31:33.278947"]]
+  [1m[35m (17.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 25], ["tag_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 25], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35mSQL (2.5ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 25], ["tag_id", 6], ["created_at", "2018-03-07 22:31:33.325696"], ["updated_at", "2018-03-07 22:31:33.325696"]]
+  [1m[35m (2.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 26], ["tag_id", 25], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.9ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 26], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 25], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 26], ["tag_id", 25], ["created_at", "2018-03-07 22:31:33.345309"], ["updated_at", "2018-03-07 22:31:33.345309"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 26], ["tag_id", 13], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 26], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 26], ["tag_id", 13], ["created_at", "2018-03-07 22:31:33.353566"], ["updated_at", "2018-03-07 22:31:33.353566"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 26], ["tag_id", 11], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 26], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 26], ["tag_id", 11], ["created_at", "2018-03-07 22:31:33.362579"], ["updated_at", "2018-03-07 22:31:33.362579"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 26], ["tag_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 26], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 26], ["tag_id", 6], ["created_at", "2018-03-07 22:31:33.371257"], ["updated_at", "2018-03-07 22:31:33.371257"]]
+  [1m[35m (2.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 27], ["tag_id", 31], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 27], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[35mSQL (3.6ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 27], ["tag_id", 31], ["created_at", "2018-03-07 22:31:33.382227"], ["updated_at", "2018-03-07 22:31:33.382227"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 27], ["tag_id", 23], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 27], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  [1m[35mSQL (3.5ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 27], ["tag_id", 23], ["created_at", "2018-03-07 22:31:33.398933"], ["updated_at", "2018-03-07 22:31:33.398933"]]
+  [1m[35m (1.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 27], ["tag_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 27], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 27], ["tag_id", 6], ["created_at", "2018-03-07 22:31:33.416666"], ["updated_at", "2018-03-07 22:31:33.416666"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 28], ["tag_id", 31], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 28], ["tag_id", 31], ["created_at", "2018-03-07 22:31:33.429093"], ["updated_at", "2018-03-07 22:31:33.429093"]]
+  [1m[35m (6.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 28], ["tag_id", 23], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 28], ["tag_id", 23], ["created_at", "2018-03-07 22:31:33.448935"], ["updated_at", "2018-03-07 22:31:33.448935"]]
+  [1m[35m (3.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 28], ["tag_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 28], ["tag_id", 6], ["created_at", "2018-03-07 22:31:33.476488"], ["updated_at", "2018-03-07 22:31:33.476488"]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.3ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 29], ["tag_id", 31], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 29], ["LIMIT", 1]]
+  [1m[36mTag Load (0.6ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[35mSQL (3.5ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 29], ["tag_id", 31], ["created_at", "2018-03-07 22:31:33.492108"], ["updated_at", "2018-03-07 22:31:33.492108"]]
+  [1m[35m (2.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (0.2ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 29], ["tag_id", 23], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 29], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  [1m[35mSQL (4.4ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 29], ["tag_id", 23], ["created_at", "2018-03-07 22:31:33.533963"], ["updated_at", "2018-03-07 22:31:33.533963"]]
+  [1m[35m (6.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArtworkTag Load (3.1ms)[0m  [1m[34mSELECT  "artwork_tags".* FROM "artwork_tags" WHERE "artwork_tags"."artwork_id" = ? AND "artwork_tags"."tag_id" = ? LIMIT ?[0m  [["artwork_id", 29], ["tag_id", 6], ["LIMIT", 1]]
+  [1m[35m (4.9ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArtwork Load (0.6ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = ? LIMIT ?[0m  [["id", 29], ["LIMIT", 1]]
+  [1m[36mTag Load (0.9ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "artwork_tags" ("artwork_id", "tag_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["artwork_id", 29], ["tag_id", 6], ["created_at", "2018-03-07 22:31:33.614167"], ["updated_at", "2018-03-07 22:31:33.614167"]]
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m

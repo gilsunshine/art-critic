@@ -6,9 +6,7 @@ class UsersController < ApplicationController
   end
 
   def create
-
     @user = User.new(user_params)
-    byebug
     if @user.save
       redirect_to @user
     else

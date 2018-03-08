@@ -1,17 +1,24 @@
-<p>Title: <%= @artwork.name %> <br></p>
-By: <%= @artwork.user.name %> <br>
-Year: <%= @artwork.year ? @artwork.year.name : "year unknown" %><br><br>
+<strong><%= @artwork.name %></strong>  <br>
+<%= @artwork.user.name %> <br>
+<i><%= @artwork.year ? @artwork.year.name : "year unknown" %></i><br><br>
 
-Styles:
+<strong>Styles:</strong>
 <%= (@artwork.style+@artwork.c_style).map { |style|  style.name }.join(", ") %>
-<br> <br>
+<br>
 
-Media:
-<%= (@artwork.medium+@artwork.c_medium).map { |medium| medium.name}.join(", ") %>
-<br><br>
+<% if (@artwork.medium+@artwork.c_medium).empty? %>
+<% elsif (@artwork.medium+@artwork.c_medium).count == 1 %>
+  <strong>Medium:</strong>
+<% else  %>
+  <strong>Media:</strong>
+<% end %>
+<%= (@artwork.medium+@artwork.c_medium).map { |medium| medium.name}.join(", ").capitalize %>
+<br>
 
+<% if !@artwork.c_tag.empty? %>
 Tags:
-<%= @artwork.c_tag.map {|tag| ctag.name}.join(", ") %>
+<%= @artwork.c_tag.map {|tag| ctag.name}.join(", ") %><br><br>
+<% end %>
 
 
 <div class="ui large image">
