@@ -92,3 +92,7 @@ artwork create
   else
     render :new
   end
+
+  edit art and Tags on art
+
+  
