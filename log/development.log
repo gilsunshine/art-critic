@@ -8436,3 +8436,2120 @@ Completed 200 OK in 55ms (Views: 48.2ms | ActiveRecord: 0.0ms)
 
 
 >>>>>>> local
+Started GET "/login" for 127.0.0.1 at 2018-03-08 10:58:35 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (2.0ms)
+Completed 200 OK in 773ms (Views: 760.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-03-08 10:58:38 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (29.0ms)
+Completed 200 OK in 143ms (Views: 116.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-03-08 11:03:44 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (7.0ms)
+Completed 200 OK in 78ms (Views: 75.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-03-08 11:04:02 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (7.7ms)
+Completed 200 OK in 84ms (Views: 80.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-03-08 11:04:03 -0500
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8Xle7nHmeKJVfjr+tWc94nR/TTxmfIPMpcaoUPR/l1/FwmcI0jSJaG5VNo6kfA8Vqed7/a6OxLztVRjZn4PVew==", "user"=>{"name"=>"", "username"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create Account"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", ""], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (6.1ms)
+Completed 200 OK in 76ms (Views: 67.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/artworks/new" for 127.0.0.1 at 2018-03-08 11:04:09 -0500
+Processing by ArtworksController#new as HTML
+  Rendering artworks/new.erb within layouts/application
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."category" = ?[0m  [["category", "style"]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."category" = ?[0m  [["category", "medium"]]
+  Rendered artworks/new.erb within layouts/application (164.0ms)
+Completed 200 OK in 236ms (Views: 212.3ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 11:10:47 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.9ms)
+Completed 200 OK in 60ms (Views: 55.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 11:11:21 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.6ms)
+Completed 200 OK in 52ms (Views: 49.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 11:11:24 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.6ms)
+Completed 200 OK in 52ms (Views: 50.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-03-08 11:11:32 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (3.2ms)
+Completed 200 OK in 66ms (Views: 61.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 11:11:33 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.5ms)
+Completed 200 OK in 72ms (Views: 67.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-03-08 11:11:35 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (3.2ms)
+Completed 200 OK in 71ms (Views: 64.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 11:11:36 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.0ms)
+Completed 200 OK in 64ms (Views: 58.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 11:11:48 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.8ms)
+Completed 200 OK in 58ms (Views: 55.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 11:11:55 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.0ms)
+Completed 200 OK in 62ms (Views: 59.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 11:12:10 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.7ms)
+Completed 500 Internal Server Error in 51ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (Invalid CSS after "</style>": expected "{", was ""):
+    4:   <title>Art Critic</title>
+    5: 
+    6:   <!-- Important! Links to JS and stylesheets -->
+    7:   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    8:   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    9: 
+   10:   <!-- Bootstrap CDN -->
+  
+app/assets/stylesheets/users.scss:33
+app/views/layouts/application.html.erb:7:in `_app_views_layouts_application_html_erb___3426679395353678681_70329260319740'
+Started GET "/login" for 127.0.0.1 at 2018-03-08 11:12:22 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.7ms)
+Completed 200 OK in 86ms (Views: 83.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 11:12:23 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.6ms)
+Completed 200 OK in 45ms (Views: 42.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 11:12:24 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.6ms)
+Completed 200 OK in 46ms (Views: 43.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 11:12:52 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.7ms)
+Completed 200 OK in 52ms (Views: 49.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 11:12:54 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.8ms)
+Completed 200 OK in 52ms (Views: 47.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 11:13:32 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.6ms)
+Completed 200 OK in 47ms (Views: 44.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 11:13:33 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.2ms)
+Completed 200 OK in 72ms (Views: 64.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 11:13:47 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.8ms)
+Completed 200 OK in 51ms (Views: 49.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 11:13:56 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.8ms)
+Completed 200 OK in 58ms (Views: 56.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 11:14:01 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.7ms)
+Completed 200 OK in 50ms (Views: 46.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 11:14:14 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.8ms)
+Completed 200 OK in 64ms (Views: 61.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 11:14:39 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.7ms)
+Completed 200 OK in 55ms (Views: 52.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 11:14:40 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.7ms)
+Completed 200 OK in 51ms (Views: 49.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 11:14:48 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.8ms)
+Completed 200 OK in 81ms (Views: 78.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 11:15:09 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.9ms)
+Completed 200 OK in 527ms (Views: 512.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 11:21:58 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.0ms)
+Completed 200 OK in 125ms (Views: 109.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 11:23:09 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (2.3ms)
+Completed 200 OK in 89ms (Views: 86.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 11:23:47 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.8ms)
+Completed 200 OK in 78ms (Views: 75.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 11:23:53 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.0ms)
+Completed 200 OK in 82ms (Views: 79.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 11:24:02 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.7ms)
+Completed 200 OK in 50ms (Views: 48.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 11:25:02 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nwwWl8ir6cZb+BY/ZljREM9FZw2y+O+kbRWg6hhTrrz7ciR7W/bUQJostQziBm4NKl1XK7NKelNnuG8JSiKdBQ==", "username"=>"", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", ""], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.5ms)
+
+
+  
+NoMethodError (undefined method `authenticate' for nil:NilClass):
+  
+app/controllers/sessions_controller.rb:9:in `create'
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 11:25:07 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nwwWl8ir6cZb+BY/ZljREM9FZw2y+O+kbRWg6hhTrrz7ciR7W/bUQJostQziBm4NKl1XK7NKelNnuG8JSiKdBQ==", "username"=>"", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", ""], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.2ms)
+
+
+  
+NoMethodError (undefined method `authenticate' for nil:NilClass):
+  
+app/controllers/sessions_controller.rb:9:in `create'
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 11:25:45 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nwwWl8ir6cZb+BY/ZljREM9FZw2y+O+kbRWg6hhTrrz7ciR7W/bUQJostQziBm4NKl1XK7NKelNnuG8JSiKdBQ==", "username"=>"", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", ""], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.1ms)
+
+
+  
+NoMethodError (undefined method `authenticate' for nil:NilClass):
+  
+app/controllers/sessions_controller.rb:9:in `create'
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 11:26:06 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nwwWl8ir6cZb+BY/ZljREM9FZw2y+O+kbRWg6hhTrrz7ciR7W/bUQJostQziBm4NKl1XK7NKelNnuG8JSiKdBQ==", "username"=>"clee", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "clee"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/users/10
+Completed 302 Found in 76ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/users/10" for 127.0.0.1 at 2018-03-08 11:26:06 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  Rendering users/show.erb within layouts/application
+  [1m[36mArtwork Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "artworks" WHERE "artworks"."user_id" = ? LIMIT ?[0m  [["user_id", 10], ["LIMIT", 1]]
+  Rendered users/show.erb within layouts/application (42.1ms)
+Completed 200 OK in 93ms (Views: 89.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 11:26:31 -0500
+  
+SyntaxError (/Users/danlee/Development/flatiron-mod-2-week-3/art-critic/app/controllers/sessions_controller.rb:29: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/controllers/sessions_controller.rb:29: syntax error, unexpected end-of-input, expecting keyword_end
+Started GET "/login" for 127.0.0.1 at 2018-03-08 11:26:45 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.7ms)
+Completed 200 OK in 67ms (Views: 64.7ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 11:26:46 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GDotFmzofXusUQDibMf7GZ1E4L652/8HOgy5KmnrAaJ8RB/6/7VA/W2Fo9HomUQEeFzQmLhpavAwoXbJO5oyGw==", "username"=>"", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", ""], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.7ms)
+
+
+  
+NoMethodError (undefined method `authenticate' for nil:NilClass):
+  
+app/controllers/sessions_controller.rb:9:in `create'
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 11:26:53 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GDotFmzofXusUQDibMf7GZ1E4L652/8HOgy5KmnrAaJ8RB/6/7VA/W2Fo9HomUQEeFzQmLhpavAwoXbJO5oyGw==", "username"=>"", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", ""], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.7ms)
+
+
+  
+NoMethodError (undefined method `authenticate' for nil:NilClass):
+  
+app/controllers/sessions_controller.rb:9:in `create'
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 11:27:26 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GDotFmzofXusUQDibMf7GZ1E4L652/8HOgy5KmnrAaJ8RB/6/7VA/W2Fo9HomUQEeFzQmLhpavAwoXbJO5oyGw==", "username"=>"", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", ""], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 1.4ms)
+
+
+  
+NoMethodError (undefined method `authenticate' for nil:NilClass):
+  
+app/controllers/sessions_controller.rb:9:in `create'
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 11:27:49 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GDotFmzofXusUQDibMf7GZ1E4L652/8HOgy5KmnrAaJ8RB/6/7VA/W2Fo9HomUQEeFzQmLhpavAwoXbJO5oyGw==", "username"=>"", "password"=>"[FILTERED]"}
+Completed 500 Internal Server Error in 30956ms
+
+
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `create'
+app/controllers/sessions_controller.rb:9:in `create'
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 11:28:31 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GDotFmzofXusUQDibMf7GZ1E4L652/8HOgy5KmnrAaJ8RB/6/7VA/W2Fo9HomUQEeFzQmLhpavAwoXbJO5oyGw==", "username"=>"", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", ""], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 0.5ms)
+
+
+  
+NoMethodError (undefined method `authenticate' for nil:NilClass):
+  
+app/controllers/sessions_controller.rb:9:in `create'
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 11:29:21 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GDotFmzofXusUQDibMf7GZ1E4L652/8HOgy5KmnrAaJ8RB/6/7VA/W2Fo9HomUQEeFzQmLhpavAwoXbJO5oyGw==", "username"=>"", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", ""], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 1.6ms)
+
+
+  
+NoMethodError (undefined method `authenticate' for nil:NilClass):
+  
+app/controllers/sessions_controller.rb:9:in `create'
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 11:29:35 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GDotFmzofXusUQDibMf7GZ1E4L652/8HOgy5KmnrAaJ8RB/6/7VA/W2Fo9HomUQEeFzQmLhpavAwoXbJO5oyGw==", "username"=>"", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", ""], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.6ms)
+
+
+  
+NoMethodError (undefined method `authenticate' for nil:NilClass):
+  
+app/controllers/sessions_controller.rb:9:in `create'
+Started GET "/login" for 127.0.0.1 at 2018-03-08 11:29:56 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (3.0ms)
+Completed 200 OK in 551ms (Views: 548.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 11:29:58 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+5E7rEe4VRflHvyUk0OsRDjz6ro+gI4ExxbUmP/uMoCf7wlA1OVokSTKX6cXHRNZ3evanD8yG/PNuxt7rZ8BOQ==", "username"=>"", "password"=>"[FILTERED]"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.8ms)
+Completed 200 OK in 120ms (Views: 119.1ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 11:30:00 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"42ptlkNB2huSoHyl2mYcqa89bWoGYfj4UoV7jW0eE++HFF960BznnVN035ZeOKO0SiVdTAfTbQ9YKLRuP28gVg==", "username"=>"", "password"=>"[FILTERED]"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.8ms)
+Completed 200 OK in 112ms (Views: 111.2ms)
+
+
+Started GET "/sessions" for 127.0.0.1 at 2018-03-08 11:33:04 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#index as HTML
+  Rendering application/index.erb within layouts/application
+  Rendered application/index.erb within layouts/application (1.6ms)
+Completed 200 OK in 434ms (Views: 420.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 11:33:14 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+5E7rEe4VRflHvyUk0OsRDjz6ro+gI4ExxbUmP/uMoCf7wlA1OVokSTKX6cXHRNZ3evanD8yG/PNuxt7rZ8BOQ==", "username"=>"", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (16.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", ""], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 34ms (ActiveRecord: 16.3ms)
+
+
+  
+NoMethodError (undefined method `authenticate' for nil:NilClass):
+  
+app/controllers/sessions_controller.rb:9:in `create'
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 11:46:44 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+5E7rEe4VRflHvyUk0OsRDjz6ro+gI4ExxbUmP/uMoCf7wlA1OVokSTKX6cXHRNZ3evanD8yG/PNuxt7rZ8BOQ==", "username"=>"", "password"=>"[FILTERED]"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (2.4ms)
+Completed 200 OK in 88ms (Views: 87.5ms)
+
+
+Started GET "/sessions" for 127.0.0.1 at 2018-03-08 11:47:35 -0500
+Processing by SessionsController#index as HTML
+  Rendering application/index.erb within layouts/application
+  Rendered application/index.erb within layouts/application (0.4ms)
+Completed 200 OK in 59ms (Views: 53.8ms)
+
+
+Started POST "/logout" for 127.0.0.1 at 2018-03-08 11:47:37 -0500
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/login
+Completed 302 Found in 1ms
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 11:47:37 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (5.2ms)
+Completed 500 Internal Server Error in 14ms
+
+
+  
+ActionView::Template::Error (undefined method `errors' for nil:NilClass):
+    38: </table>
+    39: <% end %>
+    40: 
+    41: <% if @user.errors.any? %>
+    42:   <p>poop</p>
+    43: <% end %>
+  
+app/views/sessions/new.erb:41:in `_app_views_sessions_new_erb___4353843789349177506_70091832267400'
+Started GET "/login" for 127.0.0.1 at 2018-03-08 11:48:32 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (248.5ms)
+Completed 500 Internal Server Error in 258ms
+
+
+  
+ActionView::Template::Error (undefined local variable or method `errors' for #<#<Class:0x007f7f05e46930>:0x007f7f0da32fd0>):
+    38: </table>
+    39: <% end %>
+    40: 
+    41: <% if errors.any? %>
+    42:   <p>poop</p>
+    43: <% end %>
+  
+app/views/sessions/new.erb:41:in `_app_views_sessions_new_erb___4353843789349177506_70091833187520'
+Started POST "/logout" for 127.0.0.1 at 2018-03-08 11:50:48 -0500
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/login
+Completed 302 Found in 0ms
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 11:50:48 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (285.3ms)
+Completed 500 Internal Server Error in 297ms
+
+
+  
+ActionView::Template::Error (undefined local variable or method `errors' for #<#<Class:0x007f7f05e46930>:0x007f7f0e2ce2c0>):
+    38: </table>
+    39: <% end %>
+    40: 
+    41: <% if errors.any? %>
+    42:   <p>poop</p>
+    43: <% end %>
+  
+app/views/sessions/new.erb:41:in `_app_views_sessions_new_erb___4353843789349177506_70091837699640'
+Started GET "/" for 127.0.0.1 at 2018-03-08 11:50:53 -0500
+Processing by ApplicationController#index as HTML
+  Rendering application/index.erb within layouts/application
+  Rendered application/index.erb within layouts/application (1.3ms)
+Completed 200 OK in 61ms (Views: 58.5ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 11:50:55 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (325.7ms)
+Completed 500 Internal Server Error in 340ms
+
+
+  
+ActionView::Template::Error (undefined local variable or method `errors' for #<#<Class:0x007f7f05e46930>:0x007f7f0a7e6ae0>):
+    38: </table>
+    39: <% end %>
+    40: 
+    41: <% if errors.any? %>
+    42:   <p>poop</p>
+    43: <% end %>
+  
+app/views/sessions/new.erb:41:in `_app_views_sessions_new_erb___4353843789349177506_70091806816920'
+Started GET "/login" for 127.0.0.1 at 2018-03-08 11:52:43 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (238.9ms)
+Completed 500 Internal Server Error in 251ms
+
+
+  
+ActionView::Template::Error (undefined local variable or method `errors' for #<#<Class:0x007f7f05e46930>:0x007f7f0db37ae8>):
+    38: </table>
+    39: <% end %>
+    40: 
+    41: <% if errors.any? %>
+    42:   <p>poop</p>
+    43: <% end %>
+  
+app/views/sessions/new.erb:41:in `_app_views_sessions_new_erb___4353843789349177506_70091802428020'
+Started GET "/" for 127.0.0.1 at 2018-03-08 11:52:48 -0500
+Processing by ApplicationController#index as HTML
+  Rendering application/index.erb within layouts/application
+  Rendered application/index.erb within layouts/application (0.7ms)
+Completed 200 OK in 69ms (Views: 66.9ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 11:52:50 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (354.8ms)
+Completed 500 Internal Server Error in 371ms
+
+
+  
+ActionView::Template::Error (undefined local variable or method `errors' for #<#<Class:0x007f7f05e46930>:0x007f7f09f0d9a0>):
+    38: </table>
+    39: <% end %>
+    40: 
+    41: <% if errors.any? %>
+    42:   <p>poop</p>
+    43: <% end %>
+  
+app/views/sessions/new.erb:41:in `_app_views_sessions_new_erb___4353843789349177506_70091802178120'
+Started GET "/login" for 127.0.0.1 at 2018-03-08 11:52:54 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.6ms)
+Completed 200 OK in 46ms (Views: 43.7ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 11:52:59 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DYP8A72FAnrjgwT+lVEvWusQBYfdP2/CZO2XxUr5TzBp/c7vLtg//CJXp80RD5BHDgg1odyN+jVuQFgmGIh8iQ==", "username"=>"asdfasdio", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "asdfasdio"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.6ms)
+
+
+  
+NoMethodError (undefined method `authenticate' for nil:NilClass):
+  
+app/controllers/sessions_controller.rb:9:in `create'
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 11:54:36 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DYP8A72FAnrjgwT+lVEvWusQBYfdP2/CZO2XxUr5TzBp/c7vLtg//CJXp80RD5BHDgg1odyN+jVuQFgmGIh8iQ==", "username"=>"asdfasdio", "password"=>"[FILTERED]"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.7ms)
+Completed 200 OK in 54ms (Views: 53.3ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 11:54:40 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"zbJWdl25qMXOXPhzmKZ8EpsCy2G2TNSAXRkBHrGVsNKpzGSazuSVQw+IW0Ac+MMPfhr7R7f+QXdXtM794+SDaw==", "username"=>"asdf", "password"=>"[FILTERED]"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.6ms)
+Completed 200 OK in 55ms (Views: 54.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 11:54:49 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gmVKAhXXDzPcRvcp4rY0AUWQKwOEh2t+yRgvY3cWcwfmG3juhooytR2SVBpm6IscoIgbJYU1/onDteCAJWdAvg==", "username"=>"", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", ""], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.6ms)
+
+
+  
+NoMethodError (undefined method `authenticate' for nil:NilClass):
+  
+app/controllers/sessions_controller.rb:9:in `create'
+Started GET "/sessions" for 127.0.0.1 at 2018-03-08 12:00:33 -0500
+Processing by SessionsController#index as HTML
+  Rendering application/index.erb within layouts/application
+  Rendered application/index.erb within layouts/application (0.6ms)
+Completed 200 OK in 105ms (Views: 98.6ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 12:00:36 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.7ms)
+Completed 200 OK in 100ms (Views: 96.1ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 12:00:37 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"pZFzRD4UnWMcoSdahAbo74VSZvExkqFNNtLx4UfHc2XB70GorUmg5d11hGkAWFfyYEpW1zAgNLo8fz4CFbZA3A==", "username"=>"", "password"=>"[FILTERED]"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.8ms)
+Completed 200 OK in 50ms (Views: 49.8ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 12:00:41 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OywxapaZIYbTZT5NvSHlg91j8z+EFN2fdvQb+DJ8qL5fUgOGBcQcABKxnX45f1qeOHvDGYWmSGh8WdQbYA2bBw==", "username"=>"", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", ""], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 0.7ms)
+
+
+  
+NoMethodError (undefined method `authenticate' for nil:NilClass):
+  
+app/controllers/sessions_controller.rb:10:in `create'
+Started GET "/sessions" for 127.0.0.1 at 2018-03-08 12:00:44 -0500
+Processing by SessionsController#index as HTML
+  Rendering application/index.erb within layouts/application
+  Rendered application/index.erb within layouts/application (0.6ms)
+Completed 200 OK in 92ms (Views: 85.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 12:03:26 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.8ms)
+Completed 200 OK in 97ms (Views: 92.5ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 12:03:30 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"/cv7P8Y1D/BkMGgPUlAWifF5/l5dM3rt51YlDCTdQdaZtcnTVWgydqXkyzzWDqmUFGHOeFyB7xrt++rvdqxybw==", "username"=>"", "password"=>"[FILTERED]"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.8ms)
+Completed 200 OK in 71ms (Views: 70.5ms)
+
+
+Started GET "/sessions" for 127.0.0.1 at 2018-03-08 12:03:55 -0500
+Processing by SessionsController#index as HTML
+  Rendering application/index.erb within layouts/application
+  Rendered application/index.erb within layouts/application (1.3ms)
+Completed 200 OK in 76ms (Views: 70.5ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 12:03:57 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (318.0ms)
+Completed 500 Internal Server Error in 336ms
+
+
+  
+ActionView::Template::Error (undefined local variable or method `errors' for #<#<Class:0x007f7f0dbdf450>:0x007f7f06c87440>):
+    38: </table>
+    39: <% end %>
+    40: 
+    41: <% if errors.any? %>
+    42:   <p>poop</p>
+    43: <% end %>
+  
+app/views/sessions/new.erb:41:in `_app_views_sessions_new_erb___4353843789349177506_70091775699900'
+Started GET "/sessions" for 127.0.0.1 at 2018-03-08 12:05:20 -0500
+Processing by SessionsController#index as HTML
+  Rendering application/index.erb within layouts/application
+  Rendered application/index.erb within layouts/application (0.9ms)
+Completed 200 OK in 101ms (Views: 93.8ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 12:05:22 -0500
+Processing by SessionsController#new as HTML
+Completed 500 Internal Server Error in 11ms
+
+
+  
+TypeError (no implicit conversion of Symbol into Integer):
+  
+app/models/session.rb:2:in `[]'
+app/models/session.rb:2:in `<class:Session>'
+app/models/session.rb:1:in `<top (required)>'
+app/controllers/sessions_controller.rb:4:in `new'
+Started GET "/login" for 127.0.0.1 at 2018-03-08 12:05:45 -0500
+Processing by SessionsController#new as HTML
+Completed 500 Internal Server Error in 12ms
+
+
+  
+NameError (undefined local variable or method `params' for Session (call 'Session.connection' to establish a connection):Class):
+  
+app/models/session.rb:2:in `<class:Session>'
+app/models/session.rb:1:in `<top (required)>'
+app/controllers/sessions_controller.rb:4:in `new'
+Started GET "/login" for 127.0.0.1 at 2018-03-08 12:06:00 -0500
+Processing by SessionsController#new as HTML
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.3ms)
+
+
+  
+ActiveRecord::StatementInvalid (Could not find table 'sessions'):
+  
+app/controllers/sessions_controller.rb:4:in `new'
+Started GET "/" for 127.0.0.1 at 2018-03-08 12:06:08 -0500
+Processing by ApplicationController#index as HTML
+  Rendering application/index.erb within layouts/application
+  Rendered application/index.erb within layouts/application (1.7ms)
+Completed 200 OK in 76ms (Views: 74.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 12:06:10 -0500
+Processing by SessionsController#new as HTML
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.3ms)
+
+
+  
+ActiveRecord::StatementInvalid (Could not find table 'sessions'):
+  
+app/controllers/sessions_controller.rb:4:in `new'
+Started GET "/login" for 127.0.0.1 at 2018-03-08 12:06:29 -0500
+Processing by SessionsController#new as HTML
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.4ms)
+
+
+  
+ActiveRecord::StatementInvalid (Could not find table 'sessions'):
+  
+app/controllers/sessions_controller.rb:4:in `new'
+Started GET "/login" for 127.0.0.1 at 2018-03-08 12:07:10 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (4.8ms)
+Completed 500 Internal Server Error in 16ms
+
+
+  
+ActionView::Template::Error (undefined method `errors' for nil:NilClass):
+    38: </table>
+    39: <% end %>
+    40: 
+    41: <% if @session.errors.any? %>
+    42:   <p>poop</p>
+    43: <% end %>
+  
+app/views/sessions/new.erb:41:in `_app_views_sessions_new_erb___4353843789349177506_70091770347720'
+Started GET "/login" for 127.0.0.1 at 2018-03-08 12:07:15 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.4ms)
+Completed 200 OK in 62ms (Views: 58.8ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 12:07:18 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"k53dGOZBz/R62jQCcXjWrxMBnZW9KLvfO7z2/eFQs5r34+/0dRzycrsOlzH1Jmmy9hmts7yaLigxETkesyGAIw==", "username"=>"", "password"=>"[FILTERED]"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.2ms)
+Completed 200 OK in 63ms (Views: 62.7ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 12:07:21 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"yyvLkEKDDQUSjJFeIiGa6/ZPaHkDYNPnekjT+4GrlkivVfl80d4wg9NYMm2mfyX2E1dYXwLSRhBw5RwY09ql8Q==", "username"=>"asdf", "password"=>"[FILTERED]"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.3ms)
+Completed 200 OK in 63ms (Views: 62.8ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 12:07:22 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"h4RSzLyht4FT6zwASHRPLu6tQG1QRWF+q1OHJ6ebUd7j+mAgL/yKB5I/nzPMKvAzC7VwS1H39Imh/kjE9epiZw==", "username"=>"", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", ""], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 1.0ms)
+
+
+  
+NoMethodError (undefined method `authenticate' for nil:NilClass):
+  
+app/controllers/sessions_controller.rb:9:in `create'
+Started GET "/sessions" for 127.0.0.1 at 2018-03-08 12:07:24 -0500
+Processing by SessionsController#index as HTML
+  Rendering application/index.erb within layouts/application
+  Rendered application/index.erb within layouts/application (0.7ms)
+Completed 200 OK in 84ms (Views: 76.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 12:08:00 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.9ms)
+Completed 200 OK in 84ms (Views: 80.9ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 12:08:01 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"/AjHyYH+BWSB7Vp+9CRvlXcn037s1XFwJqI3NfmGY7+YdvUlEqM44kA5+U1wetCIkj/jWO1n5IcsD/jWq/dQBg==", "username"=>"", "password"=>"[FILTERED]"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.3ms)
+Completed 200 OK in 73ms (Views: 72.2ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 12:08:06 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sNzrTG+94Bwx9RD8bGcBzcQDgG3x4AAVETXN6Z+pcjDUotmg/ODdmvAhs8/oOb7QIRuwS/BSleIbmAIKzdhBiQ==", "username"=>"sdf", "password"=>"[FILTERED]"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.9ms)
+Completed 200 OK in 58ms (Views: 57.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 12:08:08 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"m5LpAScQEZGKgDV5PhKmbQulwy1nOfb7Mr/Xh/c50cr/7NvttE0sF0tUlkq6TBlw7r3zC2aLYww4EhhkpUjicw==", "username"=>"", "password"=>"[FILTERED]"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.8ms)
+Completed 200 OK in 64ms (Views: 63.1ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 12:09:36 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"7bX03tBMg3ZQSO9Ot3paFyG9ugbO4zYG0EGQSAz0YiyJy8YyQxG+8JGcTH0zJOUKxKWKIM9Ro/Ha7F+rXoVRlQ==", "username"=>"", "password"=>"[FILTERED]"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (31514.4ms)
+Completed 200 OK in 31583ms (Views: 31582.9ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 12:10:15 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"4kav4G/JDYGdm/HWe3USQysH1BcZEYkbnpaylPV3jsaGOJ0M/JQwB1xPUuX/K61ezh/kMRijHOyUO313pwa9fw==", "username"=>"", "password"=>"[FILTERED]"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (276329.5ms)
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 12:14:51 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"4kav4G/JDYGdm/HWe3USQysH1BcZEYkbnpaylPV3jsaGOJ0M/JQwB1xPUuX/K61ezh/kMRijHOyUO313pwa9fw==", "username"=>"", "password"=>"[FILTERED]"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1098.3ms)
+Completed 200 OK in 277576ms (Views: 277575.6ms)
+
+
+Completed 200 OK in 1229ms (Views: 1228.9ms)
+
+
+Started GET "/sessions" for 127.0.0.1 at 2018-03-08 12:15:00 -0500
+Processing by SessionsController#index as HTML
+  Rendering application/index.erb within layouts/application
+  Rendered application/index.erb within layouts/application (0.7ms)
+Completed 200 OK in 70ms (Views: 63.6ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 12:15:02 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.8ms)
+Completed 200 OK in 77ms (Views: 73.4ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 12:15:04 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Em/UF439rzjCHv1ozSIjLGUhFpWfaWdlJAvBIJWvdQZ2Eeb7HqCSvgPKXltJfJwxgDkms57b8pIupg7Dx95Gvw==", "username"=>"", "password"=>"[FILTERED]"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.7ms)
+Completed 200 OK in 71ms (Views: 70.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 12:15:05 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"C4hjrW+43nX059PvVtWajj7RdkE+WyY/rb95xxXNMatv9lFB/OXj8zUzcNzSiyWT28lGZz/ps8inErYkR7wCEg==", "username"=>"", "password"=>"[FILTERED]"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.1ms)
+Completed 200 OK in 69ms (Views: 67.7ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 12:21:19 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"w5d3lwVroTRK3bU256d9Yq2zxzpNMVDuMUbVKdYXIdun6UV7ljacsosJFgVj+cJ/SKv3HEyDxRk76xrKhGYSYg==", "username"=>"", "password"=>"[FILTERED]"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.8ms)
+Completed 200 OK in 69ms (Views: 68.4ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 12:21:23 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"IHc1h1oyWx80GnZBTeNRf95TYh9D6e+fz4hnfCQ1OBVECQdryW9mmfXO1XLJve5iO0tSOUJbemjFJaifdkQLrA==", "username"=>"asdf", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "asdf"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.9ms)
+
+
+  
+NoMethodError (undefined method `authenticate' for nil:NilClass):
+  
+app/controllers/sessions_controller.rb:9:in `create'
+Started GET "/sessions" for 127.0.0.1 at 2018-03-08 12:22:22 -0500
+Processing by SessionsController#index as HTML
+  Rendering application/index.erb within layouts/application
+  Rendered application/index.erb within layouts/application (1.2ms)
+Completed 200 OK in 107ms (Views: 99.2ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 12:22:25 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.1ms)
+Completed 200 OK in 75ms (Views: 69.2ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 12:22:27 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lLR2xOV25FMA1Bdufl2GGUozR5yHKW1Z66X1zPjDb8rwykQodivZ1cEAtF36AzkEryt3uoab+K7hCDovqrJccw==", "username"=>"asdf", "password"=>"[FILTERED]"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.8ms)
+Completed 200 OK in 59ms (Views: 58.8ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 12:22:31 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"2k8UgBtSdEsfEw+LLmgLTVDRTef/0dIFJnfWjzcMHv++MSZsiA9Jzd7HrLiqNrRQtcl9wf5jR/Is2hlsZX0tRg==", "username"=>"", "password"=>"[FILTERED]"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.9ms)
+Completed 200 OK in 58ms (Views: 57.8ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 12:22:41 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Vw3ERceZWqbQOLGLh9sNTfbE3ph2IcPCYwfeY8YIfyszc/apVMRnIBHsErgDhbJQE9zuvneTVjVpqhGAlHlMkg==", "username"=>"asdf", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "asdf"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.5ms)
+
+
+  
+NoMethodError (undefined method `authenticate' for nil:NilClass):
+  
+app/controllers/sessions_controller.rb:9:in `create'
+Started GET "/sessions" for 127.0.0.1 at 2018-03-08 12:32:12 -0500
+Processing by SessionsController#index as HTML
+  Rendering application/index.erb within layouts/application
+  Rendered application/index.erb within layouts/application (0.8ms)
+Completed 200 OK in 86ms (Views: 78.5ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 12:32:17 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.9ms)
+Completed 200 OK in 63ms (Views: 59.4ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 12:32:21 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gsgVroZeukhi2Lhg+4MaGxTqPQdvOancDNxUfP57rsnmtidCFQOHzqMMG1N/3aUG8fINIW6LPCsGcZufrAqdcA==", "username"=>"asdf", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "asdf"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 15318ms (ActiveRecord: 0.6ms)
+
+
+  
+NoMethodError (undefined method `authenticate' for nil:NilClass):
+  
+app/controllers/sessions_controller.rb:10:in `create'
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 12:37:04 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gsgVroZeukhi2Lhg+4MaGxTqPQdvOancDNxUfP57rsnmtidCFQOHzqMMG1N/3aUG8fINIW6LPCsGcZufrAqdcA==", "username"=>"asdf", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "asdf"], ["LIMIT", 1]]
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.8ms)
+Completed 200 OK in 74ms (Views: 64.5ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 12:37:12 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xNSXgZHTyB/6kJLYvmKIyzNAvfqUzazRhtmR+NEmbvagqqVtAo71mTtEMes6PDfW1liN3JV/OSaMdF4bg1ddTw==", "username"=>"clee", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "clee"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/users/10
+Completed 302 Found in 79ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/users/10" for 127.0.0.1 at 2018-03-08 12:37:12 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  Rendering users/show.erb within layouts/application
+  [1m[36mArtwork Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "artworks" WHERE "artworks"."user_id" = ? LIMIT ?[0m  [["user_id", 10], ["LIMIT", 1]]
+  Rendered users/show.erb within layouts/application (99.7ms)
+Completed 200 OK in 183ms (Views: 175.7ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/sessions" for 127.0.0.1 at 2018-03-08 12:37:14 -0500
+Processing by SessionsController#index as HTML
+  Rendering application/index.erb within layouts/application
+  Rendered application/index.erb within layouts/application (0.8ms)
+Completed 200 OK in 101ms (Views: 94.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/logout" for 127.0.0.1 at 2018-03-08 12:37:17 -0500
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/login
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 12:37:17 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.0ms)
+Completed 200 OK in 74ms (Views: 71.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 12:37:17 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.3ms)
+Completed 200 OK in 71ms (Views: 66.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 12:37:44 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ROojUDccwcdIiLNPoDFYnbj0y71gL5UovGBR4nijcRwglBG8pEH8QYlcEHwkb+eAXez7m2GdAN+2zZ4BKtJCpQ==", "username"=>"asdf", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "asdf"], ["LIMIT", 1]]
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.9ms)
+Completed 200 OK in 86ms (Views: 76.0ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 12:37:46 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XCfKxwTL/alvpNdzw6xM2W/pt6MrlNWUJOA17eE2ed84Wfgrl5bAL65wdEBH8vPEivGHhSomQGMuTfoOs0dKZg==", "username"=>"", "password"=>"[FILTERED]"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.9ms)
+Completed 200 OK in 55ms (Views: 54.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 12:37:48 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"s/CHtetAQZvY6Nan+l8s8rzz6nP28gS72m0iT1l9MwTXjrVZeB18HRk8dZR+AZPvWevaVfdAkUzQwO2sCwwAvQ==", "username"=>"asdf", "password"=>"[FILTERED]"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.3ms)
+Completed 200 OK in 57ms (Views: 56.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 12:37:50 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"WCGOoW/6P2pS7h205l0iMV09kyNhrYuy9EAfVkaJ14c8X7xN/KcC7JM6vodiA50suCWjBWAfHkX+7dC1FPjkPg==", "username"=>"", "password"=>"[FILTERED]"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.9ms)
+Completed 200 OK in 59ms (Views: 58.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 12:37:54 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"AHi2b3Ne5l1DlO3h1ga+7y75xFjT8WBYbRR1/FYbgGVkBoSD4APb24JATtJSWAHyy+H0ftJD9a9nubofBGqz3A==", "username"=>"clee", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "clee"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.5ms)
+
+
+  
+NoMethodError (undefined method `authenticate' for nil:NilClass):
+  
+app/controllers/sessions_controller.rb:8:in `create'
+Started GET "/sessions" for 127.0.0.1 at 2018-03-08 12:38:37 -0500
+Processing by SessionsController#index as HTML
+  Rendering application/index.erb within layouts/application
+  Rendered application/index.erb within layouts/application (0.8ms)
+Completed 200 OK in 108ms (Views: 99.9ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 12:38:39 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.9ms)
+Completed 200 OK in 63ms (Views: 57.8ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 12:38:41 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"EprUTsAM9d/TSL3PUGVrQ2xcEKsRGYMBSoK0RNjtZv925OaiU1HIWRKcHvzUO9ReiUQgjRCrFvZAL3unipxVRg==", "username"=>"", "password"=>"[FILTERED]"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.8ms)
+Completed 200 OK in 60ms (Views: 59.1ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 12:38:43 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"RUIkLAgHQzKNHRIdUex6ZlcVwDurjAaBGgsqvK3yrCUhPBbAm1p+tEzJsS7VssV7sg3wHao+k3YQpuVf/4OfnA==", "username"=>"asdf", "password"=>"[FILTERED]"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (2.2ms)
+Completed 200 OK in 56ms (Views: 55.6ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 12:38:45 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"53N3esBNPpJXd9L1WNquz0Sbwj0LyYGKeeC1CImr7kyDDUWWUxADFJajccbchBHSoYPyGwp7FH1zTXrr29rd9Q==", "username"=>"", "password"=>"[FILTERED]"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.8ms)
+Completed 200 OK in 57ms (Views: 56.5ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 12:38:47 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ZDymvq+iQRORmvkf1FeQJNd00p/rL+AiOmbSqHXD0ccAQpRSPP98lVBOWixQCS85MmziueqdddUwyx1LJ7Lifg==", "username"=>"asdf", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "asdf"], ["LIMIT", 1]]
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.3ms)
+Completed 200 OK in 85ms (Views: 70.1ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 12:38:52 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"JvVNLo9YfzuT+cpqia9szeT2qIKwyGzJ++LbGdAi8bxCi3/CHAVCvVItaVkN8dPQAe6YpLF6+T7xTxT6glPCBQ==", "username"=>"clee", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "clee"], ["LIMIT", 1]]
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.8ms)
+Completed 200 OK in 132ms (Views: 56.4ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 12:43:03 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XOIjD+TSPe5+K8IdxZQ/Uk4IzPVFCUVZHvLAafSem/A4nBHjd48AaL//YS5ByoBPqxD800S70K4UXw+Kpu+oSQ==", "username"=>"jagjrsg", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "jagjrsg"], ["LIMIT", 1]]
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.8ms)
+Completed 200 OK in 67ms (Views: 66.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/sessions" for 127.0.0.1 at 2018-03-08 13:04:05 -0500
+Processing by SessionsController#index as HTML
+  Rendering application/index.erb within layouts/application
+  Rendered application/index.erb within layouts/application (0.6ms)
+Completed 200 OK in 86ms (Views: 78.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 13:04:08 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (2.1ms)
+Completed 200 OK in 67ms (Views: 61.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 13:07:15 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HGmtKIt3iPEIUd7Mg3clBqwSN0jhrCMdcHkMfggDtt14F5/EGCq1d8mFff8HKZobSQoHbuAetup61MOdWnKFZA==", "username"=>"", "password"=>"[FILTERED]"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.9ms)
+Completed 200 OK in 64ms (Views: 63.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 13:07:35 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"1LQXfFhRDo37JOFucM4KmdK/d/89EljmuxXl4969SUKwyiWQywwzCzrwQl30kLWEN6dH2TygzRGxuCoAjMx6+w==", "username"=>"", "password"=>"[FILTERED]"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.1ms)
+Completed 200 OK in 85ms (Views: 84.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 13:07:35 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rFhFcJcFOrvGAzbwHHBdz4PIbNeyCg73av3/PlahbGXIJnecBFgHPQfXlcOYLuLSZtBc8bO4mwBgUDDdBNBf3A==", "username"=>"", "password"=>"[FILTERED]"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.0ms)
+Completed 200 OK in 89ms (Views: 88.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 13:07:48 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rplU+9017pHyR3u97JVxX/eVJKbwAyptdn5Ohjr9RwPK52YXTmjTFzOT2I5oy85CEo0UgPGxv5p804FlaIx0ug==", "username"=>"", "password"=>"[FILTERED]"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (2.1ms)
+Completed 200 OK in 67ms (Views: 65.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 13:08:28 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"FiMQRqjXWPrUf9t2jO4M/6TvSEVJ2LYa1RJlNlWadBdyXSKqO4plfBWreEUIsLPiQfd4Y0hqI+3fv6rVB+tHrg==", "username"=>"", "password"=>"[FILTERED]"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.1ms)
+Completed 200 OK in 69ms (Views: 68.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sessions" for 127.0.0.1 at 2018-03-08 13:10:57 -0500
+Processing by SessionsController#index as HTML
+  Rendering application/index.erb within layouts/application
+  Rendered application/index.erb within layouts/application (0.8ms)
+Completed 200 OK in 73ms (Views: 67.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 13:10:59 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (2.0ms)
+Completed 200 OK in 101ms (Views: 96.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 13:11:00 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"kzUDu+fdqq5NJtbXZvkj8pUiqLsFfYjOc9BZvgaPZWv3SzFXdICXKIzydeTip5zvcDqYnQTPHTl5fZZdVP5W0g==", "username"=>"", "password"=>"[FILTERED]"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.8ms)
+Completed 200 OK in 84ms (Views: 83.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 13:11:05 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Ae/3e0v31azNyKm6lYZfO4Q5hQD0bU2jFYwdO+5g249lkcWX2KroKgwcCokR2OAmYSG1JvXf2FQfIdLYvBHoNg==", "username"=>"", "password"=>"[FILTERED]"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.2ms)
+Completed 200 OK in 61ms (Views: 60.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sessions" for 127.0.0.1 at 2018-03-08 13:11:14 -0500
+Processing by SessionsController#index as HTML
+  Rendering application/index.erb within layouts/application
+  Rendered application/index.erb within layouts/application (0.7ms)
+Completed 200 OK in 69ms (Views: 62.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 13:11:16 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.9ms)
+Completed 200 OK in 84ms (Views: 81.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 13:11:17 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"F+hpFmxk51i+2CNG/FPgCEODRnUwi05KHODdoYgak49zllv6/zna3n8MgHV4DV8Vppt2UzE5270WTRJC2mugNg==", "username"=>"", "password"=>"[FILTERED]"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.2ms)
+Completed 200 OK in 67ms (Views: 66.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 13:11:18 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DBf/LVa//XUxg2V5zhUl4N7Dqn2fjyJRDIIhEoSMnwVoac3BxeLA8/BXxkpKS5r9O9uaW549t6YGL+7x1v2svA==", "username"=>"", "password"=>"[FILTERED]"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.0ms)
+Completed 200 OK in 67ms (Views: 66.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sessions" for 127.0.0.1 at 2018-03-08 13:11:42 -0500
+Processing by SessionsController#index as HTML
+  Rendering application/index.erb within layouts/application
+  Rendered application/index.erb within layouts/application (0.6ms)
+Completed 200 OK in 88ms (Views: 83.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 13:11:44 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (2.0ms)
+Completed 200 OK in 69ms (Views: 63.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 13:11:44 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DidinBQaj7IeVJTfc5zOXsUW8vUuJm+KXuLyLJlpsxVqWVBwh0eyNN+AN+z3wnFDIA7C0y+U+n1UTz3PyxiArA==", "username"=>"", "password"=>"[FILTERED]"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.8ms)
+Completed 200 OK in 52ms (Views: 51.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 13:13:04 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3pHo3XEx7GiRksRlJOxT0zFjklVa0BmCDgRSBg0Xtw+679ox4mzR7lBGZ1agsuzO1Huic1tijHUEqZ3lX2aEtg==", "username"=>"", "password"=>"[FILTERED]"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.8ms)
+Completed 200 OK in 239ms (Views: 238.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 13:13:05 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OV35JDes6GQqNMs7dA4+79I6vK/f2gyFxC5a5cJiYUNdI8vIpPHV4uvgaAjwUIHyNyKMid5omXLOg5UGkBNS+g==", "username"=>"", "password"=>"[FILTERED]"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.2ms)
+Completed 200 OK in 99ms (Views: 98.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 13:13:34 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"bhnPKwX9NW3XjZA2jwxfaGBDrgKFOo5rF96Vniukjd0KZ/3HlqAI6xZZMwULUuB1hVueJISIG5wdc1p9edW+ZA==", "username"=>"", "password"=>"[FILTERED]"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.2ms)
+Completed 200 OK in 144ms (Views: 142.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 13:13:43 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5eHgD2PcHJ3XgSeTB7M3Ap1zVklM8IUfibthfRqo9/+Bn9Lj8IEhGxZVhKCD7YgfeGtmb01CEOiDFq6eSNnERg==", "username"=>"", "password"=>"[FILTERED]"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.2ms)
+Completed 200 OK in 68ms (Views: 67.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 13:14:01 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"iFQXxFpEwfqX47OiY/yD4rYpiCTTgcZRzg1Hnkgkpf7sKiUoyRn8fFY3EJHnojz/UzG4AtIzU6bEoIh9GlWWRw==", "username"=>"", "password"=>"[FILTERED]"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.4ms)
+Completed 200 OK in 58ms (Views: 57.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 13:17:17 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"QcUQa/IT0pUAVZ64EF82hmCe+yNWFNOmLKhgjHYldVYluyKHYU7vE8GBPYuUAYmbhYbLBVemRlEmBa9vJFRG7w==", "username"=>"", "password"=>"[FILTERED]"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.1ms)
+Completed 200 OK in 169ms (Views: 167.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 13:17:18 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ZwEca6R/PzBALRJbZCY0qJXIXFWZ4tSxl+UynfflyMMDfy6HNyICtoH5sWjgeIu1cNBsc5hQQUadSP1+pZT7eg==", "username"=>"", "password"=>"[FILTERED]"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.0ms)
+Completed 200 OK in 70ms (Views: 69.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sessions" for 127.0.0.1 at 2018-03-08 13:17:19 -0500
+Processing by SessionsController#index as HTML
+  Rendering application/index.erb within layouts/application
+  Rendered application/index.erb within layouts/application (0.6ms)
+Completed 200 OK in 83ms (Views: 77.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 13:17:22 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.3ms)
+Completed 200 OK in 68ms (Views: 63.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 13:17:23 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"r8u6JeEUixIyT1qvq/poCPUEhvJu58As0WAV9eCWw2jLtYjJckm2lPOb+ZwvpNcVEBy21G9VVdvbzdoWsufw0Q==", "username"=>"", "password"=>"[FILTERED]"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.8ms)
+Completed 200 OK in 52ms (Views: 51.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 13:17:24 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"VeDcYxnxt5sMMKB2w3309oWXaVp6XrUs+6frKOA73Icxnu6PiqyKHc3kA0VHI0vrYI9ZfHvsINvxCiTLskrvPg==", "username"=>"", "password"=>"[FILTERED]"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.8ms)
+Completed 200 OK in 60ms (Views: 58.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 13:17:26 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6HaW5mD2Bao9XoTZeJFJ/rwpHyYQF5egcx4vhPG8j2SMCKQK86s4LPyKJ+r8z/bjWTEvABGlAld5s+Bno8283Q==", "username"=>"", "password"=>"[FILTERED]"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.2ms)
+Completed 200 OK in 54ms (Views: 52.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sessions" for 127.0.0.1 at 2018-03-08 13:17:45 -0500
+Processing by SessionsController#index as HTML
+  Rendering application/index.erb within layouts/application
+  Rendered application/index.erb within layouts/application (0.6ms)
+Completed 200 OK in 70ms (Views: 63.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 13:17:54 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.3ms)
+Completed 200 OK in 69ms (Views: 65.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 13:17:56 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"vRrFq3CHSpqYAQL0J+DGlB/+sRcKJey5DmEQ4hjJl4zZZPdH49p3HFnVocejvnmJ+uaBMQuXeU4EzN8BSrikNQ==", "username"=>"", "password"=>"[FILTERED]"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.8ms)
+Completed 200 OK in 53ms (Views: 52.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sessions" for 127.0.0.1 at 2018-03-08 13:18:54 -0500
+Processing by SessionsController#index as HTML
+  Rendering application/index.erb within layouts/application
+  Rendered application/index.erb within layouts/application (0.9ms)
+Completed 200 OK in 53ms (Views: 46.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 13:18:56 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.8ms)
+Completed 200 OK in 53ms (Views: 49.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 13:18:57 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"x7xDKbSpL4j/bnp3ZP7k1y5vnHZ2Vw9z5V30tqoYD0ujwnHFJ/QSDj662UTgoFvKy3esUHflmoTv8DtV+Gk88g==", "username"=>"", "password"=>"[FILTERED]"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.4ms)
+Completed 200 OK in 60ms (Views: 59.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 13:19:07 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OmUbwwZEz88z8vSXgieKwUI2YMN8MKeLfklwr9lKdjxeGykvlRnySfImV6QGeTXcpy5Q5X2CMnx05L9MiztFhQ==", "username"=>"", "password"=>"[FILTERED]"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.1ms)
+Completed 200 OK in 76ms (Views: 74.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-08 13:19:12 -0500
+Processing by ApplicationController#index as HTML
+  Rendering application/index.erb within layouts/application
+  Rendered application/index.erb within layouts/application (0.9ms)
+Completed 200 OK in 56ms (Views: 54.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 13:19:14 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.9ms)
+Completed 200 OK in 63ms (Views: 58.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 13:19:15 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"LKtyLQNsmZ3QnNSrnoD4/8Xs0+nAhzbRZXo+SCeehChI1UDBkDGkGxFId5ga3kfiIPTjz8E1oyZv1/Grde+3kQ==", "username"=>"", "password"=>"[FILTERED]"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.4ms)
+Completed 200 OK in 57ms (Views: 56.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 13:22:15 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"bDRHbGWR9bb8CqRzljzGXZUNLa7AQW0h0lm7P690wo4ISnWA9szIMD3eB0ASYnlAcBUdiMHz+NbY9HTc/QXxNw==", "username"=>"", "password"=>"[FILTERED]"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.1ms)
+Completed 200 OK in 75ms (Views: 74.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 13:22:18 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"12aAfCG/zEIAdhxsOXXV5ykWknj8a9p1I+ijrNfV61CzGLKQsuLxxMGiv1+9K2r6zA6iXv3ZT4IpRWxPhaTY6Q==", "username"=>"asdf", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "asdf"], ["LIMIT", 1]]
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.8ms)
+Completed 200 OK in 53ms (Views: 51.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/sessions" for 127.0.0.1 at 2018-03-08 13:26:08 -0500
+Processing by SessionsController#index as HTML
+  Rendering application/index.erb within layouts/application
+  Rendered application/index.erb within layouts/application (0.6ms)
+Completed 200 OK in 83ms (Views: 78.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 13:26:10 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.5ms)
+Completed 200 OK in 71ms (Views: 63.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 13:26:12 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"qY+cPUMxTks1XoG+Xaii5WnbVDFoEF1jgc12UKhWFXzN8a7R0GxzzfSKIo3Z9h34jMNkF2miyJSLYLmz+icmxQ==", "username"=>"", "password"=>"[FILTERED]"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.4ms)
+Completed 200 OK in 50ms (Views: 48.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 13:26:53 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"/adDDwWoiyt+QllyxiCQEvH64HE3ioJ4DbMYvU/y7wCZ2XHjlvW2rb+W+kFCfi8PFOLQVzY4F48HHtdeHYPcuQ==", "username"=>"qwre", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "qwre"], ["LIMIT", 1]]
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.0ms)
+Completed 200 OK in 54ms (Views: 52.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/sessions" for 127.0.0.1 at 2018-03-08 13:28:04 -0500
+Processing by SessionsController#index as HTML
+  Rendering application/index.erb within layouts/application
+  Rendered application/index.erb within layouts/application (0.9ms)
+Completed 200 OK in 67ms (Views: 59.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 13:28:06 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (281.3ms)
+Completed 500 Internal Server Error in 299ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `f' for #<#<Class:0x007f7f053cc810>:0x007f7f0661ce48>):
+    67:           <div class="field">
+    68:             <div class="ui left icon input">
+    69:               <i class="user icon"></i>
+    70:               <%= f.text_field :name, placeholder: "Name" %>
+    71:             </div>
+    72:           </div>
+    73: 
+  
+app/views/sessions/new.erb:70:in `block in _app_views_sessions_new_erb___4353843789349177506_70091772324920'
+app/views/sessions/new.erb:65:in `_app_views_sessions_new_erb___4353843789349177506_70091772324920'
+Started GET "/login" for 127.0.0.1 at 2018-03-08 13:30:53 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (267.4ms)
+Completed 500 Internal Server Error in 278ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `f' for #<#<Class:0x007f7f053cc810>:0x007f7f0da53730>):
+    75:           <!-- <div class="field">
+    76:             <div class="ui left icon input">
+    77:               <i class="user icon"></i>
+    78:               <%= f.text_field :username, placeholder: "Username" %>
+    79:             </div>
+    80:           </div>
+    81: 
+  
+app/views/sessions/new.erb:78:in `block in _app_views_sessions_new_erb___4353843789349177506_70091823964780'
+app/views/sessions/new.erb:65:in `_app_views_sessions_new_erb___4353843789349177506_70091823964780'
+Started GET "/login" for 127.0.0.1 at 2018-03-08 13:31:01 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (279.7ms)
+Completed 500 Internal Server Error in 292ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `f' for #<#<Class:0x007f7f053cc810>:0x007f7f0a747d28>):
+    75:           <!-- <div class="field">
+    76:             <div class="ui left icon input">
+    77:               <i class="user icon"></i>
+    78:               <%= f.text_field :username, placeholder: "Username" %>
+    79:             </div>
+    80:           </div>
+    81: 
+  
+app/views/sessions/new.erb:78:in `block in _app_views_sessions_new_erb___4353843789349177506_70091823850400'
+app/views/sessions/new.erb:65:in `_app_views_sessions_new_erb___4353843789349177506_70091823850400'
+Started GET "/login" for 127.0.0.1 at 2018-03-08 13:31:29 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (0.9ms)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/danlee/Development/flatiron-mod-2-week-3/art-critic/app/views/sessions/new.erb:85: syntax error, unexpected keyword_ensure, expecting keyword_end
+/Users/danlee/Development/flatiron-mod-2-week-3/art-critic/app/views/sessions/new.erb:87: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/views/sessions/new.erb:85: syntax error, unexpected keyword_ensure, expecting keyword_end
+app/views/sessions/new.erb:87: syntax error, unexpected end-of-input, expecting keyword_end
+Started GET "/login" for 127.0.0.1 at 2018-03-08 13:33:19 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.1ms)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/danlee/Development/flatiron-mod-2-week-3/art-critic/app/views/sessions/new.erb:87: syntax error, unexpected keyword_ensure, expecting keyword_end
+/Users/danlee/Development/flatiron-mod-2-week-3/art-critic/app/views/sessions/new.erb:89: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/views/sessions/new.erb:87: syntax error, unexpected keyword_ensure, expecting keyword_end
+app/views/sessions/new.erb:89: syntax error, unexpected end-of-input, expecting keyword_end
+Started GET "/login" for 127.0.0.1 at 2018-03-08 13:33:33 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.1ms)
+Completed 200 OK in 51ms (Views: 48.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 13:33:54 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.1ms)
+Completed 200 OK in 55ms (Views: 52.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 13:33:58 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.9ms)
+Completed 200 OK in 69ms (Views: 65.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 13:34:34 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.1ms)
+Completed 200 OK in 60ms (Views: 57.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 13:34:42 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.1ms)
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/danlee/Development/flatiron-mod-2-week-3/art-critic/app/views/sessions/new.erb:78: syntax error, unexpected ')', expecting &. or :: or '[' or '.'
+...assword_field_tag, "Password" );@output_buffer.safe_append='
+...                               ^
+/Users/danlee/Development/flatiron-mod-2-week-3/art-critic/app/views/sessions/new.erb:82: syntax error, unexpected keyword_end, expecting ')'
+/Users/danlee/Development/flatiron-mod-2-week-3/art-critic/app/views/sessions/new.erb:94: syntax error, unexpected keyword_ensure, expecting ')'
+/Users/danlee/Development/flatiron-mod-2-week-3/art-critic/app/views/sessions/new.erb:96: syntax error, unexpected keyword_end, expecting ')'):
+  
+app/views/sessions/new.erb:78: syntax error, unexpected ')', expecting &. or :: or '[' or '.'
+app/views/sessions/new.erb:82: syntax error, unexpected keyword_end, expecting ')'
+app/views/sessions/new.erb:94: syntax error, unexpected keyword_ensure, expecting ')'
+app/views/sessions/new.erb:96: syntax error, unexpected keyword_end, expecting ')'
+Started GET "/sessions" for 127.0.0.1 at 2018-03-08 13:35:20 -0500
+Processing by SessionsController#index as HTML
+  Rendering application/index.erb within layouts/application
+  Rendered application/index.erb within layouts/application (1.0ms)
+Completed 200 OK in 60ms (Views: 53.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 13:35:21 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.2ms)
+Completed 200 OK in 66ms (Views: 58.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 13:36:07 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.1ms)
+Completed 200 OK in 50ms (Views: 47.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 13:36:08 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.2ms)
+Completed 200 OK in 77ms (Views: 74.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 13:36:51 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.7ms)
+Completed 200 OK in 73ms (Views: 68.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 13:37:26 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.3ms)
+Completed 200 OK in 59ms (Views: 52.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 13:38:18 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (2.4ms)
+Completed 200 OK in 47ms (Views: 44.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 13:38:38 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (252.4ms)
+Completed 500 Internal Server Error in 264ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `f' for #<#<Class:0x007f7f053cc810>:0x007f7f09ea3d20>):
+    79:             </div>
+    80:           </div>
+    81: 
+    82:           <%= f.submit "Create Account", :class => "ui fluid large black submit button" %>
+    83: 
+    84:           <%end%>
+    85: 
+  
+app/views/sessions/new.erb:82:in `block in _app_views_sessions_new_erb___4353843789349177506_70091801971580'
+app/views/sessions/new.erb:66:in `_app_views_sessions_new_erb___4353843789349177506_70091801971580'
+Started GET "/login" for 127.0.0.1 at 2018-03-08 13:38:55 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.5ms)
+Completed 200 OK in 53ms (Views: 50.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 13:38:57 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ny4G9UOLiELYwPlMGezIbkK9RfTN6sUSXlU4qO+5V337UDQZ0Na1xBkUWn+dsndzp6V10sxYUOVU+PdLvchkxA==", "username"=>"Username: ", "password"=>"[FILTERED]", "commit"=>"Create Account"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Username: "], ["LIMIT", 1]]
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.2ms)
+Completed 200 OK in 73ms (Views: 71.7ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 13:39:06 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tZCbw1D1U6N/EUqV3iA5FIHfrKkfTXcczb6KxNelaxjR7qkvw6huJb7F6aZafoYJZMecjx7/4uvHE0UnhdRYoQ==", "username"=>"Username: qwer", "password"=>"[FILTERED]", "commit"=>"Create Account"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Username: qwer"], ["LIMIT", 1]]
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.1ms)
+Completed 200 OK in 108ms (Views: 106.1ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 13:39:15 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"v6W2IWjCJpUGGS6v2MI82GE71uYfQ5JAS+7D+41S2gzb24TN+58bE8fNjZxcnIPFhCPmwB7xB7dBQwwY3yPptQ==", "username"=>"Username: clee", "password"=>"[FILTERED]", "commit"=>"Create Account"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Username: clee"], ["LIMIT", 1]]
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.2ms)
+Completed 200 OK in 64ms (Views: 62.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/sessions" for 127.0.0.1 at 2018-03-08 13:39:32 -0500
+Processing by SessionsController#index as HTML
+  Rendering application/index.erb within layouts/application
+  Rendered application/index.erb within layouts/application (0.6ms)
+Completed 200 OK in 66ms (Views: 56.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 13:39:33 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.2ms)
+Completed 200 OK in 63ms (Views: 57.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 13:39:35 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"h08G1k74eJuxARhdof5xu6zrZZfigkfimQKdVDWOEarjMTQ63aVFHXDVu24loM6mSfNVseMw0hWTr1K3Z/8iEw==", "username"=>"Username: ", "password"=>"[FILTERED]", "commit"=>"Create Account"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Username: "], ["LIMIT", 1]]
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (2.2ms)
+Completed 200 OK in 68ms (Views: 66.7ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 13:39:43 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hWgOGitroB0szID26Za6sIjTZ8CwPNSHkSGL/pD2l1bhFjz2uDadm+0YI8VtyAWtbctX5rGOQXCbjEQdwoek7w==", "username"=>"Username: asdf", "password"=>"[FILTERED]", "commit"=>"Create Account"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Username: asdf"], ["LIMIT", 1]]
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.2ms)
+Completed 200 OK in 64ms (Views: 62.5ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 13:39:55 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gGQ9UtRiLsX/BHhgREjpcCyerQuKxQJTe5VoQgSPFj/kGg++Rz8TQz7Q21PAFlZtyYadLYt3l6RxOKehVv4lhg==", "username"=>"clee", "password"=>"[FILTERED]", "commit"=>"Create Account"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "clee"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/users/10
+Completed 302 Found in 71ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/users/10" for 127.0.0.1 at 2018-03-08 13:39:56 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  Rendering users/show.erb within layouts/application
+  [1m[36mArtwork Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "artworks" WHERE "artworks"."user_id" = ? LIMIT ?[0m  [["user_id", 10], ["LIMIT", 1]]
+  Rendered users/show.erb within layouts/application (24.7ms)
+Completed 200 OK in 89ms (Views: 82.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/sessions" for 127.0.0.1 at 2018-03-08 13:39:57 -0500
+Processing by SessionsController#index as HTML
+  Rendering application/index.erb within layouts/application
+  Rendered application/index.erb within layouts/application (1.0ms)
+Completed 200 OK in 96ms (Views: 88.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/logout" for 127.0.0.1 at 2018-03-08 13:40:04 -0500
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/login
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 13:40:04 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.5ms)
+Completed 200 OK in 56ms (Views: 53.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 13:40:31 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.1ms)
+Completed 200 OK in 64ms (Views: 58.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 13:40:40 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.2ms)
+Completed 200 OK in 58ms (Views: 52.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 13:40:41 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"EX54vDogeD4Uu8MF9STW9BcuGGJ9wJ9b9+5UCZHDBnd1AEpQqX1FuNVvYDZxemnp8jYoRHxyCqz9Q5vqw7I1zg==", "username"=>"", "password"=>"[FILTERED]", "commit"=>"Log In"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (2.6ms)
+Completed 200 OK in 74ms (Views: 73.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 13:40:44 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"NFhB9ceFGuct6ZmMZRUck0KQwAjr8FtSWaRI1I+iJENQJnMZVNgnYew9Or/hS6OOp4jwLupCzqVTCYc33dMX+g==", "username"=>"qwer", "password"=>"[FILTERED]", "commit"=>"Log In"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "qwer"], ["LIMIT", 1]]
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.1ms)
+Completed 200 OK in 65ms (Views: 62.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-03-08 13:41:02 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (3.6ms)
+Completed 200 OK in 65ms (Views: 60.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 13:41:12 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dn4PlHqgySHRnoaV+lxXTfHTMMV1D2S7k5FmaYW94soSAD146f30pxBKJaZ+AuhQFMsA43S98UyZPKmK18zRcw==", "username"=>"", "password"=>"[FILTERED]", "commit"=>"Log In"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (2.3ms)
+Completed 200 OK in 75ms (Views: 74.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sessions" for 127.0.0.1 at 2018-03-08 13:41:29 -0500
+Processing by SessionsController#index as HTML
+  Rendering application/index.erb within layouts/application
+  Rendered application/index.erb within layouts/application (0.6ms)
+Completed 200 OK in 59ms (Views: 53.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 13:41:31 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (2.4ms)
+Completed 200 OK in 61ms (Views: 54.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 13:41:32 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"aGjVO+yYZ4XdRaSg9wmwUgin1cydN6R8OEok9vi7pvYMFufXf8VaAxyRB5NzVw9P7b/l6pyFMYsy5+sVqsqVTw==", "username"=>"", "password"=>"[FILTERED]", "commit"=>"Log In"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.2ms)
+Completed 200 OK in 61ms (Views: 60.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 13:41:34 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Fa55HMDuQhKvjJGeeYts2i9PJuuUVOGvZ9SSMpjl9PVx0EvwU7N/lG5YMq391dPHylcWzZXmdFhteV3RypTHTA==", "username"=>"", "password"=>"[FILTERED]", "commit"=>"Log In"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.2ms)
+Completed 200 OK in 71ms (Views: 70.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sessions" for 127.0.0.1 at 2018-03-08 13:42:15 -0500
+Processing by SessionsController#index as HTML
+  Rendering application/index.erb within layouts/application
+  Rendered application/index.erb within layouts/application (0.6ms)
+Completed 200 OK in 64ms (Views: 55.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 13:42:17 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.5ms)
+Completed 200 OK in 67ms (Views: 63.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-03-08 13:42:18 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"IXzf2cGvgWe7X3tBerklvmkt7ig4o80TKrI9QNlE02RFAu01UvK84XqL2HL+55qjjDXeDjkRWOQgH/KjizXg3Q==", "username"=>"", "password"=>"[FILTERED]", "commit"=>"Log In"}
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.4ms)
+Completed 200 OK in 67ms (Views: 66.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/artworks" for 127.0.0.1 at 2018-03-08 13:42:21 -0500
+Processing by ArtworksController#index as HTML
+  Rendering artworks/index.erb within layouts/application
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks"[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (0.6ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 1]]
+  [1m[36mCACHE Tag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 2]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 2]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 3]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 4]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 4]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 5]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 5]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 6]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 6]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 7]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 7]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 8]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 8]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 9]]
+  [1m[36mCACHE Tag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 9]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 10]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 10]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 11]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 11]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 12]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 12]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 13]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 13]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 14]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 14]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 15]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 15]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 16]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 16]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 17]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 17]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 18]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 18]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 19]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 19]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 20]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 20]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 21]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 21]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 22]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 22]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 23]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 23]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 24]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 24]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 25]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 25]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 26]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 26]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 27]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 27]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 28]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 28]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 29]]
+  [1m[36mCACHE Tag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "artwork_tags" ON "tags"."id" = "artwork_tags"."tag_id" WHERE "artwork_tags"."artwork_id" = ?[0m  [["artwork_id", 29]]
+  Rendered artworks/index.erb within layouts/application (152.6ms)
+Completed 200 OK in 200ms (Views: 184.2ms | ActiveRecord: 9.3ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-03-08 13:42:25 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (6.6ms)
+Completed 200 OK in 70ms (Views: 62.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 13:42:26 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.4ms)
+Completed 200 OK in 85ms (Views: 78.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-03-08 13:42:27 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (3.8ms)
+Completed 200 OK in 71ms (Views: 64.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 13:42:28 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (2.0ms)
+Completed 200 OK in 69ms (Views: 64.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-03-08 13:42:29 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (6.7ms)
+Completed 200 OK in 79ms (Views: 73.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-03-08 13:42:38 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (3.6ms)
+Completed 200 OK in 67ms (Views: 61.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-03-08 13:42:39 -0500
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gXw0xMd7tCNYgLz7ylBODzDlxvk/etYZNZSZzJ+At5y1xw0iZKlF6WOrsIvbS3z47X3wOPeIkWl9BylF9Hz1uA==", "user"=>{"name"=>"", "username"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create Account"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", ""], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (6.9ms)
+Completed 200 OK in 82ms (Views: 75.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-03-08 13:43:05 -0500
+Processing by UsersController#index as HTML
+  Rendering application/index.erb within layouts/application
+  Rendered application/index.erb within layouts/application (0.6ms)
+Completed 200 OK in 84ms (Views: 68.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-03-08 13:43:07 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.erb within layouts/application
+  Rendered sessions/new.erb within layouts/application (1.6ms)
+Completed 200 OK in 61ms (Views: 55.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-03-08 13:43:08 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (6.7ms)
+Completed 200 OK in 62ms (Views: 55.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-03-08 13:43:09 -0500
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"LMPmYFubJyfwNyIjgkmJyNv4KMJfVWDRpWClP4EzKL0YeN+G+EnW7cscLlOTUrs/BmAeA5enJ6Ht8xW26s9qmQ==", "user"=>{"name"=>"", "username"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create Account"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", ""], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  Rendering users/new.erb within layouts/application
+  Rendered users/new.erb within layouts/application (3.9ms)
+Completed 200 OK in 80ms (Views: 75.9ms | ActiveRecord: 0.2ms)
+
+

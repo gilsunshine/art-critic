@@ -1,7 +1,7 @@
 <style type="text/css">
 
   body {
-    background-color: #fff;
+    background-color: #red;
   }
   body > .grid {
     height: 100%;
@@ -15,17 +15,13 @@
 
 </style>
 
-<!-- <div class="input_fields_wrap">
-    <button class="add_field_button">Add Moar Tags!!</button>
-    <div><input type="text" name="mytext[]"></div>
-</div> -->
-
 <% if @user.errors.any? %>
   <div class="ui error message">
     <div class="header">
         <h4>
-          <%= pluralize(@user.errors.count, "error") %>
-          prohibited this user from being created:
+          <!-- <%= pluralize(@user.errors.count, "error") %>
+          prohibited this user from being created: -->
+          Something went wrong...
         </h4>
     </div>
     <ul class="list">
@@ -72,9 +68,6 @@
               <%= f.password_field :password, placeholder: "Password" %>
             </div>
           </div>
-<<<<<<< HEAD
-        </div>
-=======
 
           <div class="field">
             <div class="ui left icon input">
@@ -82,23 +75,13 @@
               <%= f.password_field :password_confirmation, placeholder: "Confirm Password" %>
             </div>
           </div>
->>>>>>> local
 
           <%= f.submit "Create Account", :class => "ui fluid large black submit button" %>
           <% end %>
         </div>
 
       </div>
-<<<<<<< HEAD
 
-    </div>
-
-    <div class="ui message">
-      or have an account? <%= link_to "Sign In", '/login' %>
-    </div>
-  </div>
-</div>
-=======
       <div class="ui message">
         or have an account? <%= link_to "Sign In", '/login' %>
       </div>
@@ -121,4 +104,3 @@
   <%= f.password_field :password_confirmation %><br>
   <%= f.submit %>
 <% end %> -->
->>>>>>> local

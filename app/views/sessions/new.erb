@@ -1,22 +1,93 @@
-<%= form_tag '/sessions' do %>
-<table>
-  <col width="100">
-  <col width="100">
-  <thead>
-    <Login:>
-  </thead>
-  <tbody>
-    <tr>
-      <td><label>Username: </label></td>
-      <td><input name=username></td>
-    </tr>
-    <tr>
-      <td><label>Password: </label></td>
-      <td><%= password_field_tag %></td>
-    </tr>
-    <tr>
-      <td><input type=submit value='login'></td>
-    </tr>
-  </tbody>
-</table>
-<% end %>
+<style type="text/css">
+
+  body {
+    background-color: #fff;
+  }
+  body > .grid {
+    height: 100%;
+  }
+  .image {
+    margin-top: -100px;
+  }
+  .column {
+    max-width: 450px;
+  }
+
+</style>
+
+<% if params[:errors] != nil %>
+<div class="ui negative message">
+  <div class="header">
+    Something went wrong...
+  </div>
+  <p><%=params[:errors]%></p>
+</div>
+<%end%>
+
+<!-- # <%= form_tag '/sessions' do %>
+# <table>
+#   <col width="100">
+#   <col width="100">
+#   <thead>
+#     <Login:>
+#   </thead>
+#   <tbody>
+#     <tr>
+#       <td><label>Username: </label></td>
+#       <td><input name=username></td>
+#     </tr>
+#     <tr>
+#       <td><label>Password: </label></td>
+#       <td><%= password_field_tag %></td>
+#     </tr>
+#     <tr>
+#       <td><input type=submit value='LLogin'></td>
+#     </tr>
+#   </tbody>
+# </table>
+# <% end %> -->
+
+
+<% if params[:errors] != nil %>
+<div id="form_shake">
+<%else%>
+<div id="form_padding">
+<%end%>
+  <div class="ui middle aligned center aligned grid">
+    <div class="column">
+      <div class="ui large form">
+        <div class="ui stacked segment">
+          <div class="ui black image header">
+            <div id="new_account_header">
+              Log in!
+            </div>
+          </div>
+
+          <%= form_tag '/sessions' do %>
+
+          <div class="field">
+            <div class="ui left icon input">
+              <i class="user icon"></i>
+              <input name=username placeholder="Username: ">
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="ui left icon input">
+              <i class="lock icon"></i>
+              <input name=password placeholder="Password: ">
+            </div>
+          </div>
+
+          <%= submit_tag "Log In", :class => "ui fluid large black submit button" %>
+
+          <%end%>
+
+        </div>
+      </div>
+      <div class="ui message">
+        Don't have an account? <%= link_to "Sign Up", '/users/new' %>
+      </div>
+    </div>
+  </div>
+</div>
