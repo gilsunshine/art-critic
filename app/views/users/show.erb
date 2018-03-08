@@ -2,18 +2,15 @@
 <!-- ### -->
 
 <div id='fontGreen'>
-  <%= @user.name %>
+  <%= @user.name %> <br>
   <%= @user.username %>
 </div>
 
 <% if @user.id == session[:user_id] %>
-<%= button_to "Logout", logout_path %>
-<% end %>
+  <%= link_to 'Edit User', '#', :id => 'showForm' %>
 
-<%= link_to 'Edit User', '#', :id => 'showForm' %>
-
-<div id='editUser'>
-  <%= form_for @user do |f| %>
+  <div id='editUser'>
+    <%= form_for @user do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name %><br>
     <%= f.label :username %>
@@ -24,5 +21,33 @@
     <%= f.password_field :password_confirmation %><br>
     <%= f.submit %>
     <%= link_to "Cancel", "#", :id => 'hideForm' %>
+    <% end %>
+  </div>
+<% end %>
+
+<br><br><br>
+<% if !@user.artworks.empty? %>
+Artist's Works:
+<div class="ui very relaxed grid container">
+  <% @user.artworks.each do |artwork| %>
+  <div class="four wide column">
+    <div class="row">
+      <div class="column">
+        <strong><%= artwork.name %></strong><br>
+      </div>
+      <div class="column">
+        <%= artwork.user.name %><br>
+      </div>
+      <div class="column">
+        <i><%= artwork.year.name %></i>
+      </div>
+      <br>
+      <div class="column middle aligned">
+        <div class="ui fluid image"><%= link_to image_tag(artwork.image.url), artwork_path(artwork) %>
+        </div>
+      </div>
+    </div>
+  </div>
   <% end %>
 </div>
+<% end %>
