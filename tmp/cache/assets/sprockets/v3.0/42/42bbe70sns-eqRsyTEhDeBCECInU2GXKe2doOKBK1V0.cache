@@ -1,0 +1,5 @@
+I"M(function() {
+  $('#form_padding').transition('shake');
+
+}).call(this);
+:ET
