@@ -68,14 +68,15 @@
           <div class="field">
             <div class="ui left icon input">
               <i class="user icon"></i>
-              <input name=username placeholder="Username: ">
+              <input name=username placeholder="Username ">
             </div>
           </div>
 
           <div class="field">
             <div class="ui left icon input">
               <i class="lock icon"></i>
-              <input name=password placeholder="Password: ">
+              <!-- <input name=password placeholder="Password: "> -->
+              <%= password_field_tag :password, "",  placeholder: "Password " %>
             </div>
           </div>
 

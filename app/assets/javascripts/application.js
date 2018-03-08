@@ -36,10 +36,3 @@ $(document).ready(function() {
     event.preventDefault(); // Prevent link from following its href
   });
 });
-
-
-$(document).ready(function() {
-  $('.mini.modal')
-    .modal('show')
-  ;
-});
