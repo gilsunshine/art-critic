@@ -1,6 +1,7 @@
 <style type="text/css">
+
   body {
-    background-color: #ffffff;
+    background-color: #fff;
   }
   body > .grid {
     height: 100%;
@@ -11,9 +12,15 @@
   .column {
     max-width: 450px;
   }
+
 </style>
 
-  <% if @user.errors.any? %>
+<!-- <div class="input_fields_wrap">
+    <button class="add_field_button">Add Moar Tags!!</button>
+    <div><input type="text" name="mytext[]"></div>
+</div> -->
+
+<% if @user.errors.any? %>
   <div class="ui error message">
     <div class="header">
         <h4>
@@ -27,72 +34,66 @@
       <% end %>
     </ul>
   </div>
-  <% end %>
+<% end %>
 
+<% if @user.errors.any? %>
+<div id="form_shake">
+<%else%>
+<div id="form_padding">
+<%end%>
+  <div class="ui middle aligned center aligned grid">
+    <div class="column">
+      <div class="ui large form">
+        <div class="ui stacked segment">
+          <div class="ui black image header">
+          <div id="new_account_header">
+            Create an account!
+          </div>
+          </div>
+          <%= form_for @user do |f| %>
 
-<div class="ui middle aligned center aligned grid">
-  <div class="column">
+          <div class="field">
+            <div class="ui left icon input">
+              <i class="user icon"></i>
+              <%= f.text_field :name, placeholder: "Name" %>
+            </div>
+          </div>
 
-    <h2 class="ui black image header">
-      <!-- <img src="assets/images/logo.png" class="image"> -->
-      <div id="new_account_header">
-        Create an account!
+          <div class="field">
+            <div class="ui left icon input">
+              <i class="user icon"></i>
+              <%= f.text_field :username, placeholder: "Username" %>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="ui left icon input">
+              <i class="lock icon"></i>
+              <%= f.password_field :password, placeholder: "Password" %>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="ui left icon input">
+              <i class="lock icon"></i>
+              <%= f.password_field :password_confirmation, placeholder: "Confirm Password" %>
+            </div>
+          </div>
+
+          <%= f.submit "Create Account", :class => "ui fluid large black submit button" %>
+          <% end %>
+        </div>
+
       </div>
-    </h2>
-
-    <div class="ui large form">
-      <div class="ui stacked segment">
-        <%= form_for @user do |f| %>
-
-        <div class="field">
-          <div class="ui left icon input">
-            <i class="user icon"></i>
-            <%= f.text_field :name, placeholder: "Name" %>
-          </div>
-        </div>
-
-        <div class="field">
-          <div class="ui left icon input">
-            <i class="user icon"></i>
-            <%= f.text_field :username, placeholder: "Username" %>
-          </div>
-        </div>
-
-        <div class="field">
-          <div class="ui left icon input">
-            <i class="lock icon"></i>
-            <%= f.password_field :password, placeholder: "Password" %>
-          </div>
-        </div>
-
-        <div class="field">
-          <div class="ui left icon input">
-            <i class="lock icon"></i>
-            <%= f.password_field :password_confirmation, placeholder: "Confirm Password" %>
-          </div>
-        </div>
-<<<<<<< HEAD
-        <div>
-          <button type="submit" class="ui button">Create Account</button>
-        </div>
+      <div class="ui message">
+        or have an account? <%= link_to "Sign In", '/login' %>
       </div>
-
-    </div>
-    <% end %>
-=======
-
-        <%= f.submit "Create Account", :class => "ui fluid large black submit button" %>
-
-        <% end %>
-      </div>
-
-    </div>
->>>>>>> ab5c0a808dfcd1a2fa21a6d1ee9f2fb1baa3f1e6
-    <div class="ui message">
-      or have an account? <%= link_to "Sign In", '/login' %>
     </div>
   </div>
 </div>
+</div>
+
+
 
 <!--
 <%= form_for @user do |f| %>
