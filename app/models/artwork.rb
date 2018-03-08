@@ -7,8 +7,18 @@ class Artwork < ApplicationRecord
 
   mount_uploader :image, ImageUploader
 
+  validates :name, presence: :true
+  validates :image, presence: :true
   validates_processing_of :image
   validate :image_size_validation
+
+  before_validation :make_title
+
+  def make_title
+    if !self.name.present?
+      self.name = "Untitled"
+    end
+  end
 
   def self.search(search)
     if search

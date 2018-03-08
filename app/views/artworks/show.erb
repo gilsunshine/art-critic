@@ -1,5 +1,5 @@
 <strong><%= @artwork.name %></strong>  <br>
-<%= @artwork.user.name %> <br>
+<%= link_to @artwork.user.name, @artwork.user %> <br>
 <i><%= @artwork.year ? @artwork.year.name : "year unknown" %></i><br><br>
 
 <% if (@artwork.style+@artwork.c_style).empty? %>
@@ -22,7 +22,7 @@
 
 <% if !@artwork.c_tag.empty? %>
 Tags:
-<%= @artwork.c_tag.map {|tag| ctag.name}.join(", ") %><br><br>
+<%= @artwork.c_tag.map {|tag| link_to tag.name.capitalize, tag}.join(", ").html_safe %><br><br>
 <% end %>
 <br>
 
@@ -100,7 +100,10 @@ Tags:
     </div>
   </div>
 </div>
+<<<<<<< HEAD
 
 <% if @artwork.user.id == session[:user_id] %>
 <%= link_to 'Edit', edit_artwork_path(@artwork) %> |
 <% end %>
+=======
+>>>>>>> 3a27cebef6124c56ac0920deecc819940804c228
