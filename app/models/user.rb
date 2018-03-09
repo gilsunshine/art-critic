@@ -18,13 +18,13 @@ class User < ApplicationRecord
 
   def make_picture
     if !self.image.url.present?
-      self.image = File.open(File.join(Rails.root, "/app/assets/images/default-profile-pic.png"))
+      self.image.store!(File.open(File.join(Rails.root, "/app/assets/images/default-profile-pic.png")))
     end
   end
 
   private
     def image_size_validation
-      errors[:image] << "should be less than 600KB" if image.size > 0.6.megabytes
+      errors[:image] << "should be less than 700KB" if image.size > 0.7.megabytes
     end
 
 end
