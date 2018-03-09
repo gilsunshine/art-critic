@@ -41,7 +41,7 @@ tag26 =Tag.find_or_create_by(name: "2018", category: "year")
 tag27 =Tag.find_or_create_by(name: "2008", category: "year")
 tag28 =Tag.find_or_create_by(name: "2012", category: "year")
 
-user1 = User.create(:name => "Alex Chaves", :username => "achaves", :password => "alex", :password_confirmation => "alex")
+user1 = User.create(:name => "Alex Chaves", :username => "achaves", :password => "alex", :password_confirmation => "alex", bio: "Like many young artists today, Alex Chaves seems to view painting and early Modernist figuration as full of potential, and he argues the case convincingly in his New York solo debut at Martos. His paintings, at once sophisticated, naïve and vaguely illustrational, combine a roving color sense and engaging paint handling with emotional poignancy. His New York solo debut is cheekily titled “The Rose Period” after one of the earliest (1904-6), most popular phases of Picasso’s career.")
 
 user2 = User.create(:name => "Terry Winters", :username => "twinters", :password => "terry", :password_confirmation => "terry")
 
