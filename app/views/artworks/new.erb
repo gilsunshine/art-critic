@@ -54,37 +54,24 @@
     </div>
 
     <!-- <div class="inline fields"> -->
-    <div class="field">
-      <label for="style">Select a Style for your masterpiece:</label>
-        <select name="style" multiple="" class="ui fluid dropdown">
-          <option value="">Select Style</option>
-        <% Tag.where(category: "style").each do |style_tag| %>
-          <!-- <div class="ui radio checkbox"> -->
-            <!-- <input type="radio" name="radio"> -->
-              <option value="style_tag"><%= style_tag.name %></option>
+    <div class="inline fields ">
+      <label for="style">Select a Style for your masterpiece:</label> <br>
 
-            <!-- <label><%= style_tag.name %></label> -->
-          <!-- </div> -->
-        <% end %>
-      </select>
-      <br>
+      <%= f.collection_check_boxes :tag_ids, @styles, :id, :name %>
+
+      <br><br>
       <p>Other Styles: <%= f.text_field :style %></p>
       </div>
     <!-- </div> -->
 
 
     <div class="inline fields">
-      <label for="style">Select a Medium for your masterpiece:</label>
-      <div class="field">
-        <% Tag.where(category: "medium").each do |medium_tag| %>
-          <div class="ui radio checkbox">
-            <input type="radio" name="radio">
-            <label><%= medium_tag.name %></label>
-          </div>
-        <% end %>
-      </div>
+      <label for="style">Select a Medium for your masterpiece:</label><br>
+
+      <%= f.collection_check_boxes :tag_ids, @media, :id, :name %>
+
       <br><br>
-      <p>Other Media: <%= f.text_field :style %></p>
+      <p>Other Media: <%= f.text_field :medium %></p>
     </div>
 
     <div class="input_fields_wrap">

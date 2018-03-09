@@ -19,12 +19,12 @@
 <% else  %>
   <strong>Media:</strong>
 <% end %>
-<%= (@artwork.medium+@artwork.c_medium).reject { |tag| !tag.name.empty? }.map { |medium| link_to medium.name.capitalize, medium}.join(", ").html_safe if !!(@artwork.medium+@artwork.c_medium)%>
+<%= (@artwork.medium+@artwork.c_medium).reject { |tag| tag.name.empty? }.map { |medium| link_to medium.name.capitalize, medium}.join(", ").html_safe if !!(@artwork.medium+@artwork.c_medium)%>
 <br>
 
 <% if !@artwork.c_tag.empty? %>
 Tags:
-<%= @artwork.c_tag.reject { |tag| !tag.name.empty? }.map {|tag| link_to tag.name.capitalize, tag}.join(", ").html_safe %><br><br>
+<%= @artwork.c_tag.reject { |tag| tag.name.empty? }.map {|tag| link_to tag.name.capitalize, tag}.join(", ").html_safe %><br><br>
 <% end %>
 <br> <hr><br><br>
 
