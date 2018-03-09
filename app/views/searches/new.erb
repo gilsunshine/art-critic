@@ -1,5 +1,13 @@
-<h1>Advanced Search</h1>
+<div class="ui middle aligned center aligned grid">
+  <div class="column">
+    <div class="ui large form">
+      <div class="ui stacked segment">
 
+        <div class="ui black image header">
+        <div id="new_account_header">
+          Advanced Search
+        </div>
+        </div>
 <%= form_for @search, html: {class: "pure-form"} do |s|%>
   <div class="field">
     <%= s.label :name %>
@@ -17,20 +25,26 @@
     <%= s.label :before_year %>
     <%= s.number_field :before_year %>
   </div>
+
   <!-- <div class="field">
-    <%= s.label :style %>
-    <%= s.text_field :style%>
-  </div>
-  <div class="field">
-    <%= s.label :medium %>
-    <%= s.text_field :medium %>
-  </div> -->
-  <!-- <div class="field">
-    <%= s.label :tags %>
-    <%= s.text_field :tags %>
-  </div> -->
+  <%= s.label :style %>
+  <%= s.text_field :style%>
+</div>
+<div class="field">
+<%= s.label :medium %>
+<%= s.text_field :medium %>
+</div> -->
+<!-- <div class="field">
+<%= s.label :tags %>
+<%= s.text_field :tags %>
+</div> -->
 
   <div class="actions">
-    <%= s.submit "Search", class: "pure-button pure-botton-primary" %>
+    <%= s.submit "Search", :class => "ui fluid large black submit button" %>
   </div>
+</column>
 <% end %>
+</div>
+</div>
+</div>
+</div>

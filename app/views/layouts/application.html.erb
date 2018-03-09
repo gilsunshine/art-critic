@@ -22,8 +22,15 @@
     <style>
       body {
         font-family: 'Quicksand', sans-serif;
-        background: #f9f9f9
+        background: #f9f9f9;
+
+        background-image: url("assets/<%=rand(1..7)%>.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: center;
       }
+
       h1 {
         font-family: 'Quicksand', sans-serif;
         color: #006aff;
@@ -36,7 +43,6 @@
     </style>
 
   </head>
-</head>
 <body style="padding: 5em;">
 
 <% if !session[:user_id] %>

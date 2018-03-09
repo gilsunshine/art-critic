@@ -1,41 +1,37 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <script language="javascript" type="text/javascript" src="p5.js"></script>
-    <script language="javascript" type="text/javascript" src="sketch.js"></script>
-    <script language="javascript" type="text/javascript" src="particle.js"></script>
-  </head>
-  <body>
-    <div class="ui middle aligned grid">
-      <div class="1 column wide">
-        <div class="row">
-            <br><br><br><br><br><br><br><br><br><br><br><br>
-        </div>
-        <div class="row">
-          <div class="ui center aligned basic segment">
-            <div style="font-size: 200%;">
-              Welcome to Art Critic, a platform for sharing and critiquing art.
-            </div>
-          </div>
-          <div class="ui center aligned basic segment">
-            <div class="ui huge basic button" style="font-family: 'Quicksand', sans-serif;">
-              <%= link_to "Browse Artwork", artworks_path %>
-            </div>
+<div>
+  <div class="ui middle aligned grid">
+    <div class="1 column wide">
+      <div class="row">
+          <br><br><br><br><br><br><br><br><br><br><br><br>
+      </div>
+      <div class="row">
+
+        <div class="ui center aligned basic segment">
+          <div class="ui compact message" style="opacity:0.8">
+          <div style="font-size: 200%; opacity:1;">
+            Welcome to Art Critic, a platform for sharing and critiquing art.
           </div>
         </div>
+        </div>
+
+        <div class="ui center aligned basic segment" style="opacity:0.8">
+          <div class="ui huge button" style="font-family: 'Quicksand', sans-serif;">
+            <%= link_to "Browse Artwork", artworks_path %>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
+</div>
 
 <style>
 
 body{
-  background-image: url('/app/assets/images/index_background/1.jpg');
-  /* background-image: url('https://www.wikihow.com/images/thumb/f/f0/Calm-Down-a-Playful-Large-Dog-Step-10.jpg/aid30182-v4-728px-Calm-Down-a-Playful-Large-Dog-Step-10.jpg'); */
-  /* background-repeat: no-repeat;
+  background-image: url("assets/<%=rand(1..7)%>.jpg");
+  background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  background-position: center; */
+  background-position: center;
 }
 </style>
