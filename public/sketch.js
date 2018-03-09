@@ -23,41 +23,17 @@ var susPercent = 0.2;
 var releaseTime = 0.05;
 var canvas;
 var env;
+var dr;
 
 function setup() {
+  background(0);
   canvas = createCanvas(windowWidth, windowHeight);
   canvas.position(0,0);
+  canvas.style('z-index', '-2');
   background(0);
   cols = floor(width / scl) + 1;
   rows = floor(height / scl) + 1;
   fr = createP('');
-  // env = new p5.Env();
-  // env.setADSR(attackTime, decayTime, susPercent, releaseTime);
-  // env.setRange(attackLevel, releaseLevel);
-  //
-  // wave = new p5.Oscillator();
-  // wave.setType('triangle');
-  // wave.freq(0);
-  // wave.amp(env);
-  // wave.start();
-  // delay = new p5.Delay();
-  // delay.process(wave, .25, .25, 800);
-  //
-  // wave1 = new p5.Oscillator();
-  // wave1.setType('triangle');
-  // wave1.freq(0);
-  // wave1.amp(env);
-  // wave1.start();
-  // delay = new p5.Delay();
-  // delay.process(wave1, .25, .25, 800);
-  //
-  // wave2 = new p5.Oscillator();
-  // wave2.setType('triangle');
-  // wave2.freq(0);
-  // wave2.amp(env);
-  // wave2.start();
-  // delay = new p5.Delay();
-  // delay.process(wave2, .25, .25, 800);
 
   flowfield = new Array(cols * rows);
 
@@ -97,6 +73,7 @@ function draw() {
     particles[i].update();
     particles[i].edges();
     particles[i].show();
+
     particles[i].rotate()
     note = Math.floor((particles[i].pos.y + 200)/100);
     // var freqs = [196.00, 220.00, 261.63, 329.63, 392.00, 440.00, 493.88, 440.00, 349.23, 329.63, 293.66, 261.63, 246.94, 220.00, 174.61, 164.81, 130.81];
@@ -118,3 +95,20 @@ function draw() {
     // }
   }
 }
+
+function keyTyped(){
+  if (key === "s"){
+    saveCanvas(canvas, 'myCanvas', 'jpg');
+  }
+  else if (key === "r"){
+    background(0);
+  }
+
+}
+//
+// function mouseDragged(){
+//   dr = true;
+// }
+// function mouseReleased(){
+//   dr = false;
+// }

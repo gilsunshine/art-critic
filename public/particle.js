@@ -1,13 +1,8 @@
-// Daniel Shiffman
-// http://codingtra.in
-// http://patreon.com/codingtrain
-// Code for: https://youtu.be/BjoM9oKOAKY
-
 function Particle() {
   this.pos = createVector(random(width), random(height));
   this.vel = createVector(0, 0);
   this.acc = createVector(0, 0);
-  this.maxspeed = 2;
+  this.maxspeed = 4;
 
   this.prevPos = this.pos.copy();
 
@@ -31,27 +26,29 @@ function Particle() {
   }
 
   this.show = function() {
-    stroke(26,114,251);
-    line(this.pos.x, 0, this.pos.x, height);
-    stroke(255,50,80);
-    line(0, this.pos.y, width, this.pos.y);
-
-    // stroke(255,50);
+    // stroke(26,114,251);
     // line(this.pos.x, 0, this.pos.x, height);
-    // stroke(255,50);
+    // stroke(255,50,80);
     // line(0, this.pos.y, width, this.pos.y);
-    // stroke(255,50);
-    // line(0, 0, this.pos.x, this.pos.y);
-    // stroke(255,50);
-    // line(width, height, this.pos.x, this.pos.y);
-    //
-    // stroke(255,50);
-    // line(width, 0, this.pos.x, this.pos.y);
-    // stroke(255,50);
-    // line(0, height, this.pos.x, this.pos.y);
-    //
-    // fill(255,50);
-    // ellipse(this.pos.x, this.pos.y, 2,2);
+
+    stroke(255,25);
+    line(this.pos.x, 0, mouseX, mouseY);
+    stroke(255,25);
+    line(0, this.pos.y, mouseX, mouseY);
+    stroke(255,25);
+    line(this.pos.x, height, mouseX, mouseY);
+    stroke(255,25);
+    line(width, this.pos.y, mouseX, mouseY);
+    // stroke(255,5);
+    // line(0, 0, mouseX, mouseY);
+    // stroke(255,5);
+    // line(width, 0, mouseX, mouseY);
+    // stroke(255,5);
+    // line(width, height, mouseX, mouseY);
+    // stroke(255,5);
+    // line(0, height, mouseX, mouseY);
+    fill(255);
+    ellipse(mouseX, mouseY,2,2);
   }
 
   this.rotate = function() {
