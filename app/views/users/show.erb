@@ -13,26 +13,26 @@
 
 
 <% if @user.id == session[:user_id] %>
-  <%= link_to 'Edit My Account', '#', :id => 'showForm', class: "ui basic button" %>
+  <%= link_to 'Edit My Account', '#', :id => 'showForm', class: "ui basic small button" %><br><br>
   <div class="ui grid">
     <div class="four wide column">
       <div class="ui reply form">
         <div id='editUser'>
           <%= form_for @user do |f| %>
           <%= f.label :name %>
-          <%= f.text_field :name %><br>
+          <%= f.text_field :name %><br><br>
           <%= f.label :username %>
-          <%= f.text_field :username %><br>
+          <%= f.text_field :username %><br><br>
           <%= f.label :bio %>
-          <%= f.text_area :bio %><br>
+          <%= f.text_area :bio %><br><br>
           <%= f.label :image %>
-          <%= f.file_field :image %><br>
+          <%= f.file_field :image %><br><br>
           <%= f.label "Password" %>
-          <%= f.password_field :password %><br>
-          <%= f.label "Password Confirmation" %>
-          <%= f.password_field :password_confirmation %><br>
-          <%= f.submit %>
-          <%= link_to "Cancel", "#", :id => 'hideForm' %>
+          <%= f.password_field :password %><br><br> 
+          <%= f.label "Password Confirmation" %><br>
+          <%= f.password_field :password_confirmation %><br><br>
+          <%= f.submit class:"ui basic small button" %>
+          <%= link_to "Cancel", "#", :id => 'hideForm', class:"ui basic small button" %>
           <% end %>
         </div>
       </div>
@@ -43,11 +43,15 @@
 <% end %>
 
 <% if !@user.artworks.empty? %>
-<h2 style="font-family: 'Quicksand', sans-serif;">Artworks:</h2><hr><br>
+<h2 style="font-family: 'Quicksand', sans-serif;">Artworks</h2><hr><br>
 <div class="ui very relaxed grid container">
   <% @user.artworks.each do |artwork| %>
   <div class="four wide column">
     <div class="row">
+      <div class="column middle aligned">
+        <div class="ui fluid image"><%= link_to image_tag(artwork.image.url), artwork_path(artwork) %>
+        </div><br><br>
+      </div>
       <div class="column">
         <strong><%= artwork.name %></strong><br>
       </div>
@@ -58,10 +62,7 @@
         <i><%= artwork.year.name %></i>
       </div>
       <br>
-      <div class="column middle aligned">
-        <div class="ui fluid image"><%= link_to image_tag(artwork.image.url), artwork_path(artwork) %>
-        </div><br><br>
-      </div>
+
     </div>
   </div>
   <% end %>

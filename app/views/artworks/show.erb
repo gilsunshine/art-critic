@@ -82,16 +82,20 @@ Tags:
             <strong><%= comment.user.name %></strong> <br>
             <%= comment.content %><br><br>
               <% if comment.user_id == session[:user_id] %>
-              <%= button_to "Delete Comment", controller: :comments, method: :post, action: :destroy, comment_id: comment.id, class: "ui basic small button"%>
-            <%= link_to "Edit Comment", "#", :id => 'showCommentEdit' %><br><br>
+              <div style="float:left;">
+              <%= button_to "Delete Comment", {controller: :comments, method: :post, action: :destroy, comment_id: comment.id}, {class: "ui basic small button"}%>
+            </div>
+            <div style="float:left;">
+            <%= link_to "Edit Comment", "#", :id => 'showCommentEdit', class: "ui basic small button" %><br><br>
+            </div>
             <div class="ui reply form">
               <div id="editComment">
                 <%= form_for comment do |f|%>
                   <%= f.hidden_field :artwork_id, value: @artwork.id %>
-                  <%= f.hidden_field :user_id, value: session[:user_id] %>
-                  <%= f.label :comment %><br>
+                  <%= f.hidden_field :user_id, value: session[:user_id] %><br><br>
+                  <br><%= f.label :comment %></br>
                   <%= f.text_area :content %><br>
-                  <%= button_to "Update Comment", controller: :comments, method: :get, action: :update, comment_id: comment.id %><br><br>
+                  <%= button_to "Update Comment", {controller: :comments, method: :get, action: :update, comment_id: comment.id}, {class: "ui basic small button"} %><br><br>
                 <% end %>
               </div>
             </div>
