@@ -16,7 +16,9 @@
 //= require turbolinks
 //= require_tree .
 
-$(document).ready(function() {
+
+
+$(document).on('turbolinks:load', function() {
   $('#showForm').click(function(event){
     $('#editUser').show();
     event.preventDefault(); // Prevent link from following its href
