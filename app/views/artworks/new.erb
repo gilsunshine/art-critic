@@ -3,12 +3,11 @@
      background-image: none;
  }
 </style>
+
 <% if @artwork.errors.any? %>
 <div class="ui error message">
   <div class="header">
     <h4>
-      <!-- <%= pluralize(@artwork.errors.count, "error") %>
-      prohibited this artwork from being created: -->
       Something went wrong...
     </h4>
   </div>
@@ -19,82 +18,48 @@
   </ul>
 </div>
 <% end %>
+
 <% if @artwork.errors.any? %>
 <div id="form_shake">
 <%else%>
-<div id="form_padding" style="opacity:0.8">
+<div id="form_padding">
 <%end%>
+  <div id="artwork_new_padding">
+    <div class="ui form">
+      <%= form_for @artwork, html: { multipart: true } do |f| %>
+        <h4 class="ui dividing header">Upload an Original Artwork</h4>
 
-<div id="artwork_new_padding">
-  <div class="ui form">
-    <%= form_for @artwork, html: { multipart: true } do |f| %>
-
-
-    <h4 class="ui dividing header">Upload an Original Artwork</h4>
-
-    <div class="field">
-      <label>Name</label>
-        <div class="field">
-          <%= f.text_field :name %>
-        </div>
-    </div>
-
-    <div class="field">
-      <label>Year Created</label>
-        <div class="field">
-          <%= f.text_field :year %>
-        </div>
-    </div>
-
-    <div class="field">
-      <label>Upload Image</label>
-        <div class="field">
-          <%= f.file_field :image %>
-        </div>
-    </div>
-
-    <!-- <div class="inline fields"> -->
-    <div class="field">
-      <label for="style">Select a Style for your masterpiece:</label>
-        <select name="style" multiple="" class="ui fluid dropdown">
-          <option value="">Select Style</option>
-        <% Tag.where(category: "style").each do |style_tag| %>
-          <!-- <div class="ui radio checkbox"> -->
-            <!-- <input type="radio" name="radio"> -->
-              <option value="style_tag"><%= style_tag.name %></option>
-
-            <!-- <label><%= style_tag.name %></label> -->
-          <!-- </div> -->
-        <% end %>
-      </select>
-      <br>
-      <p>Other Styles: <%= f.text_field :style %></p>
-      </div>
-    <!-- </div> -->
-
-
-    <div class="inline fields">
-      <label for="style">Select a Medium for your masterpiece:</label>
       <div class="field">
-        <% Tag.where(category: "medium").each do |medium_tag| %>
-          <div class="ui radio checkbox">
-            <input type="radio" name="radio">
-            <label><%= medium_tag.name %></label>
+        <label>Name</label>
+          <div class="field">
+            <%= f.text_field :name %>
           </div>
-        <% end %>
       </div>
-      <br><br>
-      <p>Other Media: <%= f.text_field :style %></p>
-    </div>
 
-    <div class="input_fields_wrap">
-      <button class="add_field_button">Add Tags!!</button><br>
-      <input type="text" name="mytext[]", placeholder="Add additional tags to your image"><br><br>
-    </div>
+      <div class="field">
+        <label>Year Created</label>
+          <div class="field">
+            <%= f.text_field :year %>
+          </div>
+      </div>
 
-    <div class="actions">
-      <br><%= f.submit %></br>
+      <div class="field">
+        <label>Upload Image</label>
+          <div class="field">
+            <%= f.file_field :image %>
+          </div>
+      </div>
+
+
+
+      <div class="input_fields_wrap">
+        <button class="add_field_button">Add Tags!!</button><br>
+        <input type="text" name="mytext[]", placeholder="Add additional tags to your image"><br><br>
+      </div>
+
+      <div class="actions">
+        <br><%= f.submit %></br>
+      </div>
+      <%end%>
     </div>
-    <%end%>
   </div>
-</div>
