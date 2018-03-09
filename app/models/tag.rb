@@ -2,11 +2,11 @@ class Tag < ApplicationRecord
   has_many :artwork_tags
   has_many :artworks, through: :artwork_tags
 
-  before_save :make_downcase
+  before_save :capitalize
 
-  def make_downcase
-    if !self.name.present?
-    self.name = self.name.downcase
+  def capitalize
+    if self.name.present?
+    self.name = self.name.capitalize
     end
   end
 end

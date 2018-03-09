@@ -1,6 +1,35 @@
+<style type="text/css">
+ body {
+     background-image: none;
+ }
+</style>
+<% if @artwork.errors.any? %>
+<div class="ui error message">
+  <div class="header">
+    <h4>
+      <!-- <%= pluralize(@artwork.errors.count, "error") %>
+      prohibited this artwork from being created: -->
+      Something went wrong...
+    </h4>
+  </div>
+  <ul class="list">
+    <% @artwork.errors.full_messages.each do |message| %>
+    <li><%=message%></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+<% if @artwork.errors.any? %>
+<div id="form_shake">
+<%else%>
+<div id="form_padding" style="opacity:0.8">
+<%end%>
+
 <div id="artwork_new_padding">
   <div class="ui form">
     <%= form_for @artwork, html: { multipart: true } do |f| %>
+
+
     <h4 class="ui dividing header">Upload an Original Artwork</h4>
 
     <div class="field">
