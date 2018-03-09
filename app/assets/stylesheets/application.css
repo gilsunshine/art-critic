@@ -15,16 +15,3 @@
  *= require_self
 
  */
-
-#transparent_box {
-  opacity: 0.6;
-}
-
-h1 {
-  font-family: 'Quicksand', sans-serif;
-  color: #006aff;
-}
-h2 {
-  font-family: 'Quicksand', sans-serif;
-  color: #006aff;
-}

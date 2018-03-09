@@ -7,14 +7,6 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-  <!-- Bootstrap CDN -->
-  <!-- <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
-
-  <!-- Alternative: semantics UI -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css"/>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
@@ -51,6 +43,9 @@
           <a class="" href="/artworks" style="font-family: 'Quicksand', sans-serif;">All Artworks</a>
         </div>
         <div class="item">
+          <a class="" href="/users" style="font-family: 'Quicksand', sans-serif;">All Artists</a>
+        </div>
+        <div class="item">
           <div class="ui icon input">
             <%= form_tag artworks_path, method: "get" do %>
               <%= text_field_tag :search, params[:search], placeholder: "Search by artwork name" %>
@@ -76,6 +71,7 @@
     </div>
   </div>
 <% else %>
+
   <div class="ui large top fixed hidden menu">
     <div class="ui container">
       <div class="right menu">
@@ -95,6 +91,9 @@
         </div>
         <div class="item">
           <a class="" href="/artworks" style="font-family: 'Quicksand', sans-serif;">All Artworks</a>
+        </div>
+        <div class="item">
+          <a class="" href="/users" style="font-family: 'Quicksand', sans-serif;">All Artists</a>
         </div>
         <div class="item">
           <a class="" href="/artworks/new" style="font-family: 'Quicksand', sans-serif;">Add Artwork</a>

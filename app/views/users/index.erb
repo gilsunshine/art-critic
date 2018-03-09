@@ -1,9 +1,12 @@
 <% @users.select{|user| !user.artworks.empty? }.each do |artist| %>
-  <%= image_tag artist.image.thumb.url if artist.image.url %>
-  <% artist.artworks.each do |artwork|%>
-    <%= image_tag artwork.image.thumb.url if artwork.image.url %>
-  <% end %>
-  <br>
-  <%= link_to artist.name, artist %> <br>
-  <%= artist.bio %> <br><br>
+  <!-- <div class="ui two column grid"> -->
+    <div class="column">
+      <%= image_tag artist.image.thumb.url if artist.image.url %><br>
+      <!-- <% artist.artworks.each do |artwork|%>
+        <%= image_tag artwork.image.thumb.url if artwork.image.url %>
+      <% end %> -->
+      <strong><%= link_to artist.name, artist %></strong>    <br>
+      <%= artist.bio %> <br><hr> <br>
+    </div>
+  <!-- </div> -->
 <% end %>
