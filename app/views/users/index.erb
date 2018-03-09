@@ -1,3 +1,9 @@
+<style type="text/css">
+ body {
+     background-image: none;
+ }
+</style>
+
 <% @users.select{|user| !user.artworks.empty? }.each do |artist| %>
   <%= image_tag artist.image.thumb.url if artist.image.url %>
   <% artist.artworks.each do |artwork|%>

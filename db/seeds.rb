@@ -11,6 +11,7 @@ tag3 = Tag.find_or_create_by(name: "Cubism", category: "style")
 tag4 = Tag.find_or_create_by(name: "Surrealism", category: "style")
 tag5 = Tag.find_or_create_by(name: "Modern", category: "style")
 tag6 = Tag.find_or_create_by(name: "Contemporary", category: "style")
+tag33 = Tag.find_or_create_by(name: "Naivism", category: "style")
 
 tag7 = Tag.find_or_create_by(name: "Oil Paint", category: "medium")
 tag8 = Tag.find_or_create_by(name: "Wood", category: "medium")
@@ -47,15 +48,15 @@ user1 = User.create(:name => "Alex Chaves", :username => "achaves", :password =>
 
 user2 = User.create(:name => "Terry Winters", :username => "twinters", :password => "terry", :password_confirmation => "terry", image: File.open(File.join(Rails.root, '/app/assets/images/terry-winters/Terry_Winters.jpg')), bio: "Terry Winters (born 1949, Brooklyn, NY) is an American painter, draughtsman, and printmaker whose nuanced approach to the process of painting has addressed evolving concepts of spatiality and expanded the concerns of abstract art. His attention to the process of painting and investigations into systems and spatial fields explores both non-narrative abstraction and the physicality of modernism. In Winters’ work, abstract processes give way to forms with real word agency that recall mathematical concepts and cybernetics, as well as natural and scientific worlds.")
 
-user3 = User.create(:name => "Shari Mendelson", :username => "smendelson", :password => "shari", :password_confirmation => "shari", image: File.open(File.join(Rails.root, 'app/assets/images/shari-mendelson/Shari-Mendelson.jpg')), bio: "Shari Mendelson, an artist in Williamsburg, Brooklyn, makes iridescent vessels that recall Roman and other ancient glass objects. They are bubbly and precious-looking, and Ms. Mendelson fashions them out of plastic bottles that she harvests from the trash, slices with metalworking shears and hot-glues back together.")
+user3 = User.create(:name => "Shari Mendelson", :username => "smendelson", :password => "shari", :password_confirmation => "shari", image: File.open(File.join(Rails.root, '/app/assets/images/shari-mendelson/Shari-Mendelson.jpg')), bio: "Shari Mendelson, an artist in Williamsburg, Brooklyn, makes iridescent vessels that recall Roman and other ancient glass objects. They are bubbly and precious-looking, and Ms. Mendelson fashions them out of plastic bottles that she harvests from the trash, slices with metalworking shears and hot-glues back together.")
 
 user4 = User.create(:name => "Asif Mian", :username => "amian", :password => "asif", :password_confirmation => "asif", bio: "ASIF MIAN is a Brooklyn based artist and filmmaker. His work in sculpture, drawing and video is the exploration into violence, social genomics and morality in American culture.")
 
-user5 = User.create(:name => "Matthew Day Jackson", :username => "mjackson", :password => "matthew", :password_confirmation => "matthew", image: File.open(File.join(Rails.root, 'app/assets/images/matthew-day-jackson/matthewdayjackson.jpg')), bio: "Matthew Day Jackson (born 1974) is an American artist whose multifaceted practice encompasses sculpture, painting, collage, photography, drawing, video, performance and installation. Since graduating with an MFA from Rutgers University in 2001, following his BFA from the University of Washington in Seattle, he has had numerous solo exhibitions. His work has been shown at MAMbo Museo d'Arte Moderna in Bologna, Italy; Boulder Museum of Contemporary Art in Boulder, Colorado; the Museum of Fine Arts in Boston, MA; the Portland Museum of Art Biennial in Portland, Maine; and the Whitney Biennial Day for Night in New York.")
+user5 = User.create(:name => "Matthew Day Jackson", :username => "mjackson", :password => "matthew", :password_confirmation => "matthew", image: File.open(File.join(Rails.root, '/app/assets/images/matthew-day-jackson/matthewdayjackson.jpg')), bio: "Matthew Day Jackson (born 1974) is an American artist whose multifaceted practice encompasses sculpture, painting, collage, photography, drawing, video, performance and installation. Since graduating with an MFA from Rutgers University in 2001, following his BFA from the University of Washington in Seattle, he has had numerous solo exhibitions. His work has been shown at MAMbo Museo d'Arte Moderna in Bologna, Italy; Boulder Museum of Contemporary Art in Boulder, Colorado; the Museum of Fine Arts in Boston, MA; the Portland Museum of Art Biennial in Portland, Maine; and the Whitney Biennial Day for Night in New York.")
 
-user6 = User.create(:name => "Nick Van Woert", :username => "nwoert", :password => "nick", :password_confirmation => "nick", image: File.open(File.join(Rails.root, 'app/assets/images/nick-van-woert/NVW.jpg')), bio: "Nick van Woert is an American artist from Reno, Nevada. He currently lives and works in Brooklyn, New York. He studied architecture (BArch) at the University of Oregon and Fine Arts (MFA) at Parsons the New School for Design in New York.")
+user6 = User.create(:name => "Nick Van Woert", :username => "nwoert", :password => "nick", :password_confirmation => "nick", image: File.open(File.join(Rails.root, '/app/assets/images/nick-van-woert/NVW.jpg')), bio: "Nick van Woert is an American artist from Reno, Nevada. He currently lives and works in Brooklyn, New York. He studied architecture (BArch) at the University of Oregon and Fine Arts (MFA) at Parsons the New School for Design in New York.")
 
-user7 = User.create(:name => "Michelle Branch", :username => "mbranch", :password => "michelle", :password_confirmation => "michelle", image: File.open(File.join(Rails.root, 'app/assets/images/michelle-branch/Branch.jpg')))
+user7 = User.create(:name => "Michelle Branch", :username => "mbranch", :password => "michelle", :password_confirmation => "michelle", image: File.open(File.join(Rails.root, '/app/assets/images/michelle-branch/Branch.jpg')))
 
 user8 = User.create(:name => "Matthew Lawford", :username => "mlawford", :password => "matthew", :password_confirmation => "matthew", image: File.open(File.join(Rails.root, '/app/assets/images/matthew-lawford/profile-pic.png')), bio: "I graduated from the University of Michigan with a degree in Political Science but decided to pursue my passion for programming and creating through Flatiron. I love food, video games, board games, D&D, beer, music, dogs and people!")
 
@@ -67,7 +68,7 @@ user11 = User.create(:name => "Gil Sunshine", :username => "gsunshine", :passwor
 
 user12 = User.create(:name => "Daniel Lee", :username => "dlee", :password => "dan", :password_confirmation => "dan")
 
-user13 = User.create(:name => "admin", :username => "admin", :password => "admin", :password_confirmation => "admin", image: File.open(File.join(Rails.root, '/app/assets/images/index_background/1.jpg')))
+user13 = User.create(:name => "Niky Morgan", :username => "nmorgan", :password => "niky", :password_confirmation => "niky", bio: "I am an engineer turned musician turned software engineer. I have an M.A. in Musicology and spent several years working in music concerts and touring.")
 
 artwork1 = user1.artworks.create!(:name => 'Flower Pot', image: File.open(File.join(Rails.root, '/app/assets/images/alex-chaves/flower_pot.jpeg')))
 
@@ -126,6 +127,12 @@ artwork27 = user7.artworks.create!(:name => 'Self Portrait', image: File.open(Fi
 artwork28 = user8.artworks.create!(:name => 'Self Portrait', image: File.open(File.join(Rails.root, '/app/assets/images/matthew-lawford/matt_drawing.jpeg')))
 
 artwork29 = user9.artworks.create!(:name => 'Self Portrait', image: File.open(File.join(Rails.root, '/app/assets/images/laura-kim/laura_drawing.jpeg')))
+
+artwork30 = user8.artworks.create!(:name => 'Self Portrait', image: File.open(File.join(Rails.root, '/app/assets/images/matthew-lawford/matt-drawing2.png')))
+
+artwork31 = user9.artworks.create!(:name => 'Self Portrait', image: File.open(File.join(Rails.root, '/app/assets/images/laura-kim/laura_drawing2.jpg')))
+
+artwork32 = user8.artworks.create!(:name => 'Three Hairs', image: File.open(File.join(Rails.root, '/app/assets/images/matthew-lawford/42.jpg')))
 
 ArtworkTag.find_or_create_by(artwork_id: artwork1.id, tag_id: tag7.id)
 ArtworkTag.find_or_create_by(artwork_id: artwork1.id, tag_id: tag18.id)
@@ -250,6 +257,15 @@ ArtworkTag.find_or_create_by(artwork_id: artwork28.id, tag_id: tag6.id)
 ArtworkTag.find_or_create_by(artwork_id: artwork29.id, tag_id: tag26.id)
 ArtworkTag.find_or_create_by(artwork_id: artwork29.id, tag_id: tag32.id)
 ArtworkTag.find_or_create_by(artwork_id: artwork29.id, tag_id: tag6.id)
+
+ArtworkTag.find_or_create_by(artwork_id: artwork30.id, tag_id: tag14.id)
+ArtworkTag.find_or_create_by(artwork_id: artwork30.id, tag_id: tag18.id)
+ArtworkTag.find_or_create_by(artwork_id: artwork30.id, tag_id: tag6.id)
+
+ArtworkTag.find_or_create_by(artwork_id: artwork31.id, tag_id: tag26.id)
+ArtworkTag.find_or_create_by(artwork_id: artwork31.id, tag_id: tag32.id)
+ArtworkTag.find_or_create_by(artwork_id: artwork31.id, tag_id: tag6.id)
+ArtworkTag.find_or_create_by(artwork_id: artwork31.id, tag_id: tag33.id)
 
 Comment.find_or_create_by(artwork_id: artwork1.id, user_id: user13.id, content: "Nice!")
 Comment.find_or_create_by(artwork_id: artwork2.id, user_id: user13.id, content: "NIIIICCCEEE!")
