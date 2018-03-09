@@ -17,6 +17,8 @@ class ArtworksController < ApplicationController
 
   def new
     @artwork = Artwork.new
+    @styles = Tag.where(category: "style")
+    @media = Tag.where(category: "medium")
   end
 
   def create
