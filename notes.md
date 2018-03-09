@@ -95,4 +95,19 @@ artwork create
 
   edit art and Tags on art
 
-  
+ "artwork"=>{"name"=>"testing params",
+  "year"=>"23489",
+  "image"=>#<ActionDispatch::Http::UploadedFile:0x007fd874031e30 @tempfile=#<Tempfile:/var/folders/pk/3q70_b5d18xg6nrt5mdpr0740000gn/T/RackMultipart20180309-44078-1hoewys.png>,
+@original_filename="Screen Shot 2018-03-09 at 2.27.56 AM.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"artwork[image]\"; filename=\"Screen Shot 2018-03-09 at 2.27.56 AM.png\"\r\nContent-Type: image/png\r\n">,
+
+  "style"=>"other media"}
+
+ "style"=>"style_tag", "radio"=>"on",
+
+ "mytext"=>["additional tag", "tagtwo", "tagthree", "tagfour"]
+
+
+________________________
+cannot click multiple media or sometimes even just one
+new artwork form doesn't pass param for style, other style, medium
+cannot advanced search by name

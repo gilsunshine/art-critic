@@ -267,6 +267,10 @@ ArtworkTag.find_or_create_by(artwork_id: artwork31.id, tag_id: tag32.id)
 ArtworkTag.find_or_create_by(artwork_id: artwork31.id, tag_id: tag6.id)
 ArtworkTag.find_or_create_by(artwork_id: artwork31.id, tag_id: tag33.id)
 
+ArtworkTag.find_or_create_by(artwork_id: artwork32.id, tag_id: tag4.id)
+ArtworkTag.find_or_create_by(artwork_id: artwork32.id, tag_id: tag14.id)
+ArtworkTag.find_or_create_by(artwork_id: artwork32.id, tag_id: tag27.id)
+
 Comment.find_or_create_by(artwork_id: artwork1.id, user_id: user13.id, content: "Nice!")
 Comment.find_or_create_by(artwork_id: artwork2.id, user_id: user13.id, content: "NIIIICCCEEE!")
 Comment.find_or_create_by(artwork_id: artwork4.id, user_id: user4.id, content: "You're in my top 5 humans of all time.")
