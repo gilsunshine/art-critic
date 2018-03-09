@@ -15,6 +15,10 @@
 
 </style>
 
+<div id='bg'>
+  <%= image_tag("#{Random.new.rand(1..7)}.jpg") %>
+</div>
+
 <% if params[:errors] != nil %>
 <div class="ui negative message">
   <div class="header">

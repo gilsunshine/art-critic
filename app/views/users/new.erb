@@ -1,4 +1,4 @@
-<style type="text/css">
+<style>
 
   body > .grid {
     height: 100%;
@@ -11,6 +11,10 @@
   }
 
 </style>
+
+<div id='bg'>
+   <%= image_tag("#{Random.new.rand(1..7)}.jpg") %>
+</div>
 
 <% if @user.errors.any? %>
   <div class="ui error message">
@@ -32,7 +36,7 @@
 <% if @user.errors.any? %>
 <div id="form_shake">
 <%else%>
-<div id="form_padding" style="opacity:0.8">
+<div id="form_padding">
 <%end%>
   <div class="ui middle aligned center aligned grid">
     <div class="column">
