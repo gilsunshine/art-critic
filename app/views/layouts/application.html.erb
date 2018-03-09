@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <title>Art Critic</title>
-
+<%= favicon_link_tag asset_path('logo.png'), :rel => 'icon', :type =>  'image/png' %>
   <!-- Important! Links to JS and stylesheets -->
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -28,6 +28,8 @@
 
 </head>
 <body style="padding: 5em;">
+
+
 
 <% if !session[:user_id] %>
   <div class="ui large top fixed hidden menu">
