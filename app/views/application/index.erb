@@ -1,29 +1,42 @@
-<div>
-  <div class="ui middle aligned grid">
-    <div class="1 column wide">
-      <div class="row">
-          <br><br><br><br><br><br><br><br><br><br><br><br>
-      </div>
-      <div class="row">
+<style media="screen">
+body{
+  background-image: url("assets/<%=rand(1..7)%>.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;>
+}
+</style>
 
-        <div class="ui center aligned basic segment">
-          <div class="ui compact message" style="opacity:0.8">
-          <div style="font-size: 200%; opacity:1;">
-            Welcome to Art Critic, a platform for sharing and critiquing art.
+<body>
+  <div>
+    <div class="ui middle aligned grid">
+      <div class="1 column wide">
+        <div class="row">
+            <br><br><br><br><br><br><br><br><br><br><br><br>
+        </div>
+        <div class="row">
+
+          <div class="ui center aligned basic segment">
+            <div class="ui compact message" style="opacity:0.8">
+            <div style="font-size: 200%; opacity:1;">
+              Welcome to Art Critic, a platform for sharing and critiquing art.
+            </div>
           </div>
-        </div>
-        </div>
-
-        <div class="ui center aligned basic segment" style="opacity:0.8">
-          <div class="ui huge button" style="font-family: 'Quicksand', sans-serif;">
-            <%= link_to "Browse Artwork", artworks_path %>
           </div>
-        </div>
 
+          <div class="ui center aligned basic segment" style="opacity:0.8">
+            <div class="ui huge button" style="font-family: 'Quicksand', sans-serif;">
+              <%= link_to "Browse Artwork", artworks_path %>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
   </div>
-</div>
+</body>
+
 
 <!-- <style>
 
