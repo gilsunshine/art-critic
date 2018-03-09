@@ -28,7 +28,6 @@ class VotesController < ApplicationController
 
 
   def like
-    byebug
     @vote = Vote.find_or_create_by(user_id: session[:user_id], artwork_id: params[:artwork_id])
     if @vote.value != 1
       @vote.update(user_id: session[:user_id], artwork_id: params[:artwork_id], value: 1)

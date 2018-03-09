@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   post '/sessions', to: 'sessions#create', as: 'create_session'
   post '/like/:id', to: 'votes#like', as: 'like'
   post '/dislike', to: 'votes#dislike', as: 'dislike'
+  post '/destroy', to: 'comments#destroy', as: 'destroy_comment'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
