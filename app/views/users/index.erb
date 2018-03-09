@@ -1,12 +1,23 @@
+<h1 style="font-family: 'Quicksand', sans-serif;">All Artists</h1><hr><br>
+
+<div class="ui very relaxed grid container">
 <% @users.select{|user| !user.artworks.empty? }.each do |artist| %>
-  <!-- <div class="ui two column grid"> -->
-    <div class="column">
-      <%= image_tag artist.image.thumb.url if artist.image.url %><br>
-      <!-- <% artist.artworks.each do |artwork|%>
-        <%= image_tag artwork.image.thumb.url if artwork.image.url %>
-      <% end %> -->
-      <strong><%= link_to artist.name, artist %></strong>    <br>
-      <%= artist.bio %> <br><hr> <br>
-    </div>
-  <!-- </div> -->
-<% end %>
+  <div class="four wide column">
+    <div class="row">
+
+      <div class="column middle aligned">
+        <div class="ui fluid image"> <%= image_tag artist.image.thumb.url if artist.image.url %>
+        </div>
+      </div><br>
+
+      <div class="column">
+        <strong><%= link_to artist.name, artist %></strong><br>
+      </div>
+
+      <div class="column">
+        <%= artist.bio %>
+      </div>
+    </div><br>
+  </div>
+  <% end %>
+</div>

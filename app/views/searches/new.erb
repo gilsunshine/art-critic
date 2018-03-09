@@ -1,50 +1,47 @@
 <div class="ui middle aligned center aligned grid">
-  <div class="column">
+  <div class="four wide column">
     <div class="ui large form">
       <div class="ui stacked segment">
-
         <div class="ui black image header">
-        <div id="new_account_header">
-          Advanced Search
+          <h2>Advanced Search</h2>
         </div>
+        <%= form_for @search, html: {class: "pure-form"} do |s|%>
+          <div class="field">
+            <%= s.label :name %>
+            <%= s.text_field :name %>
+          </div>
+          <div class="field">
+            <%= s.label :artist_name %>
+            <%= s.text_field :artist_name %>
+          </div>
+          <div class="field">
+            <%= s.label :after_year %>
+            <%= s.number_field :after_year %>
+          </div>
+          <div class="field">
+            <%= s.label :before_year %>
+            <%= s.number_field :before_year %>
+          </div>
+
+          <!-- <div class="field">
+          <%= s.label :style %>
+          <%= s.text_field :style%>
         </div>
-<%= form_for @search, html: {class: "pure-form"} do |s|%>
-  <div class="field">
-    <%= s.label :name %>
-    <%= s.text_field :name %>
-  </div>
-  <div class="field">
-    <%= s.label :artist_name %>
-    <%= s.text_field :artist_name %>
-  </div>
-  <div class="field">
-    <%= s.label :after_year %>
-    <%= s.number_field :after_year %>
-  </div>
-  <div class="field">
-    <%= s.label :before_year %>
-    <%= s.number_field :before_year %>
-  </div>
+        <div class="field">
+        <%= s.label :medium %>
+        <%= s.text_field :medium %>
+        </div> -->
+        <!-- <div class="field">
+        <%= s.label :tags %>
+        <%= s.text_field :tags %>
+        </div> -->
 
-  <!-- <div class="field">
-  <%= s.label :style %>
-  <%= s.text_field :style%>
-</div>
-<div class="field">
-<%= s.label :medium %>
-<%= s.text_field :medium %>
-</div> -->
-<!-- <div class="field">
-<%= s.label :tags %>
-<%= s.text_field :tags %>
-</div> -->
-
-  <div class="actions">
-    <%= s.submit "Search", :class => "ui fluid large black submit button" %>
+            <div class="actions">
+              <%= s.submit "Search", :class => "ui fluid submit button" %>
+            </div>
+          </column>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-</column>
-<% end %>
-</div>
-</div>
-</div>
-</div>

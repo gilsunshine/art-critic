@@ -11,9 +11,9 @@ class CommentsController < ApplicationController
   end
 
   def update
-    @comment = Comment.find(params[:id])
-    @comment.update(comment_params)
-    redirect_to "/artworks/#{@comment.artwork_id}"
+      @comment = Comment.find(params[:id])
+      @comment.update(comment_params)
+      redirect_to "/artworks/#{@comment.artwork_id}"
   end
 
   def destroy
