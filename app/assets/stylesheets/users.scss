@@ -1,6 +1,6 @@
-// Place all the styles related to the users controller here.
+/* // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+// You can use Sass (SCSS) here: http://sass-lang.com/ */
 
 #editUser {
   display: none;
@@ -12,4 +12,22 @@
 
 #form_padding {
   padding: 120px
+}
+
+#bg {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+}
+#bg img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  min-width: 50%;
+  min-height: 50%;
 }
