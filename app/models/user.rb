@@ -14,6 +14,13 @@ class User < ApplicationRecord
   validates_processing_of :image
   validate :image_size_validation
 
+  before_create :make_picture
+
+  def make_picture
+    if !self.image.url.present?
+      self.image = File.open(File.join(Rails.root, "/app/assets/images/default-profile-pic.png"))
+    end
+  end
 
   private
     def image_size_validation

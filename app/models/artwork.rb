@@ -12,7 +12,7 @@ class Artwork < ApplicationRecord
   validates_processing_of :image
   validate :image_size_validation
 
-  before_validation :make_title
+  before_save :make_title
 
   def make_title
     if !self.name.present?
