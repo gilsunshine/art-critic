@@ -22,7 +22,6 @@ class ArtworksController < ApplicationController
   end
 
   def create
-    byebug
     @artwork = Artwork.new(artwork_params)
     @artwork.user_id = session[:user_id]
     if @artwork.save
