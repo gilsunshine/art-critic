@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
       # byebug
       redirect_to "/artworks/#{@comment.artwork_id}"
     else
-      render "/artworks/#{@comment.artwork_id}"
+      redirect_to "/artworks/#{comment_params[:artwork_id]}"
     end
   end
 
