@@ -8,19 +8,11 @@ class Artwork < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   validates :name, presence: :true
-  validates :year, presence: :true
   validates :image, presence: :true
   validates_processing_of :image
   validate :image_size_validation
 
   before_save :make_title
-  before_save :make_year
-
-  def make_year
-    if !self.year.present?
-      self.year = "Unknown"
-    end
-  end
 
   def make_title
     if !self.name.present?

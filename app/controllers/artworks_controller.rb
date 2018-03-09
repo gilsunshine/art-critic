@@ -25,7 +25,7 @@ class ArtworksController < ApplicationController
     if @artwork.save
       @year_tag = Tag.find_or_create_by(category: "year", name: params[:artwork][:year])
       ArtworkTag.create(artwork_id: @artwork.id, tag_id: @year_tag.id)
-      params[:artwork][:tag_ids].reject { |c| c.empty? }.each {|id| ArtworkTag.create(artwork_id: @artwork.id, tag_id: id.to_i) }
+      params[:artwork][:tag_ids].reject { |c| c.empty? }.each {|id| ArtworkTag.create(artwork_id: @artwork.id, tag_id: id.to_i) } if params[:artwork][:tag_ids]
       @style_tag = Tag.find_or_create_by(category: "custom style", name: params[:artwork][:style]) ##this allows user to create new custom tag where style tag already exists
       ArtworkTag.create(artwork_id: @artwork.id, tag_id: @style_tag.id)
       @medium_tag = Tag.find_by( name: params[:artwork][:medium]) ## but this might find a custom tag of the wrong category
